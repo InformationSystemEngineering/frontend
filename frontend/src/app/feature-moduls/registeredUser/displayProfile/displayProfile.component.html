@@ -1,0 +1,61 @@
+<!-- displayProfile.component.html
+
+<div class="wrapper">
+    <div class="profile-container">
+       <div class="header"> 
+        <h2>User Profile</h2>
+        <button class="image-button" (click)="editProfile()">
+          <img src="https://cdn.pixabay.com/photo/2017/06/06/00/33/edit-icon-2375785_1280.png" alt="Edit Icon">
+        </button>
+        <button class="image-adv" (click)="loyaltyProgramAdvantages()">
+            🥉          </button>
+      </div>
+      <div class="info">
+        <div class="user-details">
+          <div>
+            <img class="profile_image" src="https://img.freepik.com/free-photo/pleased-young-female-doctor-wearing-medical-robe-stethoscope-around-neck-standing-with-closed-posture_409827-254.jpg" alt="User Image" />
+          </div>
+          <div class="personal-info" *ngIf="isEditing">
+            <form [formGroup]="profileForm">
+                <p><strong>First Name:</strong> <input formControlName="firstname" [readonly]="!isEditing"></p>
+                <p><strong>Last Name:</strong> <input formControlName="lastname" [readonly]="!isEditing"></p>
+                <p><strong>Password:</strong> <input type="password" formControlName="password" [readonly]="!isEditing"></p>
+                <p><strong>Phone Number:</strong> <input formControlName="phoneNumber" [readonly]="!isEditing"></p>
+                <p><strong>Occupation:</strong> <input formControlName="occupation" [readonly]="!isEditing"></p>
+               
+                <p><strong>Email:</strong> {{ registeredUser.email }}</p>
+                <p><strong>Address:</strong>
+                    <input formControlName="street" [readonly]="!isEditing">,
+                    <input formControlName="number" [readonly]="!isEditing">,
+                    <input formControlName="city" [readonly]="!isEditing">,
+                    <input formControlName="country" [readonly]="!isEditing">
+                  </p>
+                  
+                <button class="update-button" type="button" (click)="updateProfile()">UPDATE</button>
+              </form>
+              
+          </div>
+          <div class="personal-info" *ngIf="!isEditing">
+            <form [formGroup]="profileForm">
+                <p><strong>First Name:</strong> {{ registeredUser.firstname }}</p>
+                <p><strong>Last Name:</strong> {{ registeredUser.lastname }}</p>
+                <p><strong>Password:</strong> ********</p> 
+                <p><strong>Phone Number:</strong> {{ registeredUser.phoneNumber }}</p>
+                <p><strong>Occupation:</strong> {{ registeredUser.occupation }}</p>
+                <p><strong>Email:</strong> {{ registeredUser.email }}</p>
+                <p><strong>Address:</strong> {{ registeredUser.address.street }}, {{ registeredUser.address.number }}, {{ registeredUser.address.city }}, {{ registeredUser.address.country }}</p>
+
+            </form>
+          </div>
+        </div>
+        <div class="loyalty-details">
+            <div class="loyalty">
+          <p><strong>Penalty Points:</strong> {{ registeredUser.penaltyPoints }}</p>
+          <p class="category"> {{ registeredUser.userCategory }}</p>
+        </div>
+       
+        </div>
+      </div>
+    </div>
+  </div>
+   -->

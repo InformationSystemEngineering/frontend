@@ -1,0 +1,14 @@
+.wrap {
+  background: url("https://images.rawpixel.com/image_800/czNmcy1wcml2YXRlL3Jhd3BpeGVsX2ltYWdlcy93ZWJzaXRlX2NvbnRlbnQvbHIvdjg3MC10YW5nLTM2XzEuanBn.jpg")
+    center center/cover no-repeat;
+  width: 100%;
+
+  min-height: 1000px;
+}
+
+p {
+  font-style: "Gill Sans Extrabold", sans-serif;
+  font-size: 26px;
+  text-align: center;
+  padding: 20px;
+}

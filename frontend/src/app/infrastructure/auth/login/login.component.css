@@ -1,0 +1,70 @@
+.wrap {
+    background: url("https://vilmate.com/wp-content/uploads/2018/08/Medical_Website_Development-1.jpg")
+      center center/cover no-repeat;
+    background-size: cover;
+    width: 100%;
+  
+    min-height: 1050px;
+  }
+  
+  .form-wrap {
+    display: flex;
+    flex-direction: column;
+  
+    gap: 20px;
+  
+    padding: 250px;
+    align-items: center;
+  }
+  
+  .first-form {
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+  }
+  
+  .button1 {
+    margin-left: 10px;
+    border-radius: 8px;
+    background-color: #084d4f;
+    color: #ffffff;
+    padding: 5px 10px;
+    width: 400px;
+    height: 50px;
+    font-style: "Gill Sans Extrabold", sans-serif;
+    font-size: 18px;
+  }
+  
+  .title {
+    font-size: 1.7em;
+    text-transform: uppercase;
+    color: #084d4f;
+    font-style: "Gill Sans Extrabold", sans-serif;
+    background-color: rgba(246, 245, 245, 0.8);
+    border-radius: 10px;
+  
+    padding: 5px 10px;
+    margin-top: 5px;
+  }
+  
+  .account {
+    color: rgb(12, 12, 12);
+    font-size: 17px;
+    text-align: left;
+  }
+  
+  .inner-wrap {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    margin-right: 20px;
+  }
+  
+  .link {
+    color: #0f3031;
+    font-size: 17px;
+  }
+  
+  .link:hover {
+    color: #084d4f;
+  }

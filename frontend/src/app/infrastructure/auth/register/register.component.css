@@ -1,0 +1,67 @@
+/* textarea,
+input[type="text"],
+input[type="number"],
+input[type="password"] {
+  padding: 10px;
+  width: 100%;
+  font-size: 18px;
+  border: 1px solid #374f50;
+  border-radius: 8px;
+
+  box-sizing: border-box;
+} */
+
+.new-form {
+  display: flex;
+  flex-direction: column;
+  width: 20%;
+}
+
+.form-wrap {
+  border: 5px solid #374f50;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 10px;
+
+  align-items: center;
+}
+
+.first-form {
+  display: flex;
+  flex-direction: column;
+  width: 20%;
+}
+
+.wrap {
+  background: url("https://images.rawpixel.com/image_800/czNmcy1wcml2YXRlL3Jhd3BpeGVsX2ltYWdlcy93ZWJzaXRlX2NvbnRlbnQvbHIvdjg3MC10YW5nLTM2XzEuanBn.jpg")
+    center center/cover no-repeat;
+  width: 100%;
+
+  min-height: 250px;
+}
+
+.title {
+  font-size: 1.7em;
+  text-transform: uppercase;
+  color: #084d4f;
+  font-style: "Gill Sans Extrabold", sans-serif;
+  background-color: rgba(246, 245, 245, 0.8);
+  border-radius: 10px;
+
+  padding: 5px 10px;
+  margin-top: 5px;
+}
+
+.button1 {
+  margin-left: 10px;
+  border-radius: 8px;
+  background-color: #084d4f;
+  color: #ffffff;
+  padding: 5px 10px;
+  width: 400px;
+  height: 50px;
+  font-style: "Gill Sans Extrabold", sans-serif;
+  font-size: 18px;
+}

@@ -1,0 +1,196 @@
+
+.profile-container {
+    margin: 20px auto;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: rgba(219, 236, 230, 0.1); 
+    &:hover {
+        transform: scale(1.1);
+        cursor: pointer;
+      }
+  }
+
+  .image-adv{
+    background: none;
+    border: none;
+    padding: 0;
+    font-size: 30px;
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out;
+  
+    &:hover {
+      transform: scale(1.1);
+    }
+
+  }
+
+::ng-deep .toast-custom-style {
+    background-color: rgb(76, 119, 175); 
+    color: rgb(14, 5, 5);
+    width: 25%;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: rgba(100, 169, 145, 0.1); 
+    text-align: center;
+  }
+
+  .toast-bottom-custom {
+padding-top: 20px;  }
+  
+  ::ng-deep .toast-custom-title {
+    color: rgb(18, 5, 5);
+  }
+  
+  
+.wrapper {
+    background: url('https://images.rawpixel.com/image_800/czNmcy1wcml2YXRlL3Jhd3BpeGVsX2ltYWdlcy93ZWJzaXRlX2NvbnRlbnQvbHIvdjg3MC10YW5nLTM2XzEuanBn.jpg') center center/cover no-repeat;
+    min-height: 100vh; 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: white; 
+  }
+  .image-button {
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out;
+  
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+  .header{
+    display: flex;
+    flex-direction: row;
+    gap: 30px;
+    justify-content: center;
+  }
+
+  .header h2 {
+    text-transform: uppercase; 
+    font-size: 40px;
+    font-family: "Gill Sans Extrabold", sans-serif;
+    color: rgb(65, 116, 130); 
+    text-shadow: 2px 2px 4px rgba(245, 241, 241, 0.5); 
+  }
+
+  .personal-info{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: rgb(8, 60, 43);
+    font-family: "Gill Sans Extrabold", sans-serif;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: rgba(219, 236, 230, 0.1); 
+    text-align: center;
+ 
+
+  }
+
+
+  
+  .image-button img {
+    width: 50px; 
+    height: auto;
+  }
+  
+
+  .profile_image {
+    width: 90%;
+    height: auto;
+    transition: transform 0.3s ease-in-out;
+    margin: 0 auto; 
+    
+    &:hover {
+      transform: scale(1.1);
+      cursor: pointer;
+    }
+  
+    padding: 20px;
+  }
+  
+  
+  
+  .user-details{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.loyalty-details {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.loyalty{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.header p{
+    font-size: 30px;
+}
+.advantages {
+    display: flex;
+    justify-content: flex-end;
+    padding: 20px;
+    background-color: lightgray; 
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  
+
+.category {
+    font-size: 30px;
+    text-transform: uppercase;
+    font-family: 'Your Cool Font', sans-serif;
+    color: #336699; 
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+  
+    border: 2px solid #336699; 
+    padding: 10px; 
+    border-radius: 8px; 
+  }
+
+  .loyalty-details p{
+    font-size: 20px;
+    color: #336699;
+
+  }
+
+  .update-button {
+    background-color: #4c86af; 
+    color: white; 
+    padding: 10px 20px; 
+    font-size: 16px; 
+    border: none; 
+    border-radius: 5px; 
+    cursor: pointer; 
+    transition: background-color 0.3s ease; 
+    padding-bottom: 10px;
+  }
+  
+  .update-button:hover {
+    background-color: #45a049; 
+  }
+  
+  
+  
+  h2, h3 {
+    color: #333;
+  }
+  
+  strong {
+    font-weight: bold;
+  }
+  

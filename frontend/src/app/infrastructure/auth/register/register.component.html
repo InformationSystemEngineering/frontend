@@ -1,0 +1,43 @@
+<div class="wrap">
+  <form [formGroup]="userForm" class="form-wrap">
+    <div class="first-form">
+      <p class="title">Sign Up:</p>
+
+      <mat-form-field>
+        <mat-label>First name</mat-label>
+        <input matInput formControlName="name" type="text" />
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Username</mat-label>
+        <input matInput formControlName="username" type="text" />
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Password</mat-label>
+        <input matInput formControlName="password" type="password" />
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Reenter password</mat-label>
+        <input matInput formControlName="reenterPassword" type="password" />
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>E-mail</mat-label>
+
+        <input matInput formControlName="email" type="text" />
+      </mat-form-field>
+
+     
+    </div>
+   
+    <button
+      class="button1"
+      type="submit"
+      color="primary"
+      (click)="registerUser()"
+    >
+      Register    </button>
+  </form>
+</div>

@@ -10,16 +10,11 @@ import { SuccessfullRegistrationComponent } from '../auth/register/successfull-r
 const routes: Routes = [
   { path: 'register', component: RegisterComponent },
 
-  // { path: 'displayProfile', component: DisplayProfile },
-
-
- 
   { path: 'failRegistration', component: FailRegistrationComponent },
   {
     path: 'successfullyRegistration',
     component: SuccessfullRegistrationComponent,
   },
- 
 ];
 
 @NgModule({

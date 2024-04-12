@@ -20,6 +20,9 @@ import { FailRegistrationComponent } from './infrastructure/auth/register/fail-r
 import { SuccessfullRegistrationComponent } from './infrastructure/auth/register/successfull-registration/successfull-registration.component';
 import { LoginComponent } from './infrastructure/auth/login/login.component';
 import { TokenInterceptor } from './interceptor/TokenInterceptor';
+import { HomeComponent } from './feature-moduls/layout/home/home.component';
+import { NavbarComponent } from './feature-moduls/layout/navbar/navbar.component';
+import { FooterComponent } from './feature-moduls/layout/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +32,9 @@ import { TokenInterceptor } from './interceptor/TokenInterceptor';
     SuccessfullRegistrationComponent,
 
     LoginComponent,
+      HomeComponent,
+      NavbarComponent,
+      FooterComponent,
   ],
 
   imports: [

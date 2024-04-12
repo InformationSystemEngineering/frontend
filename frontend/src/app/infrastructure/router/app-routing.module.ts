@@ -6,10 +6,12 @@ import { RegisterComponent } from '../auth/register/register.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FailRegistrationComponent } from '../auth/register/fail-registration/fail-registration.component';
 import { SuccessfullRegistrationComponent } from '../auth/register/successfull-registration/successfull-registration.component';
+import { LoginComponent } from '../auth/login/login.component';
 
 const routes: Routes = [
   { path: 'register', component: RegisterComponent },
 
+  { path: 'login', component: LoginComponent },
   { path: 'failRegistration', component: FailRegistrationComponent },
   {
     path: 'successfullyRegistration',

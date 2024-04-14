@@ -31,44 +31,36 @@ export class RegisterComponent implements OnChanges {
     email: new FormControl('', [Validators.required]),
     username: new FormControl('', [Validators.required]),
     password: new FormControl('', [Validators.required]),
-    reenterPassword: new FormControl('', [Validators.required]),
+    lastName: new FormControl('', [Validators.required]),
     name: new FormControl('', [Validators.required]),
+    registerAsStudent: new FormControl(false),
   });
-
-  checkPasswordMatch() {
-    const password = this.userForm.get('password')?.value;
-    const reenterPassword = this.userForm.get('reenterPassword')?.value;
-    this.passwordsMatch = password === reenterPassword;
-  }
 
   registerUser(): void {
     const user: Register = {
       name: this.userForm.value.name || '',
-      username: this.userForm.value.username || '' ,
+      username: this.userForm.value.username || '',
       email: this.userForm.value.email || '',
       password: this.userForm.value.password || '',
-      
+      lastname: this.userForm.value.lastName || '',
+      registerAsStudent: this.userForm.value.registerAsStudent === true,
     };
 
     if (!this.userForm.valid) {
       return;
     }
-    this.checkPasswordMatch();
-    if (this.passwordsMatch) {
-      this.service.signUp(user).subscribe({
-        next: () => {
-          console.log(user);
-          alert('Confirm your registration by email');
-          this.userForm.reset();
-        },
-        error: (error) => {
-          console.error(error);
-          console.log('postoji mail');
-          this.router.navigate(['/failRegistration']);
-        },
-      });
-    } else {
-      alert('Passwords do not match');
-    }
+
+    this.service.signUp(user).subscribe({
+      next: () => {
+        console.log(user);
+        alert('Confirm your registration by email');
+        this.userForm.reset();
+      },
+      error: (error) => {
+        console.error(error);
+        console.log('postoji mail');
+        this.router.navigate(['/failRegistration']);
+      },
+    });
   }
 }

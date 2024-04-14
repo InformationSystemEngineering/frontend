@@ -45,7 +45,7 @@
   width: 100%;
   border: 2px solid rgb(248, 242, 242);
   background-color: rgb(242, 238, 238);
-  padding-bottom: 50px;
+  padding-bottom: 10px;
 }
 
 .button1 {
@@ -75,18 +75,21 @@
 .account {
   color: rgb(12, 12, 12);
   font-size: 13px;
-  text-align: left;
+  text-align: center;
 }
 
 .inner-wrap {
   display: flex;
   flex-direction: row;
   gap: 5px;
+  align-self: center;
+  margin-top: 5px;
 }
 
 .link {
   color: #5a3198;
   font-size: 13px;
+  text-align: center;
 }
 
 .link:hover {

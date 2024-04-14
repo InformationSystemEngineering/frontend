@@ -26,6 +26,8 @@ export class RegisterPsychologistComponent implements OnChanges {
     password: new FormControl('', [Validators.required]),
     lastName: new FormControl('', [Validators.required]),
     name: new FormControl('', [Validators.required]),
+    registerAsPsychologist : new FormControl(false),
+    registerAsManager : new FormControl(false)
   });
 
   registerUser(): void {
@@ -36,9 +38,10 @@ export class RegisterPsychologistComponent implements OnChanges {
       password: this.userForm.value.password || '',
       lastname: this.userForm.value.lastName || '',
       registerAsStudent: false,
-      isPsychologist: true,
+      registerAsPsychologist: this.userForm.value.registerAsPsychologist === true,
+      registerAsManager: this.userForm.value.registerAsManager=== true
     };
-    console.log('FALSE??"', user.isPsychologist);
+   
     if (!this.userForm.valid) {
       return;
     }

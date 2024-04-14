@@ -44,7 +44,8 @@ export class RegisterComponent implements OnChanges {
       password: this.userForm.value.password || '',
       lastname: this.userForm.value.lastName || '',
       registerAsStudent: this.userForm.value.registerAsStudent === true,
-      isPsychologist: false
+      registerAsPsychologist: false,
+      registerAsManager:false
     };
 
     if (!this.userForm.valid) {

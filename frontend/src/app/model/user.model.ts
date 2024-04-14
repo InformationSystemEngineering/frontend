@@ -6,6 +6,7 @@ export interface User {
   email: String;
   password: String;
   name: String;
+  lastName: String;
   username : String
   roles: Role[]
 }

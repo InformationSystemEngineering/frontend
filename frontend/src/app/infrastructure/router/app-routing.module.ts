@@ -9,12 +9,13 @@ import { SuccessfullRegistrationComponent } from '../auth/register/successfull-r
 import { LoginComponent } from '../auth/login/login.component';
 import { HomeComponent } from 'src/app/feature-moduls/layout/home/home.component';
 import { RegisterPsychologistComponent } from 'src/app/feature-moduls/sysem-admin/register-psychologist/register-psychologist.component';
+import { UserProfileComponent } from 'src/app/feature-moduls/user-profile/user-profile/user-profile.component';
 
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'register', component: RegisterComponent },
-
+  { path: 'profile', component: UserProfileComponent },
   { path: 'login', component: LoginComponent },
   { path: 'failRegistration', component: FailRegistrationComponent },
   {

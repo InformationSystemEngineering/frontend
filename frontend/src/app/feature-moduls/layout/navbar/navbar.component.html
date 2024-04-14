@@ -12,6 +12,7 @@
     <div class="spacer"></div>
     <a mat-button routerLink="/login" *ngIf="userRole == ''">Log in</a>
     <a mat-button routerLink="/register" *ngIf="userRole == ''">Sign up</a>
+    <a mat-button routerLink="/profile" *ngIf="userRole != ''">Your profile</a>
     <a mat-button routerLink="/login" *ngIf="userRole != ''" (click) = "logout()">Log out</a>
 
 </mat-toolbar>

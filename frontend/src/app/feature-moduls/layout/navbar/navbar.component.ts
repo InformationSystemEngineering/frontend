@@ -10,37 +10,24 @@ import { AuthServiceService } from 'src/app/infrastructure/auth/register/auth-se
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
-  
-    private loginSource = new BehaviorSubject<boolean>(false);
-    userClaims: any = null;
-    userRole: string = '';
-    
-    constructor(private jwtHelper: JwtHelperService, private authService: AuthServiceService) {
-       this.userClaims = this.jwtHelper.decodeToken();
-       if (this.userClaims != null){
-         console.log(this.userClaims.role[0].authority);
-         this.userRole = this.userClaims.role[0].authority;
-    }
-    }
+  userClaims: any = null;
+  userRole: string = '';
+
+  constructor(private authService: AuthServiceService) {}
 
   ngOnInit(): void {
-    this.userRole = this.userClaims.role[0].authority;
-   /* this.authService.isLoggedIn$.subscribe((loggedIn) => {
+    this.authService.loginStatus$.subscribe(loggedIn => {
       if (loggedIn) {
-        this.userRole = this.userClaims.role[0].authority;
+        const token = localStorage.getItem('token');
+        this.userClaims = this.authService.decodeToken();
+        this.userRole = this.userClaims.role[0].authority; // Adjust according to actual token structure
       } else {
         this.userRole = '';
       }
-    });*/
+    });
   }
 
-    logout(): void {
-      localStorage.clear();
-      
-      this.userRole = '';
-      this.loginSource.next(false);
-    }
-
-    
-
+  logout(): void {
+    this.authService.logout();
+  }
 }

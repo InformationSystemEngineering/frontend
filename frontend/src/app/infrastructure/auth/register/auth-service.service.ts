@@ -10,57 +10,36 @@ import { Register } from 'src/app/feature-moduls/model/register.model';
   providedIn: 'root',
 })
 export class AuthServiceService {
-  private access_token = null;
-  userClaims: any = null;
-  //private loggedIn = new BehaviorSubject<boolean>(false);
-  //isLoggedIn$ = this.loggedIn.asObservable();
-
-  private loginSource = new BehaviorSubject<boolean>(false);
-  public loginObserver = this.loginSource.asObservable();
-
-  constructor(private http: HttpClient, private jwtHelper: JwtHelperService) {
-    this.userClaims = this.jwtHelper.decodeToken();
-    if (this.userClaims) this.loginSource.next(true);
+  decodeToken(): any {
+    const token = localStorage.getItem('token');
+    return token ? this.jwtHelper.decodeToken(token) : null;
   }
+  private loginStatus = new BehaviorSubject<boolean>(this.isAuthenticated());
+  loginStatus$ = this.loginStatus.asObservable();
+
+  constructor(private http: HttpClient, private jwtHelper: JwtHelperService) {}
 
   signUp(user: Register): Observable<Register> {
-    return this.http.post<Register>(
-      'http://localhost:8081/api/auth/register',
-      user
-    );
+    return this.http.post<Register>('http://localhost:8081/api/auth/register', user);
   }
 
   login(loginRequest: Credential): Observable<boolean> {
-    
-    //this.loggedIn.next(true);
-    console.log(loginRequest);
-    return this.http
-      .post<any>('http://localhost:8081/api/auth/login', loginRequest)
-      .pipe(
-        map((res) => {
-          console.log('anka');
-          console.log(res);
-          localStorage.setItem('token', res.accessToken);
-          this.userClaims = this.jwtHelper.decodeToken();
-          this.access_token = res.token;
-          console.log(this.access_token);
-          this.loginSource.next(true);
-          return true;
-        })
-      );
+    return this.http.post<any>('http://localhost:8081/api/auth/login', loginRequest).pipe(
+      map(res => {
+        localStorage.setItem('token', res.accessToken);
+        this.loginStatus.next(this.isAuthenticated());
+        return true;
+      })
+    );
   }
 
   logout(): void {
     localStorage.clear();
-    this.loginSource.next(false);
+    this.loginStatus.next(false);
   }
 
-  getUserRole(): string {
-    return this.userClaims.role;
-  }
-
-  isLogged(): boolean {
-    if (!this.jwtHelper.tokenGetter()) return false;
-    return true;
+  isAuthenticated(): boolean {
+    const token = localStorage.getItem('token');
+    return token ? !this.jwtHelper.isTokenExpired(token) : false;
   }
 }

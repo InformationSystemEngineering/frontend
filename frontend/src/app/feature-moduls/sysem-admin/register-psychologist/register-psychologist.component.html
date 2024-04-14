@@ -2,11 +2,26 @@
     <div class="form-background">
       <form [formGroup]="userForm" class="form-wrap">
         <div class="first-form">
-          <p class="title">Register new psychologist</p>
+          <p class="title">Register new specialist</p>
           <p class="under-title">
             By completing your profile, you'll unlock the full potential of our
             platform.
           </p>
+          <div>
+           
+            <mat-checkbox formControlName="registerAsPsychologist"
+            >Psychologist</mat-checkbox
+          >
+          </div>
+          <div>
+            
+            <mat-checkbox formControlName="registerAsManager"
+            >Manager</mat-checkbox
+          >
+          </div>
+         
+        
+          
           <mat-form-field>
             <mat-label>First name</mat-label>
             <input matInput formControlName="name" type="text" />

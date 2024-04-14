@@ -23,6 +23,7 @@ import { TokenInterceptor } from './interceptor/TokenInterceptor';
 import { HomeComponent } from './feature-moduls/layout/home/home.component';
 import { NavbarComponent } from './feature-moduls/layout/navbar/navbar.component';
 import { FooterComponent } from './feature-moduls/layout/footer/footer.component';
+import { RegisterPsychologistComponent } from './feature-moduls/sysem-admin/register-psychologist/register-psychologist.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { FooterComponent } from './feature-moduls/layout/footer/footer.component
     RegisterComponent,
     FailRegistrationComponent,
     SuccessfullRegistrationComponent,
+    RegisterPsychologistComponent,
 
     LoginComponent,
       HomeComponent,

@@ -6,4 +6,5 @@ export interface Register {
   email: String;
   password: String;
   registerAsStudent: boolean;
+  isPsychologist: boolean;
 }

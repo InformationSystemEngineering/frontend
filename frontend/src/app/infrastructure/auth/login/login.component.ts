@@ -3,6 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { User } from 'src/app/model/user.model';
 import { AuthServiceService } from '../register/auth-service.service';
+import { BehaviorSubject } from 'rxjs';
 
 @Component({
   selector: 'app-login',
@@ -40,6 +41,7 @@ export class LoginComponent implements OnInit {
     this.authService.login(user).subscribe((data: any) => {
       console.log(data);
       this.userForm.reset();
+      this.router.navigate(['']);
     });
   }
 }

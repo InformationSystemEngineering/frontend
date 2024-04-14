@@ -1,24 +1,36 @@
 <div class="wrap">
+  <div class="form-background">
     <form [formGroup]="userForm" class="form-wrap">
       <div class="first-form">
-        <p class="title">Log in:</p>
-  
+        <p class="title">Sign In</p>
+        <p class="under-title">
+          By signing in, you'll unlock the full potential of our platform.
+        </p>
         <mat-form-field>
           <mat-label>Username</mat-label>
           <input matInput formControlName="username" type="text" />
         </mat-form-field>
-  
+
         <mat-form-field>
           <mat-label>Password</mat-label>
           <input matInput formControlName="password" type="password" />
         </mat-form-field>
+        <button class="button1" type="submit" color="primary" (click)="LogIn()">
+          Sign in
+        </button>
       </div>
-      <button class="button1" type="submit" color="primary" (click)="LogIn()">
-        Log in
-      </button>
+
       <div class="inner-wrap">
-        <p class="account">Don't have an account yet?</p>
-        <a href="register" class="link">Sign up</a>
+        <p class="account">By continuing you are agreeing to our</p>
+        <a class="link">Terms of Service</a>
+        <p class="account">and</p>
+        <a class="link">Privacy policy</a>
       </div>
     </form>
   </div>
+  <div class="image-background">
+    <img
+      src="https://s3-alpha-sig.figma.com/img/9e10/25a4/c378702fe5ee818ec90178eb1e265a20?Expires=1713744000&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=beU7sK0mi7~9eYHUSzprfjj8YDMLXEB1reiGrc3T4le~RZAdx4exQD3AgEyRA3dBEekb5-gDe5dSzvsKMvXAdd1glAD-B0sQ2GTJ-5r4B49wDghZNUtAQ-6SEBwzgeyd6jrhi-SvuOEWIV-33siqijRss0l59zgwJ6EMnkewRoBpZ~4C4ZsqVR4ii0JRAB-eTaU0GSPkMEc1GYPFKQPrGIkLEZNAj4kkk~J-5f3b7lA-weUAP29R6rDKabRwUW-wGN0T3GLXW9WYb~9YTjx6ZisjxoBKEx2LHhdx1L1LvAEfaxjAoP5Wc~CPOiq3ROhGmDl9jfAkKJhL6ahhUPDbfQ__"
+    />
+  </div>
+</div>

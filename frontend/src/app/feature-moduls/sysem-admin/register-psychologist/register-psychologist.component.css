@@ -4,6 +4,11 @@
     height: 100vh;
     min-height: 700px;
   }
+
+  .form{
+    display: flex;
+    flex-direction: row;
+  }
   
   .form-background,
   .image-background {

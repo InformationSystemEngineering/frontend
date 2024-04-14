@@ -1,5 +1,10 @@
 // // displayProfile.component.ts
 
+import { ChangeDetectorRef, Component } from "@angular/core";
+import { FormBuilder, FormGroup } from "@angular/forms";
+import { User } from "../../model/User";
+import { ToastrService } from "ngx-toastr";
+
 // import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 // import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 // import { RegisteredUser } from '../../model/RegisteredUser';
@@ -7,38 +12,31 @@
 // import { ToastrService } from 'ngx-toastr';
 
 
-// @Component({
-//   selector: 'app-display-profile', // Adjust the selector as needed
-//   templateUrl: './displayProfile.component.html',
-//   styleUrls: ['./displayProfile.component.css'],
-// })
-// export class DisplayProfile implements OnInit {
-//   registeredUser: RegisteredUser = {} as RegisteredUser;
-//   profileForm: FormGroup;
-//   isEditing: boolean = false;
+@Component({
+  selector: 'app-display-profile', // Adjust the selector as needed
+  templateUrl: './displayProfile.component.html',
+  styleUrls: ['./displayProfile.component.css'],
+})
+export class DisplayProfile  {
+  user: User = {} as User;
+  profileForm: FormGroup;
+  isEditing: boolean = false;
 
-//   constructor(
-//     private service: RegisteredUserService,
-//     private fb: FormBuilder,
-//     private cdr: ChangeDetectorRef, // Inject ChangeDetectorRef
-//     private toastr: ToastrService
-//   ) {
-//     this.profileForm = this.fb.group({
-//       id:[''],
-//       firstname: [''],
-//       lastname: [''],
-//       password: [''],
-//       phoneNumber: [''],
-//       occupation: [''],
-//       street: [''],
-//       number: [''],
-//       city: [''],
-//       country: [''],
-//       penaltyPoints:[''],
-//       userCategory:[''],
-//       loyaltyProgram:['']
-//     });
-//   }
+  constructor(
+    //private service: RegisteredUserService,
+    private fb: FormBuilder,
+    private cdr: ChangeDetectorRef, // Inject ChangeDetectorRef
+    private toastr: ToastrService
+  ) {
+    this.profileForm = this.fb.group({
+      id:[''],
+      name: [''],
+      password: [''],
+      email: [''],
+      username: ['']
+    });
+  }
+
 
 //   ngOnInit(): void {
 //     this.loadProfileData();
@@ -48,34 +46,19 @@
 //     console.log('Loading profile data...');
 
 //     this.service.getProfile(1).subscribe({
-//       next: (data: RegisteredUser) => {
+//       next: (data: User) => {
 //         console.log('data je' + data);
-//         this.registeredUser.id = data.id;
-//         this.registeredUser.firstname = data.firstname;
-//         this.registeredUser.email = data.email;
-//         this.registeredUser.lastname = data.lastname;
-//         this.registeredUser.phoneNumber = data.phoneNumber;
-//         this.registeredUser.userCategory = data.userCategory;
-//         this.registeredUser.occupation = data.occupation;
-//         this.registeredUser.address = data.address;
-//         this.registeredUser.penaltyPoints = data.penaltyPoints;
-//         this.registeredUser.loyaltyProgram=data.loyaltyProgram;
+//         this.user.id = data.id;
+//         this.user.name = data.name;
+//         this.user.email = data.email;
+//         this.user.password = data.password;
 
 
 //           this.profileForm.setValue({
-//             id: this.registeredUser.id,
-//             firstname: this.registeredUser.firstname,
-//             lastname: this.registeredUser.lastname,
+//             id: this.user.id,
+//             name: this.user.name,
 //             password: '', 
-//             phoneNumber: this.registeredUser.phoneNumber,
-//             occupation: this.registeredUser.occupation,
-//             street: this.registeredUser.address.street,
-//             city: this.registeredUser.address.city,
-//             number: this.registeredUser.address.number,
-//             country: this.registeredUser.address.country,
-//             penaltyPoints:this.registeredUser.penaltyPoints,
-//             userCategory:this.registeredUser.userCategory,
-//             loyaltyProgram:this.registeredUser.loyaltyProgram
+//             email: this.user.email
 //           });
 //         },
       
@@ -83,7 +66,7 @@
 //         console.log(err);
 //       },
 //     });
-//   }
+  }
 
 //   editProfile() {
 //     this.isEditing = !this.isEditing;
@@ -142,5 +125,3 @@
   
   
   
-  
-// }

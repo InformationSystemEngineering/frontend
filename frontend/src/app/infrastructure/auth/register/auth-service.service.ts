@@ -59,4 +59,5 @@ export class AuthServiceService {
     if (!this.jwtHelper.tokenGetter()) return false;
     return true;
   }
+
 }

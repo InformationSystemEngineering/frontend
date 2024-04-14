@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { CommonModule, DatePipe } from '@angular/common';
 import { MaterialModule } from './angular-material/angular-material.module';
-import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './infrastructure/router/app-routing.module';
 import { RegisterComponent } from './infrastructure/auth/register/register.component';
@@ -23,6 +22,7 @@ import { TokenInterceptor } from './interceptor/TokenInterceptor';
 import { HomeComponent } from './feature-moduls/layout/home/home.component';
 import { NavbarComponent } from './feature-moduls/layout/navbar/navbar.component';
 import { FooterComponent } from './feature-moduls/layout/footer/footer.component';
+import { UserProfileComponent } from './feature-moduls/user-profile/user-profile/user-profile.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +30,8 @@ import { FooterComponent } from './feature-moduls/layout/footer/footer.component
     RegisterComponent,
     FailRegistrationComponent,
     SuccessfullRegistrationComponent,
+    UserProfileComponent,
+
 
     LoginComponent,
       HomeComponent,

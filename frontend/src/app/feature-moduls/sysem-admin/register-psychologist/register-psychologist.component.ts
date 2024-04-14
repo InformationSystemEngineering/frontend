@@ -1,22 +1,15 @@
-import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
-import {
-  FormBuilder,
-  FormControl,
-  FormGroup,
-  Validators,
-} from '@angular/forms';
-
-import { User } from 'src/app/feature-moduls/model/User';
-import { AuthServiceService } from './auth-service.service';
+import { Component, OnChanges, SimpleChanges } from '@angular/core';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Register } from 'src/app/feature-moduls/model/register.model';
+import { AuthServiceService } from 'src/app/infrastructure/auth/register/auth-service.service';
+import { Register } from '../../model/register.model';
 
 @Component({
-  selector: 'app-register',
-  templateUrl: './register.component.html',
-  styleUrls: ['./register.component.css'],
+  selector: 'app-register-psychologist',
+  templateUrl: './register-psychologist.component.html',
+  styleUrls: ['./register-psychologist.component.css']
 })
-export class RegisterComponent implements OnChanges {
+export class RegisterPsychologistComponent implements OnChanges {
   passwordsMatch: boolean = true;
 
   constructor(
@@ -33,7 +26,6 @@ export class RegisterComponent implements OnChanges {
     password: new FormControl('', [Validators.required]),
     lastName: new FormControl('', [Validators.required]),
     name: new FormControl('', [Validators.required]),
-    registerAsStudent: new FormControl(false),
   });
 
   registerUser(): void {
@@ -43,10 +35,10 @@ export class RegisterComponent implements OnChanges {
       email: this.userForm.value.email || '',
       password: this.userForm.value.password || '',
       lastname: this.userForm.value.lastName || '',
-      registerAsStudent: this.userForm.value.registerAsStudent === true,
-      isPsychologist: false
+      registerAsStudent: false,
+      isPsychologist: true,
     };
-
+    console.log('FALSE??"', user.isPsychologist);
     if (!this.userForm.valid) {
       return;
     }
@@ -55,14 +47,14 @@ export class RegisterComponent implements OnChanges {
       next: () => {
         console.log(user);
         alert('Confirm your registration by email');
-        this.router.navigate(['/login']);
+        this.router.navigate(['/']);
         this.userForm.reset();
       },
       error: (error) => {
         console.error(error);
-        console.log('postoji mail');
         this.router.navigate(['/failRegistration']);
       },
     });
   }
+
 }

@@ -3,11 +3,15 @@
     <h2>THE PSYCHOLOGICAL CENTER</h2>  
     <div class="spacer"></div>
     <a mat-button routerLink="/">Home</a> 
-    <a mat-button routerLink="/sessions">Sessions</a>  
-    <a mat-button routerLink="/workshops">Workshops</a>
-    <a mat-button routerLink="/students">For students</a>
+    <a mat-button routerLink="/sessions" *ngIf="userRole == 'REGISTERED_USER'">| My sessions |</a>  
+    <a mat-button routerLink="/workshops" *ngIf="userRole == 'REGISTERED_USER'">| My workshops |</a>
+    <a mat-button routerLink="/students" *ngIf="userRole == 'STUDENT'">| Internship progress |</a>
+    <a mat-button routerLink="/register-psychologist" *ngIf="userRole == 'SYSTEM_ADMIN'">|Registar new psychologist|</a>
+
     <a mat-button routerLink="/about-us">About us</a>
     <div class="spacer"></div>
-    <a mat-button routerLink="/login">Sign in</a>
-    <a mat-button routerLink="/logout">Sign up</a>
+    <a mat-button routerLink="/login" *ngIf="userRole == ''">Log in</a>
+    <a mat-button routerLink="/register" *ngIf="userRole == ''">Sign up</a>
+    <a mat-button routerLink="/login" *ngIf="userRole != ''" (click) = "logout()">Log out</a>
+
 </mat-toolbar>

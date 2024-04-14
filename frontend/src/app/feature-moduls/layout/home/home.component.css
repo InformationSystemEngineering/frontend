@@ -9,7 +9,7 @@
 }
 
 .between{
-    margin: 25px;
+    margin: 40px;
     background-color: rgb(246, 244, 244);
 }
 
@@ -17,11 +17,44 @@
     margin: auto;
 }
 
+.img-ctr{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.img-ctr-2{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 5px;
+    margin-top: -10px;
+}
+
+.txt{
+    min-height: 150px;
+}
+
+.grid{
+    display: grid;  
+    column-gap: 30px;
+    row-gap: 30px;
+    grid-template-columns: auto auto auto auto auto;
+    margin: 20px;
+}
+
+.btn{
+    margin-left: 140px;
+}
 h1{
     margin-top: 30px;
     text-align: center;
-    font-size: 28px;
+    font-size: 30px;
     font-weight: bold;
+}
+
+.smaller-txt{
+    font-size: small;
 }
 
 h2{
@@ -33,13 +66,18 @@ h2{
 .outer{
     display: flex;
     justify-content: space-between;
-    padding: 30px;
 }
 
 p{
     font-size: 20px;
-    margin: 50px;
     text-align: center;
+}
+
+.smaller-card{
+    border: solid 1px;
+    padding: 20px;
+    max-height: fit-content;
+    max-width: fit-content;
 }
 
 .margin{

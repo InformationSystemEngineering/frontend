@@ -12,6 +12,8 @@ import { Register } from 'src/app/feature-moduls/model/register.model';
 export class AuthServiceService {
   private access_token = null;
   userClaims: any = null;
+  //private loggedIn = new BehaviorSubject<boolean>(false);
+  //isLoggedIn$ = this.loggedIn.asObservable();
 
   private loginSource = new BehaviorSubject<boolean>(false);
   public loginObserver = this.loginSource.asObservable();
@@ -29,6 +31,8 @@ export class AuthServiceService {
   }
 
   login(loginRequest: Credential): Observable<boolean> {
+    
+    //this.loggedIn.next(true);
     console.log(loginRequest);
     return this.http
       .post<any>('http://localhost:8081/api/auth/login', loginRequest)

@@ -1,5 +1,5 @@
 .line{
-    background-color: rgb(193, 210, 243);
+    background-color: rgba(193, 210, 243, 0.5); 
     height: fit-content;
     display: flex;
 }
@@ -72,12 +72,19 @@ p{
     font-size: 20px;
     text-align: center;
 }
-
+.img-container:hover{
+    transform: scale(1.05); 
+}
 .smaller-card{
     border: solid 1px;
     padding: 20px;
     max-height: fit-content;
     max-width: fit-content;
+}
+
+.smaller-card:hover{
+    transform: scale(1.1); 
+    box-shadow: 0px 5px 15px rgba(0,0,0,0.2); 
 }
 
 .margin{
@@ -86,4 +93,9 @@ p{
 
 button{
     text-align: center;
+}
+
+button:hover{
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    transform: translateY(-2px);
 }

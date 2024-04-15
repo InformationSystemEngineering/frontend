@@ -65,17 +65,20 @@ body{
     gap:10px;
 }
 
+
 .text-center1 {
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
     align-items: right;
+    
 }
 
 .btn {
     width: 405px;
     margin: auto;
     margin-right: 300px;
-    background-color: cornflowerblue;
+    background-color:  rgb(67, 92, 138);;
     border-color: cornflowerblue;
+    color: #fff;
 }

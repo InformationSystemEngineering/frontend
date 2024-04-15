@@ -1,5 +1,5 @@
 .mat-toolbar{
-    background-color: cornflowerblue;
+    background-color: rgb(60, 89, 143);
     color: white;
   }.mat-button{
      color: white;
@@ -9,6 +9,20 @@
 
 a{
     font-size: 19px;
+}
+
+.nav{
+  color: white; 
+  font-size: 18px; 
+  font-weight: bold; 
+  text-transform: uppercase; 
+  letter-spacing: 1px; 
+  text-decoration: none; 
+}
+
+.nav:hover {
+  color: #94b7e9; 
+  transition: color 0.3s; 
 }
 
 h2{

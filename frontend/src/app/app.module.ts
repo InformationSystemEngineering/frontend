@@ -24,6 +24,10 @@ import { NavbarComponent } from './feature-moduls/layout/navbar/navbar.component
 import { FooterComponent } from './feature-moduls/layout/footer/footer.component';
 import { RegisterPsychologistComponent } from './feature-moduls/sysem-admin/register-psychologist/register-psychologist.component';
 import { UserProfileComponent } from './feature-moduls/user-profile/user-profile/user-profile.component';
+import { AllFacultiesComponent } from './feature-moduls/faculty/all-faculties/all-faculties.component';
+import { AllFairsComponent } from './feature-moduls/fair/all-fairs/all-fairs.component';
+import { CalendarFairsComponent } from './feature-moduls/fair/calendar-fairs/calendar-fairs.component';
+import { FullCalendarModule } from '@fullcalendar/angular';
 
 @NgModule({
   declarations: [
@@ -33,6 +37,9 @@ import { UserProfileComponent } from './feature-moduls/user-profile/user-profile
     SuccessfullRegistrationComponent,
     RegisterPsychologistComponent,
     UserProfileComponent,
+    AllFacultiesComponent,
+    AllFairsComponent,
+    CalendarFairsComponent,
 
 
     LoginComponent,
@@ -51,6 +58,7 @@ import { UserProfileComponent } from './feature-moduls/user-profile/user-profile
     BrowserAnimationsModule,
     HttpClientModule,
     CommonModule,
+    FullCalendarModule,
 
     JwtModule.forRoot({
       config: {

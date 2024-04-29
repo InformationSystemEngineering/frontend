@@ -1,0 +1,13 @@
+<img class="full" src="../../../../assets/kukica1.jpg" alt="Image_description">
+<div class="all-faculties">
+    <div class="faculty-container" *ngFor="let fair of fairs">
+        <h2> {{ fair.name }} </h2>
+        📅  <p>{{fair.date}}</p>
+            <p>{{fair.startTime}}</p>
+            <p>{{fair.endTime}}</p>
+
+        <button class="button">Join this fair!</button>
+
+    </div>
+
+</div>

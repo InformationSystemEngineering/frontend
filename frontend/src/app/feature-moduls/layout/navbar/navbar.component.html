@@ -9,6 +9,12 @@
   <a mat-button routerLink="/">Home</a>
   <a
     mat-button
+    routerLink="/calendar"
+    *ngIf="userRole == 'ROLE_MANAGER'"
+    >| Fairs calendar |</a
+  >
+  <a
+    mat-button
     routerLink="/sessions"
     *ngIf="userRole == 'ROLE_REGISTERED_USER' || userRole == 'ROLE_PSYCHOLOG'"
     >| My sessions |</a
@@ -19,8 +25,18 @@
     *ngIf="userRole == 'ROLE_REGISTERED_USER'"
     >| My workshops |</a
   >
+  <a
+    mat-button
+    routerLink="/organizefair"
+    *ngIf="userRole == 'ROLE_MANAGER'"
+    > Organize fair </a
+  >
   <a mat-button routerLink="/students" *ngIf="userRole == 'ROLE_STUDENT'"
     >| Internship progress |</a
+  >
+
+  <a mat-button routerLink="/materialfair" *ngIf="userRole == 'ROLE_MANAGER'"
+    >| Material for fair |</a
   >
   <a
     mat-button
@@ -28,6 +44,13 @@
     *ngIf="userRole == 'ROLE_SYSTEM_ADMIN'"
     >|Register new specialist|</a
   >
+
+  <a
+  mat-button
+  routerLink="/pick-fair"
+  *ngIf="userRole == 'ROLE_PSYCHOLOG'"
+  > Pick a fair |</a
+>
 
   <a mat-button routerLink="/about-us">About us</a>
   <div class="spacer"></div>

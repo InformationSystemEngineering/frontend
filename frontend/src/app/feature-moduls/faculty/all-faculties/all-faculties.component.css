@@ -1,0 +1,36 @@
+/* styles.css */
+.all-faculties{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 20px;
+    gap: 10px;
+}
+
+.faculty-container {
+    
+    background-color: #85aedc;
+    padding: 10px;
+    border: 1px solid #85aedc;
+    margin-bottom: 20px;
+    width: 300px;
+    height: 300px;
+}
+
+h2 {
+    font-size: 24px;
+    color: #333;
+}
+
+p {
+    font-size: 16px;
+    color: #666;
+}
+
+.button {
+    margin-top: 50px;
+}
+
+.full{
+    width: 100%;
+}

@@ -22,6 +22,10 @@
   <a mat-button routerLink="/students" *ngIf="userRole == 'ROLE_STUDENT'"
     >| Internship progress |</a
   >
+
+  <a mat-button routerLink="/internship-overview" *ngIf="userRole == 'ROLE_MANAGER'"
+    >| Internships |</a
+  >
   <a
     mat-button
     routerLink="/register-psychologist"

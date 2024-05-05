@@ -1,9 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, FormControl } from '@angular/forms'; // Dodati FormControl
-import { User } from '../../model/User';
+import { User } from '../../../model/User';
 import { UserProfileService } from '../user-profile.service';
 import { AuthServiceService } from 'src/app/infrastructure/auth/register/auth-service.service';
 import { JwtHelperService } from '@auth0/angular-jwt';
+import { StudentsOverviewComponent } from '../../internship-test/students-overview/students-overview.component';
+import { StudentTest } from 'src/app/model/studentTest.model';
+import { InternshipTestService } from '../../internship-test/internship-test.service';
 
 @Component({
   selector: 'app-user-profile',
@@ -14,10 +17,30 @@ export class UserProfileComponent implements OnInit {
   user: User | undefined;
   profileForm!: FormGroup;
   isEditing: boolean = false;
+  userRole: string = '';
+  userClaims: any = null;
+  studentTest!: StudentTest;
 
-  constructor(private fb: FormBuilder, private service: UserProfileService, private authService: AuthServiceService, private jwtHelper: JwtHelperService) {}
+  constructor(private fb: FormBuilder, private testService: InternshipTestService, private service: UserProfileService, private authService: AuthServiceService, private jwtHelper: JwtHelperService) {}
 
   ngOnInit(): void {
+    this.authService.loginStatus$.subscribe(loggedIn => {
+      if (loggedIn) {
+        const token = localStorage.getItem('token');
+        this.userClaims = this.authService.decodeToken();
+        this.userRole = this.userClaims.role[0].authority; // Adjust according to actual token structure
+      } else {
+        this.userRole = '';
+      }
+    });
+
+    //this.testService.getByStudentId(this.user?.id || 1).subscribe({
+      
+    this.studentTest.points = 82;
+    this.studentTest.isReviewed = true;
+      
+    
+
     this.profileForm = this.fb.group({ // Inicijalizacija profileForm
       id: [''],
       password: [''],

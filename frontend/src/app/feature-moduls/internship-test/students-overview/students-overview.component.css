@@ -1,0 +1,147 @@
+.margins{
+  width: fit-content;
+  margin: auto;
+}
+
+.table {
+  font-size: large;
+  width: 100%;
+  border-collapse: collapse;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+  margin-bottom: 20px;
+  width: fit-content;
+}
+
+.table th,
+.table td {
+  padding: 12px 15px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+.table th {
+  background-color:rgb(119, 164, 179);
+  color: #fff;
+}
+
+.table tbody tr:hover {
+  background-color: #f0f0f0;
+}
+.full{
+  width: 105%;
+}
+
+h2{
+  margin-top: 3%;
+  text-align: center;
+  font-style: italic;
+}
+
+.right.container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.back{
+  background-color: rgb(119, 164, 179);
+}
+
+button{
+  background-color:  rgb(233, 123, 90);
+  color: azure;
+  height: 60px;
+  width: 130px;
+  margin-top: 80px;
+  margin-right: 20px;
+  border: none;
+  border-radius: 10%;
+}
+
+button:hover{
+  background-color: rgb(193, 108, 82);
+}
+
+.no{
+  width: max-content;
+  text-align: center;
+  margin-top: 70%;
+  margin-left: 70%;
+  color: rgb(169, 18, 18);
+  font-weight: bold;
+  font-size: x-large;
+}
+
+.card {
+  width: 300px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+}
+
+.card-header {
+  background-color: #007bff;
+  color: white;
+  padding: 10px;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+}
+
+.card-body {
+  padding: 15px;
+}
+
+.card-body p {
+  margin: 0;
+}
+
+.card-body p:nth-child(2) {
+  color: green;
+}
+
+.card-body p:nth-child(3) {
+  color: red;
+}
+
+.down {
+  display: flex;
+  margin-top: 2%;
+  justify-content: space-between; 
+}
+
+.left {
+  display: flex;
+  flex-direction: column;
+  align-items:  center;
+  margin-left: 7%;
+  margin-right: 5%;
+  justify-content: center;
+  align-items: center;
+}
+
+.right {
+  flex: 1; 
+  margin-right: 2%;
+}
+
+
+.options{
+  margin-left: 10px;
+  margin-bottom: 12px;
+}
+
+.column{
+  display: flex;
+}
+
+img{
+  max-width: 50%;
+  max-height: 100%;
+}
+
+

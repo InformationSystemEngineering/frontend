@@ -6,10 +6,10 @@ import {
   Validators,
 } from '@angular/forms';
 
-import { User } from 'src/app/feature-moduls/model/User';
+import { User } from 'src/app/model/User';
 import { AuthServiceService } from './auth-service.service';
 import { Router } from '@angular/router';
-import { Register } from 'src/app/feature-moduls/model/register.model';
+import { Register } from 'src/app/model/register.model'
 
 @Component({
   selector: 'app-register',

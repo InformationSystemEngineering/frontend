@@ -24,6 +24,8 @@ import { NavbarComponent } from './feature-moduls/layout/navbar/navbar.component
 import { FooterComponent } from './feature-moduls/layout/footer/footer.component';
 import { RegisterPsychologistComponent } from './feature-moduls/sysem-admin/register-psychologist/register-psychologist.component';
 import { UserProfileComponent } from './feature-moduls/user-profile/user-profile/user-profile.component';
+import { InternshipTestModule } from './feature-moduls/internship-test/internship-test.module';
+
 
 @NgModule({
   declarations: [
@@ -43,14 +45,17 @@ import { UserProfileComponent } from './feature-moduls/user-profile/user-profile
 
   imports: [
     BrowserModule,
+    InternshipTestModule,
     AppRoutingModule,
     MaterialModule,
     ReactiveFormsModule,
+    CommonModule,
     FormsModule,
 
     BrowserAnimationsModule,
     HttpClientModule,
     CommonModule,
+    
 
     JwtModule.forRoot({
       config: {

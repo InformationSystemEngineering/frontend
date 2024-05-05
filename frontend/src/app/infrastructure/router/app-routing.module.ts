@@ -10,6 +10,8 @@ import { LoginComponent } from '../auth/login/login.component';
 import { HomeComponent } from 'src/app/feature-moduls/layout/home/home.component';
 import { RegisterPsychologistComponent } from 'src/app/feature-moduls/sysem-admin/register-psychologist/register-psychologist.component';
 import { UserProfileComponent } from 'src/app/feature-moduls/user-profile/user-profile/user-profile.component';
+import { StudentsOverviewComponent } from 'src/app/feature-moduls/internship-test/students-overview/students-overview.component';
+import { IntershipsOverviewComponent } from 'src/app/feature-moduls/internship-test/interships-overview/interships-overview.component';
 
 
 const routes: Routes = [
@@ -18,6 +20,9 @@ const routes: Routes = [
   { path: 'profile', component: UserProfileComponent },
   { path: 'login', component: LoginComponent },
   { path: 'failRegistration', component: FailRegistrationComponent },
+  { path: 'student-overview', component: StudentsOverviewComponent},
+  { path: 'internship-overview', component: IntershipsOverviewComponent},
+  { path: 'internship-details/:id', component: StudentsOverviewComponent},
   {
     path: 'successfullyRegistration',
     component: SuccessfullRegistrationComponent,

@@ -2,7 +2,7 @@
 
 import { ChangeDetectorRef, Component } from "@angular/core";
 import { FormBuilder, FormGroup } from "@angular/forms";
-import { User } from "../../model/User";
+import { User } from "../../../model/User";
 import { ToastrService } from "ngx-toastr";
 
 // import { Component, OnInit, ChangeDetectorRef } from '@angular/core';

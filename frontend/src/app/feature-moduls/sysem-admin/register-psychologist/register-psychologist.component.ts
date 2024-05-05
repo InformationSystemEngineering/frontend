@@ -2,7 +2,7 @@ import { Component, OnChanges, SimpleChanges } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthServiceService } from 'src/app/infrastructure/auth/register/auth-service.service';
-import { Register } from '../../model/register.model';
+import { Register } from '../../../model/register.model';
 
 @Component({
   selector: 'app-register-psychologist',

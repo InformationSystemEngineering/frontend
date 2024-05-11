@@ -25,7 +25,7 @@ import { FooterComponent } from './feature-moduls/layout/footer/footer.component
 import { RegisterPsychologistComponent } from './feature-moduls/sysem-admin/register-psychologist/register-psychologist.component';
 import { UserProfileComponent } from './feature-moduls/user-profile/user-profile/user-profile.component';
 import { InternshipTestModule } from './feature-moduls/internship-test/internship-test.module';
-
+import { SimpleNotificationsModule } from 'angular2-notifications';
 
 @NgModule({
   declarations: [
@@ -51,7 +51,7 @@ import { InternshipTestModule } from './feature-moduls/internship-test/internshi
     ReactiveFormsModule,
     CommonModule,
     FormsModule,
-
+    SimpleNotificationsModule.forRoot(),
     BrowserAnimationsModule,
     HttpClientModule,
     CommonModule,

@@ -6,7 +6,7 @@ import { InternshipTest } from 'src/app/model/internship.model';
 import { HallDto } from 'src/app/model/hall.model';
 import { ActivatedRoute, Route, Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
-import { BusyHallDialogComponent } from '../busy-hall-dialog/busy-hall-dialog.component';
+import { InfoDialogComponent } from '../info-dialog/busy-hall-dialog.component';
 
 @Component({
   selector: 'app-students-overview',
@@ -29,9 +29,9 @@ export class StudentsOverviewComponent implements OnInit{
   ngOnInit(): void {
     this.route.paramMap.subscribe((params) => {
          const idString = params.get('id');
-  if (idString !== null) {
-    this.intershipId = parseInt(idString);
-  }
+      if (idString !== null) {
+        this.intershipId = parseInt(idString);
+      }
     });
     this.getInternshipTest();
     this.getHalls();
@@ -85,7 +85,7 @@ export class StudentsOverviewComponent implements OnInit{
   }
 
   openErrorDialog(errorMessage: string): void {
-    this.dialog.open(BusyHallDialogComponent, {
+    this.dialog.open(InfoDialogComponent, {
       width: '250px',
       data: errorMessage
     });

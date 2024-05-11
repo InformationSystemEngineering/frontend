@@ -1,5 +1,9 @@
 export interface StudentTest {
     id: number;
     points: number;
-    isReviewed: boolean;
+    reviewed: boolean;
+    studentId: number;
+    studentName: string;
+    studentLastName: string;
+    studentImageUrl: string;
   }

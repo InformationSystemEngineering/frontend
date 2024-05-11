@@ -19,12 +19,20 @@ export class InternshipTestService {
     return this.http.get<Student[]>(environment.apiHost + 'students')
   }
 
+  getBestStudents(id: number) : Observable<StudentTest[]>{
+    return this.http.get<StudentTest[]>(environment.apiHost + 'students/student-test/get-best-students/'+id)
+  }
+
   getInternshipTest(id: number) : Observable<InternshipTest>{
     return this.http.get<InternshipTest>(environment.apiHost + 'internships/test/'+id);
   }
 
   getStudentsByInternshipTest(id: number) : Observable<Student[]>{
     return this.http.get<Student[]>(environment.apiHost + 'internships/students/'+id);
+  }
+
+  getStudentTestsByInternshipTest(id: number) : Observable<StudentTest[]>{
+    return this.http.get<StudentTest[]>(environment.apiHost + 'internships/student-test/by-internship-test-id/'+id);
   }
 
   getAllHalls() : Observable<HallDto[]>{
@@ -35,9 +43,18 @@ export class InternshipTestService {
     return this.http.put<void>(environment.apiHost + 'internships/test', internshipTest)
   }
 
+  updateStudentTest(studentTest: StudentTest): Observable<void>{
+    return this.http.put<void>(environment.apiHost + 'students/student-test', studentTest)
+  }
+
   getAllInternships() : Observable<InternshipDto[]> {
     return this.http.get<InternshipDto[]>(environment.apiHost + 'internships')
   }
+
+  getAllInternshipTests() : Observable<InternshipTest[]> {
+    return this.http.get<InternshipTest[]>(environment.apiHost + 'internships/test')
+  }
+
 
   getByStudentId(id: number) : Observable<StudentTest> {
     return this.http.get<StudentTest>(environment.apiHost + 'internships/student-test/'+ id);

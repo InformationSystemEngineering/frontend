@@ -7,6 +7,7 @@ export interface InternshipTest {
     time: string;
     hall?: HallDto;
     duration: number;
+    testReviewed: boolean;
   }
 
 export interface InternshipDto {

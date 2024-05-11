@@ -6,9 +6,9 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
   templateUrl: './busy-hall-dialog.component.html',
   styleUrls: ['./busy-hall-dialog.component.css']
 })
-export class BusyHallDialogComponent {
+export class InfoDialogComponent {
   constructor(
-    public dialogRef: MatDialogRef<BusyHallDialogComponent>,
+    public dialogRef: MatDialogRef<InfoDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public errorMessage: string
   ) {}
 }

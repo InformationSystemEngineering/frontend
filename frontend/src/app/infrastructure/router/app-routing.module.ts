@@ -12,6 +12,8 @@ import { RegisterPsychologistComponent } from 'src/app/feature-moduls/sysem-admi
 import { UserProfileComponent } from 'src/app/feature-moduls/user-profile/user-profile/user-profile.component';
 import { StudentsOverviewComponent } from 'src/app/feature-moduls/internship-test/students-overview/students-overview.component';
 import { IntershipsOverviewComponent } from 'src/app/feature-moduls/internship-test/interships-overview/interships-overview.component';
+import { TestHistoryComponent } from 'src/app/feature-moduls/internship-test/test-history/test-history.component';
+import { TestResultsComponent } from 'src/app/feature-moduls/internship-test/test-results/test-results.component';
 
 
 const routes: Routes = [
@@ -23,6 +25,8 @@ const routes: Routes = [
   { path: 'student-overview', component: StudentsOverviewComponent},
   { path: 'internship-overview', component: IntershipsOverviewComponent},
   { path: 'internship-details/:id', component: StudentsOverviewComponent},
+  { path: 'test-history', component: TestHistoryComponent},
+  { path: 'test-results/:id', component: TestResultsComponent},
   {
     path: 'successfullyRegistration',
     component: SuccessfullRegistrationComponent,

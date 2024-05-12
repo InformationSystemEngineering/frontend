@@ -1,12 +1,14 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AllFacultiesComponent } from './all-faculties/all-faculties.component';
+import { FairModule } from '../fair/fair.module';
 
 
 
 @NgModule({
   declarations: [
-    AllFacultiesComponent
+    AllFacultiesComponent,
+    FairModule 
   ],
   imports: [
     CommonModule

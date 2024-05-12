@@ -35,6 +35,13 @@
     >| Internship progress |</a
   >
 
+  <a
+    mat-button
+    routerLink="/publishfair"
+    *ngIf="userRole == 'ROLE_MANAGER'"
+    >| Publish fairs </a
+  >
+
   <a mat-button routerLink="/materialfair" *ngIf="userRole == 'ROLE_MANAGER'"
     >| Material for fair |</a
   >
@@ -44,6 +51,13 @@
     *ngIf="userRole == 'ROLE_SYSTEM_ADMIN'"
     >|Register new specialist|</a
   >
+
+  <a
+  mat-button
+  routerLink="/visitfairs"
+  *ngIf="userRole == 'ROLE_REGISTERED_USER' || userRole == 'ROLE_STUDENT'"
+  >  Visit fairs |</a
+>
 
   <a
   mat-button

@@ -28,6 +28,8 @@ import { AllFacultiesComponent } from './feature-moduls/faculty/all-faculties/al
 import { AllFairsComponent } from './feature-moduls/fair/all-fairs/all-fairs.component';
 import { CalendarFairsComponent } from './feature-moduls/fair/calendar-fairs/calendar-fairs.component';
 import { FullCalendarModule } from '@fullcalendar/angular';
+import { PublishFairsComponent } from './feature-moduls/fair/publish-fairs/publish-fairs.component';
+import { VisitFairsComponent } from './feature-moduls/fair/visit-fairs/visit-fairs.component';
 
 @NgModule({
   declarations: [
@@ -40,6 +42,8 @@ import { FullCalendarModule } from '@fullcalendar/angular';
     AllFacultiesComponent,
     AllFairsComponent,
     CalendarFairsComponent,
+    PublishFairsComponent,
+    VisitFairsComponent,
 
 
     LoginComponent,

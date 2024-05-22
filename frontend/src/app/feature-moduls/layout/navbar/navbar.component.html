@@ -25,6 +25,7 @@
     *ngIf="userRole == 'ROLE_REGISTERED_USER'"
     >| My workshops |</a
   >
+
   <a
     mat-button
     routerLink="/organizefair"
@@ -32,14 +33,24 @@
     > Organize fair </a
   >
   <a mat-button routerLink="/students" *ngIf="userRole == 'ROLE_STUDENT'"
-    >| Internship progress |</a
+    >| Internship progress |</a>
+
+  <a mat-button routerLink="/test-history" *ngIf="userRole == 'ROLE_PSYCHOLOG'"
+    > Intrenship Tests </a
+  >
+
+  <a mat-button routerLink="/internship-tasks" *ngIf="userRole == 'ROLE_PSYCHOLOG' || userRole == 'ROLE_STUDENT'"
+    > My Intrenships |</a
+>
+  <a mat-button routerLink="/internship-overview" *ngIf="userRole == 'ROLE_MANAGER'"
+    >| Organize tests |</a
   >
 
   <a
     mat-button
     routerLink="/publishfair"
     *ngIf="userRole == 'ROLE_MANAGER'"
-    >| Publish fairs </a
+    >Publish fairs </a
   >
 
   <a mat-button routerLink="/materialfair" *ngIf="userRole == 'ROLE_MANAGER'"

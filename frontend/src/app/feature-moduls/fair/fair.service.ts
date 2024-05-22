@@ -1,12 +1,12 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Fair } from '../model/Fair.model';
+import { ExtraActivity } from 'src/app/model/ExtraActivity.model';
+import { Fair } from 'src/app/model/Fair.model';
+import { FairPsychology } from 'src/app/model/FairPsychology.model';
+import { Psychologist } from 'src/app/model/Psychologist.model';
+import { StudentExtraActivity } from 'src/app/model/StudentExtraActivity.model';
 import { environment } from 'src/env/environment';
-import { ExtraActivity } from '../model/ExtraActivity.model';
-import { FairPsychology } from '../model/FairPsychology.model';
-import { Psychologist } from '../model/Psychologist.model';
-import { StudentExtraActivity } from '../model/StudentExtraActivity.model';
 
 @Injectable({
   providedIn: 'root'

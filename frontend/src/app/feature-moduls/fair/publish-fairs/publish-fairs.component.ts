@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
-import { Fair } from '../../model/Fair.model';
 import { FairService } from '../fair.service';
 import { forkJoin } from 'rxjs';
-import { Psychologist } from '../../model/Psychologist.model';
-import { ExtraActivity } from '../../model/ExtraActivity.model';
 import { Router } from '@angular/router';
+import { Fair } from 'src/app/model/Fair.model';
+import { Psychologist } from 'src/app/model/Psychologist.model';
+import { ExtraActivity } from 'src/app/model/ExtraActivity.model';
 
 @Component({
   selector: 'app-publish-fairs',

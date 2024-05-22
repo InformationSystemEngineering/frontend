@@ -26,6 +26,7 @@
     "@fullcalendar/daygrid": "^6.1.11",
     "@fullcalendar/multimonth": "^6.1.11",
     "@fullcalendar/timegrid": "^6.1.11",
+    "angular2-notifications": "^16.0.1",
     "bootstrap": "^5.3.3",
     "ngx-toastr": "^18.0.0",
     "rxjs": "~7.8.0",

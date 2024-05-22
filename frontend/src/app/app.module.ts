@@ -30,6 +30,10 @@ import { CalendarFairsComponent } from './feature-moduls/fair/calendar-fairs/cal
 import { FullCalendarModule } from '@fullcalendar/angular';
 import { PublishFairsComponent } from './feature-moduls/fair/publish-fairs/publish-fairs.component';
 import { VisitFairsComponent } from './feature-moduls/fair/visit-fairs/visit-fairs.component';
+import { InternshipTestModule } from './feature-moduls/internship-test/internship-test.module';
+import { SimpleNotificationsModule } from 'angular2-notifications';
+import { CurrentInternshipModule } from './feature-moduls/current-internship/current-internship.module';
+import { ApplyStudentForTestComponent } from './feature-moduls/internship-test/apply-student-for-test/apply-student-for-test.component';
 
 @NgModule({
   declarations: [
@@ -44,6 +48,7 @@ import { VisitFairsComponent } from './feature-moduls/fair/visit-fairs/visit-fai
     CalendarFairsComponent,
     PublishFairsComponent,
     VisitFairsComponent,
+    ApplyStudentForTestComponent,
 
 
     LoginComponent,
@@ -54,15 +59,18 @@ import { VisitFairsComponent } from './feature-moduls/fair/visit-fairs/visit-fai
 
   imports: [
     BrowserModule,
+    InternshipTestModule,
     AppRoutingModule,
     MaterialModule,
     ReactiveFormsModule,
+    CommonModule,
     FormsModule,
-
+    SimpleNotificationsModule.forRoot(),
     BrowserAnimationsModule,
     HttpClientModule,
     CommonModule,
     FullCalendarModule,
+    CurrentInternshipModule,
 
     JwtModule.forRoot({
       config: {

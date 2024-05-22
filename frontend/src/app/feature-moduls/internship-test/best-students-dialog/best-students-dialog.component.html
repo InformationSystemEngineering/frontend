@@ -1,0 +1,20 @@
+<h1 mat-dialog-title>Best Students</h1>
+<div mat-dialog-content>
+  <div *ngFor="let student of students" class="card-container">
+    <mat-card>
+        <mat-card-header>
+            <img [src]="student.studentImageUrl" alt="profile" width="70px" style="margin-right: 10px;">
+            <div>
+              <mat-card-title>{{ student.studentName }}</mat-card-title>
+              <mat-card-subtitle>{{ student.studentLastName }}</mat-card-subtitle>
+            </div>
+          </mat-card-header>
+      <mat-card-content>
+        <p>Points: {{ student.points }}</p>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>
+<div mat-dialog-actions>
+  <button mat-button [mat-dialog-close]="'close'">Close</button>
+</div>

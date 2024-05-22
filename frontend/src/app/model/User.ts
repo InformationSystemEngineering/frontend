@@ -8,5 +8,5 @@ export interface User {
   email: String;
   password: String;
   roles:Role[]
-
+  imageUrl?: String;
 }

@@ -1,0 +1,79 @@
+.card-row {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+.inside-row{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+h2{
+    text-align: center;
+}
+  
+  .card-column {
+    display: flex;
+    flex-direction: column;
+  }
+  
+
+  .card {
+    background-color: #ffffff;
+    border: 1px solid #dddddd;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin: 10px;
+    width: calc(33.333% - 20px); /* Adjust based on your layout */
+    max-width: 300px; /* Adjust based on your layout */
+    transition: transform 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.card p {
+    margin: 0;
+    font-size: 16px;
+    color: #333333;
+}
+
+.card h2 {
+    font-size: 20px;
+    color: #333333;
+    margin-top: 0;
+}
+
+.reviewed-student-tests{
+    background-color: #c2e0eb;
+}
+
+.button{
+    background-color: rgb(60, 89, 143);
+    color: white;
+}
+
+.button:hover{
+    background-color:  rgb(40, 59, 94);
+}
+
+.input{
+    margin-left: 150px;
+}
+
+.button-flex{
+    margin-top: 4px;
+    display: flex;
+    justify-content: space-around;
+}
+.done{
+    background-color: rgb(110, 168, 22);
+    border: transparent;
+    color: white;
+    font-size: large;
+    height: 50px;
+    border-radius: 8%;
+}

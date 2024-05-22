@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { Fair } from '../../model/Fair.model';
 import { FairService } from '../fair.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ExtraActivity } from '../../model/ExtraActivity.model';
-import { FairPsychology } from '../../model/FairPsychology.model';
+import { Fair } from 'src/app/model/Fair.model';
+import { FairPsychology } from 'src/app/model/FairPsychology.model';
+import { ExtraActivity } from 'src/app/model/ExtraActivity.model';
 
 @Component({
   selector: 'app-all-fairs',

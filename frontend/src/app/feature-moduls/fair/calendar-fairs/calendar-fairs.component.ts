@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { Fair } from '../../model/Fair.model';
 import { FairService } from '../fair.service';
 import { CalendarOptions } from '@fullcalendar/core';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import timeGridPlugin from '@fullcalendar/timegrid';
 import multiMonthPlugin from '@fullcalendar/multimonth';
 import { EventInput } from '@fullcalendar/core';
+import { Fair } from 'src/app/model/Fair.model';
 
 @Component({
   selector: 'app-calendar-fairs',

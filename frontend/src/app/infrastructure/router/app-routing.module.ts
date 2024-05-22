@@ -10,11 +10,17 @@ import { LoginComponent } from '../auth/login/login.component';
 import { HomeComponent } from 'src/app/feature-moduls/layout/home/home.component';
 import { RegisterPsychologistComponent } from 'src/app/feature-moduls/sysem-admin/register-psychologist/register-psychologist.component';
 import { UserProfileComponent } from 'src/app/feature-moduls/user-profile/user-profile/user-profile.component';
+import { StudentsOverviewComponent } from 'src/app/feature-moduls/internship-test/students-overview/students-overview.component';
+import { IntershipsOverviewComponent } from 'src/app/feature-moduls/internship-test/interships-overview/interships-overview.component';
+import { TestHistoryComponent } from 'src/app/feature-moduls/internship-test/test-history/test-history.component';
+import { TestResultsComponent } from 'src/app/feature-moduls/internship-test/test-results/test-results.component';
+import { InternshipTasksComponent } from 'src/app/feature-moduls/current-internship/internship-tasks/internship-tasks.component';
 import { AllFacultiesComponent } from 'src/app/feature-moduls/faculty/all-faculties/all-faculties.component';
 import { AllFairsComponent } from 'src/app/feature-moduls/fair/all-fairs/all-fairs.component';
 import { CalendarFairsComponent } from 'src/app/feature-moduls/fair/calendar-fairs/calendar-fairs.component';
 import { PublishFairsComponent } from 'src/app/feature-moduls/fair/publish-fairs/publish-fairs.component';
 import { VisitFairsComponent } from 'src/app/feature-moduls/fair/visit-fairs/visit-fairs.component';
+
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -22,6 +28,12 @@ const routes: Routes = [
   { path: 'profile', component: UserProfileComponent },
   { path: 'login', component: LoginComponent },
   { path: 'failRegistration', component: FailRegistrationComponent },
+  { path: 'student-overview', component: StudentsOverviewComponent},
+  { path: 'internship-overview', component: IntershipsOverviewComponent},
+  { path: 'internship-details/:id', component: StudentsOverviewComponent},
+  { path: 'test-history', component: TestHistoryComponent},
+  { path: 'test-results/:id', component: TestResultsComponent},
+  { path: 'internship-tasks', component: InternshipTasksComponent},
   {
     path: 'successfullyRegistration',
     component: SuccessfullRegistrationComponent,

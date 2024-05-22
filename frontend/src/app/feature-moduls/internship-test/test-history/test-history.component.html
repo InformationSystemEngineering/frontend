@@ -1,0 +1,13 @@
+<div class="column">
+<img class="full" src="../../../../assets/psihic.webp" alt="Image description">
+<div><h1>Tests history</h1>
+<hr>
+<div class="card-container">
+    <div *ngFor="let test of tests" class="card" [ngClass]="{'grey-background': test.testReviewed, 'red-background': !test.testReviewed}" (click)="handleClick(test)">
+      <h1 *ngIf="!test.testReviewed">NOT REVIEWED!!!</h1>
+      <h1 *ngIf="test.testReviewed">REVIEWED 🙂</h1>
+      <h2>{{ test.internshipTitle }}</h2>
+    </div>
+  </div>
+</div>
+</div> 

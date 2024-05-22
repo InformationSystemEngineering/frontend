@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Faculty } from '../../model/Faculty.model';
 import { FacultyService } from '../faculty.service';
-import { Fair } from '../../model/Fair.model';
 import { FairService } from '../../fair/fair.service';
+import { Faculty } from 'src/app/model/Faculty.model';
+import { Fair } from 'src/app/model/Fair.model';
 
 @Component({
   selector: 'app-all-faculties',

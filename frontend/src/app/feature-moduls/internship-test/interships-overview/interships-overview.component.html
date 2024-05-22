@@ -1,0 +1,16 @@
+<div class="container">
+    <h1>Incoming Testings for Internships</h1>
+    <div class="card-container">
+      <div *ngFor="let internship of internships" class="card" (click)="onCardClicked(internship.id)">
+        <img [src]="internship.imageUrl" alt="center">
+        <div class="card-header">
+          {{ internship.title }}
+        </div>
+        <div class="card-body">
+          <p><strong>Date:</strong> {{ internship.date }}</p>
+          <p><strong>Category:</strong> {{ internship.category }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  

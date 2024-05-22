@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
-import { Psychologist } from '../../model/Psychologist.model';
-import { ExtraActivity } from '../../model/ExtraActivity.model';
-import { Fair } from '../../model/Fair.model';
 import { FairService } from '../fair.service';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { StudentExtraActivity } from '../../model/StudentExtraActivity.model';
+import { Fair } from 'src/app/model/Fair.model';
+import { ExtraActivity } from 'src/app/model/ExtraActivity.model';
+import { Psychologist } from 'src/app/model/Psychologist.model';
+import { StudentExtraActivity } from 'src/app/model/StudentExtraActivity.model';
 
 @Component({
   selector: 'app-visit-fairs',

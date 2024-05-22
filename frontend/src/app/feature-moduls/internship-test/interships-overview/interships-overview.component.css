@@ -10,15 +10,15 @@
     flex-wrap: wrap;
     gap: 20px;
   }
-  
   .card {
     border: 1px solid #ccc;
     border-radius: 5px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    width: calc(33.33% - 20px);
+    width: calc((100% - 40px) / 3);
     padding: 10px;
     box-sizing: border-box;
-  }
+}
+
   
   .card-header {
     font-size: 18px;

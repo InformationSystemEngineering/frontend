@@ -14,6 +14,7 @@ import { StudentsOverviewComponent } from 'src/app/feature-moduls/internship-tes
 import { IntershipsOverviewComponent } from 'src/app/feature-moduls/internship-test/interships-overview/interships-overview.component';
 import { TestHistoryComponent } from 'src/app/feature-moduls/internship-test/test-history/test-history.component';
 import { TestResultsComponent } from 'src/app/feature-moduls/internship-test/test-results/test-results.component';
+import { InternshipTasksComponent } from 'src/app/feature-moduls/current-internship/internship-tasks/internship-tasks.component';
 
 
 const routes: Routes = [
@@ -27,6 +28,7 @@ const routes: Routes = [
   { path: 'internship-details/:id', component: StudentsOverviewComponent},
   { path: 'test-history', component: TestHistoryComponent},
   { path: 'test-results/:id', component: TestResultsComponent},
+  { path: 'internship-tasks', component: InternshipTasksComponent},
   {
     path: 'successfullyRegistration',
     component: SuccessfullRegistrationComponent,

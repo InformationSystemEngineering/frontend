@@ -34,7 +34,6 @@ export class UserProfileComponent implements OnInit {
       }
     });
 
-    //this.testService.getByStudentId(this.user?.id || 1).subscribe({
       
     this.studentTest.points = 82;
     this.studentTest.reviewed = true;

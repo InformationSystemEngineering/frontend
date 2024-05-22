@@ -19,15 +19,15 @@
     *ngIf="userRole == 'ROLE_REGISTERED_USER'"
     >| My workshops |</a
   >
-  <a mat-button routerLink="/students" *ngIf="userRole == 'ROLE_STUDENT'"
-    >| Internship progress |</a
+  <a mat-button routerLink="/test-history" *ngIf="userRole == 'ROLE_PSYCHOLOG'"
+    > Intrenship Tests </a
   >
-  
-  <a mat-button routerLink="/test-history" *ngIf="userRole == 'ROLE_MANAGER'"
-    >| Tests |</a
-  >
+
+  <a mat-button routerLink="/internship-tasks" *ngIf="userRole == 'ROLE_PSYCHOLOG' || userRole == 'ROLE_STUDENT'"
+    > | My Intrenships |</a
+>
   <a mat-button routerLink="/internship-overview" *ngIf="userRole == 'ROLE_MANAGER'"
-    >| Internships |</a
+    >| Organize tests |</a
   >
   <a
     mat-button

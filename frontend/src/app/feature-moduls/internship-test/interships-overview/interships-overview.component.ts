@@ -21,6 +21,7 @@ export class IntershipsOverviewComponent implements OnInit{
       this.service.getAllInternships().subscribe({
         next: (internships: InternshipDto[]) => {
           this.internships = internships;
+          console.log(this.internships.length)
         }
       })
     }

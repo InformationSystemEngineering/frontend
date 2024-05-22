@@ -34,7 +34,7 @@ export class HomeComponent implements OnInit {
       }
     });
 
-    if(this.userRole == 'ROLE_MANAGER'){
+    if(this.userRole == 'ROLE_PSYCHOLOG'){
       this.showNotification();
     }
   }

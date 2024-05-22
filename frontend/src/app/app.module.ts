@@ -26,6 +26,7 @@ import { RegisterPsychologistComponent } from './feature-moduls/sysem-admin/regi
 import { UserProfileComponent } from './feature-moduls/user-profile/user-profile/user-profile.component';
 import { InternshipTestModule } from './feature-moduls/internship-test/internship-test.module';
 import { SimpleNotificationsModule } from 'angular2-notifications';
+import { CurrentInternshipModule } from './feature-moduls/current-internship/current-internship.module';
 
 @NgModule({
   declarations: [
@@ -55,7 +56,7 @@ import { SimpleNotificationsModule } from 'angular2-notifications';
     BrowserAnimationsModule,
     HttpClientModule,
     CommonModule,
-    
+    CurrentInternshipModule,
 
     JwtModule.forRoot({
       config: {

@@ -53,7 +53,27 @@ publishFair(fair: Fair): void {
   this.fairService.publishFair(fair).subscribe({
     
     next : () => {
-      this.router.navigate(['/publishfair']);
+      this.fairService.getAllFairsWithPsychologist().subscribe({
+        next: (result: Fair[]) => {
+            this.fairs = result;
+            console.log(this.fairs);
+            console.log("DONE WITH THIS");
+
+            this.fairs.forEach(fair => {
+                this.fairService.getExtraActivitesForFair(fair?.id || 0).subscribe({
+                    next: (activities: ExtraActivity[]) => {
+                        fair.activites = activities;
+                    }
+                });
+
+                this.fairService.getPsychologistsForFair(fair?.id || 0).subscribe({
+                    next: (psychologists: Psychologist[]) => {
+                        fair.psychologists = psychologists;
+                    }
+                });
+            });
+        }
+    });
     }
   })
 }

@@ -66,6 +66,13 @@
   > Pick a fair |</a
 >
 
+<a
+  mat-button
+  routerLink="/apply-internship"
+  *ngIf="userRole == 'ROLE_STUDENT'"
+  > Apply for Internship |</a
+>
+
   <a mat-button routerLink="/about-us">About us</a>
   <div class="spacer"></div>
   <a mat-button routerLink="/login" *ngIf="userRole == ''">Log in</a>

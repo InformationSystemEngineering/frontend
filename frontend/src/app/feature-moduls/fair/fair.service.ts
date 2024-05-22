@@ -6,6 +6,7 @@ import { environment } from 'src/env/environment';
 import { ExtraActivity } from '../model/ExtraActivity.model';
 import { FairPsychology } from '../model/FairPsychology.model';
 import { Psychologist } from '../model/Psychologist.model';
+import { StudentExtraActivity } from '../model/StudentExtraActivity.model';
 
 @Injectable({
   providedIn: 'root'
@@ -60,6 +61,10 @@ export class FairService {
 
   applyForActivity(extraActivity: ExtraActivity) : Observable<void>{
     return this.http.put<void>(environment.apiHost + 'extraactivities/extraactivity', extraActivity);
+  }
+
+  createStudentExtraActivity(studentExtraActivity: StudentExtraActivity) : Observable<void>{
+    return this.http.post<void>(environment.apiHost + 'studentextraactivity', studentExtraActivity);
   }
 
 }

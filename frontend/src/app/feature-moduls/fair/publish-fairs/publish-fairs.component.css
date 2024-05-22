@@ -5,16 +5,17 @@
     justify-content: center;
     margin-top: 20px;
     gap: 10px;
+    margin-bottom: 10px;
 }
 
 .faculty-container {
     
-    background-color: #85aedc;
+    background-color: #9ebde0;
     padding: 10px;
-    border: 1px solid #85aedc;
-    margin-bottom: 20px;
+    border: 1px solid #9ebde0;
+    margin-bottom: 80px;
     width: 300px;
-    height: 300px;
+    height: 430px;
 }
 
 h2 {
@@ -80,14 +81,31 @@ textarea {
 }
 
 button {
-    background-color: #007bff;
+    background-color: #2c639d;
     color: #fff;
     border: none;
     padding: 10px 20px;
     border-radius: 4px;
     cursor: pointer;
+    margin-left: 65px;
 }
 
 button:hover {
-    background-color: #0056b3;
+    background-color: #2c639d;
+}
+
+.faculty-container-form {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    margin-left: 40px;
+}
+
+.faculty-container-pink{
+    background-color: #dbb2db;
+    padding: 10px;
+    border: 1px solid #dbb2db;
+    margin-bottom: 20px;
+    width: 280px;
+    height: 260px;
 }

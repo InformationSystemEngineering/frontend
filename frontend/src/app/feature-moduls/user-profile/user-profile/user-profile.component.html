@@ -8,6 +8,7 @@
                                     <button class="btn btn-info">📝 Registrations</button>
                                     <button class="btn btn-info">✉️ Inbox (9)</button>
                                     <button class="btn btn-info">🔒 Reset password</button>
+                                    <button class="btn btn-info" *ngIf="userRole == 'ROLE_MANAGER'" (click)="GetReport()">Report</button>
                                     <div  *ngIf="userRole == 'ROLE_STUDENT'" >
                                     <button class="btn btn-info">💯 My test results</button>
                                     <h3>TEST FOR INTERNSHIP: EMOTIONAL INTELIGENCE</h3>

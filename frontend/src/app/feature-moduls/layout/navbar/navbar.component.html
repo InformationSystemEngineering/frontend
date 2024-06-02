@@ -50,12 +50,19 @@
     mat-button
     routerLink="/publishfair"
     *ngIf="userRole == 'ROLE_MANAGER'"
-    >Publish fairs </a
+    >Publish fairs |</a
   >
 
-  <a mat-button routerLink="/materialfair" *ngIf="userRole == 'ROLE_MANAGER'"
-    >| Material for fair |</a
+  <a
+    mat-button
+    routerLink="/my-fairs"
+    *ngIf="userRole == 'ROLE_STUDENT'"
+    >My fairs |</a
   >
+
+  <!-- <a mat-button routerLink="/materialfair" *ngIf="userRole == 'ROLE_MANAGER'"
+    >| Material for fair |</a
+  > -->
   <a
     mat-button
     routerLink="/register-psychologist"
@@ -77,11 +84,12 @@
   > Pick a fair |</a
 >
 
+
 <a
   mat-button
-  routerLink="/apply-internship"
+  routerLink="/apply-student-for-test"
   *ngIf="userRole == 'ROLE_STUDENT'"
-  > Apply for Internship |</a
+  > Apply for Internship test |</a
 >
 
   <a mat-button routerLink="/about-us">About us</a>

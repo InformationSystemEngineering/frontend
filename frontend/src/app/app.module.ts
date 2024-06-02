@@ -34,6 +34,13 @@ import { InternshipTestModule } from './feature-moduls/internship-test/internshi
 import { SimpleNotificationsModule } from 'angular2-notifications';
 import { CurrentInternshipModule } from './feature-moduls/current-internship/current-internship.module';
 import { ApplyStudentForTestComponent } from './feature-moduls/internship-test/apply-student-for-test/apply-student-for-test.component';
+import { FeedbackComponent } from './feature-moduls/fair/feedback/feedback.component';
+import { FairsByUserComponent } from './feature-moduls/fair/fairs-by-user/fairs-by-user.component';
+import { StarComponentComponent } from './feature-moduls/fair/star-component/star-component.component';
+import { FeedbackJournalingDialogComponent } from './feature-moduls/feedback-journaling-dialog/feedback-journaling-dialog.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatListModule } from '@angular/material/list';
+
 
 @NgModule({
   declarations: [
@@ -49,12 +56,15 @@ import { ApplyStudentForTestComponent } from './feature-moduls/internship-test/a
     PublishFairsComponent,
     VisitFairsComponent,
     ApplyStudentForTestComponent,
-
+    FairsByUserComponent,
+    StarComponentComponent,
 
     LoginComponent,
       HomeComponent,
       NavbarComponent,
       FooterComponent,
+      FeedbackComponent,
+      FeedbackJournalingDialogComponent,
   ],
 
   imports: [
@@ -71,6 +81,9 @@ import { ApplyStudentForTestComponent } from './feature-moduls/internship-test/a
     CommonModule,
     FullCalendarModule,
     CurrentInternshipModule,
+    MatDialogModule,
+    MatListModule,
+    MatButtonModule,
 
     JwtModule.forRoot({
       config: {

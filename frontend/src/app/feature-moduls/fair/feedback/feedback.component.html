@@ -1,0 +1,77 @@
+<div >
+    <div class="overview">
+    <!-- <div class="image-background">
+        <img src="assets/psiho.jpg" alt="Descriptive text for the image">
+    
+      </div> -->
+      <!-- workshop-feedback.component.html -->
+<!-- workshop-feedback.component.html -->
+<div class="feedback-form">
+    <div class="form-class">
+    <form (ngSubmit)="submitFeedback()">
+        <div class="question">
+            <label>Were the topics on extra activity well covered and did you understand everything?</label>
+            <div class="rating">
+                <!-- Bind radio inputs to model -->
+                <app-star-component [(rating)]="feedback.contentGrade"></app-star-component>
+                <!-- <input type="radio" name="contentGrade" [(ngModel)]="feedback.contentGrade" [ngModelOptions]="{standalone: true}" value="2"> 2
+                <input type="radio" name="contentGrade" [(ngModel)]="feedback.contentGrade" [ngModelOptions]="{standalone: true}" value="3"> 3
+                <input type="radio" name="contentGrade" [(ngModel)]="feedback.contentGrade" [ngModelOptions]="{standalone: true}" value="4"> 4
+                <input type="radio" name="contentGrade" [(ngModel)]="feedback.contentGrade" [ngModelOptions]="{standalone: true}" value="5"> 5 -->
+            </div>
+        </div>
+        <div class="question">
+            <label>Was the presenter clear, motivated and approachable?</label>
+            <div class="rating">
+                <app-star-component [(rating)]="feedback.psychologistGrade"></app-star-component>
+                <!-- <input type="radio" name="psychologistGrade" [(ngModel)]="feedback.psychologistGrade" value="1"> 1
+                <input type="radio" name="psychologistGrade" [(ngModel)]="feedback.psychologistGrade" [ngModelOptions]="{standalone: true}" value="2"> 2
+                <input type="radio" name="psychologistGrade" [(ngModel)]="feedback.psychologistGrade" [ngModelOptions]="{standalone: true}" value="3"> 3
+                <input type="radio" name="psychologistGrade" [(ngModel)]="feedback.psychologistGrade" [ngModelOptions]="{standalone: true}" value="4"> 4
+                <input type="radio" name="psychologistGrade" [(ngModel)]="feedback.psychologistGrade" [ngModelOptions]="{standalone: true}" value="5"> 5 -->
+            </div>
+        </div>
+        <div class="question">
+            <label>Rate how the extra activity was organized. Did everything start on time?</label>
+            <div class="rating">
+                <app-star-component [(rating)]="feedback.organizationGrade"></app-star-component>
+                <!-- <input type="radio" name="organizationGrade" [(ngModel)]="feedback.organizationGrade" value="1"> 1
+                <input type="radio" name="organizationGrade" [(ngModel)]="feedback.organizationGrade" [ngModelOptions]="{standalone: true}" value="2"> 2
+                <input type="radio" name="organizationGrade" [(ngModel)]="feedback.organizationGrade" [ngModelOptions]="{standalone: true}" value="3"> 3
+                <input type="radio" name="organizationGrade" [(ngModel)]="feedback.organizationGrade" [ngModelOptions]="{standalone: true}" value="4"> 4
+                <input type="radio" name="organizationGrade" [(ngModel)]="feedback.organizationGrade" [ngModelOptions]="{standalone: true}" value="5"> 5 -->
+
+            </div>
+        </div>
+        <!-- <div class="question">
+            <label>Would you recommend this workshop?</label>
+            <input type="checkbox" [(ngModel)]="feedback.isRecommended" [ngModelOptions]="{standalone: true}"> Yes
+        </div> -->
+        <div class="question">
+            <label>Please leave an overall impression :</label>
+            <textarea name="comment" [(ngModel)]="feedback.comment" [ngModelOptions]="{standalone: true}" rows="3"></textarea>
+        </div>
+        <button type="submit" >SUBMIT</button>
+    </form>
+</div>
+</div>
+<!-- workshop-feedback.component.html -->
+<div class="feedback-list">
+    <h3>What others said about this extra activity </h3>
+    <ul>
+      <li *ngFor="let fb of feedbacks">
+        <p><strong>Rating:</strong> {{ fb.finalGrade }}</p>
+        <!-- <p><strong>Recommended:</strong> {{ fb.isRecommended ? 'Yes' : 'No' }}</p> -->
+        <div class="comment">
+          <p>{{ fb.comment }}</p>
+        </div>
+      </li>
+    </ul>
+  </div>
+  
+  
+
+    </div>
+</div>
+
+

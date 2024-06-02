@@ -19,7 +19,7 @@ import { ApplyStudentForTestComponent } from './apply-student-for-test/apply-stu
     TestHistoryComponent,
     TestResultsComponent,
     BestStudentsDialogComponent,
-    ApplyStudentForTestComponent
+    //ApplyStudentForTestComponent
   ],
   imports: [
     MatCardModule,

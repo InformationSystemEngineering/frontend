@@ -1,0 +1,30 @@
+.dialog-content {
+    max-width: 400px;
+    margin: auto;
+  }
+
+  .list-item-value {
+    margin-left: 8px;
+  }
+
+  mat-list-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  h1 {
+    color: #3f51b5; /* Primary color */
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 16px;
+  }
+
+  mat-dialog-actions {
+    margin-top: 16px;
+  }
+
+  button {
+    font-size: 14px;
+    font-weight: 500;
+  }

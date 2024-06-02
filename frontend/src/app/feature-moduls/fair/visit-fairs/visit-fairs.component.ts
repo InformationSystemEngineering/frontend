@@ -20,6 +20,7 @@ export class VisitFairsComponent {
   psychologists: Psychologist[] = []; // Globalna promenljiva za psihologe
   extraActivities: ExtraActivity[] = [];
   eventForm: FormGroup | undefined;
+  renderButton: boolean = true;
 
 
   constructor(private fairService: FairService, private router: Router, private formBuilder: FormBuilder) {
@@ -63,6 +64,7 @@ applyForActivity(extraActivity: ExtraActivity): void{
 
 applyExtraActivity(extraActivity: ExtraActivity) : void{
   this.renderselectActivity = false;
+  this.renderButton = false;
   const studentExtraActivity: StudentExtraActivity = {
     userId: 4 || 0,
     extraActivityId: this.selectActivity?.id || 0,
@@ -98,5 +100,15 @@ applyExtraActivity(extraActivity: ExtraActivity) : void{
       });
     }
   })
+  this.closeModal();
 }
+
+openModal(extraActivity: any) {
+  this.selectActivity = extraActivity;
+}
+
+closeModal() {
+  this.selectActivity = undefined;
+}
+
 }

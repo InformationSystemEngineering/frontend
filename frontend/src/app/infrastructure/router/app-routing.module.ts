@@ -20,6 +20,9 @@ import { AllFairsComponent } from 'src/app/feature-moduls/fair/all-fairs/all-fai
 import { CalendarFairsComponent } from 'src/app/feature-moduls/fair/calendar-fairs/calendar-fairs.component';
 import { PublishFairsComponent } from 'src/app/feature-moduls/fair/publish-fairs/publish-fairs.component';
 import { VisitFairsComponent } from 'src/app/feature-moduls/fair/visit-fairs/visit-fairs.component';
+import { ApplyStudentForTestComponent } from 'src/app/feature-moduls/internship-test/apply-student-for-test/apply-student-for-test.component';
+import { FairsByUserComponent } from 'src/app/feature-moduls/fair/fairs-by-user/fairs-by-user.component';
+import { FeedbackComponent } from 'src/app/feature-moduls/fair/feedback/feedback.component';
 
 
 const routes: Routes = [
@@ -59,6 +62,18 @@ const routes: Routes = [
   {
     path: 'visitfairs', 
     component: VisitFairsComponent 
+  },
+  {
+    path: 'apply-student-for-test',
+    component: ApplyStudentForTestComponent
+  },
+  {
+    path: 'my-fairs',
+    component: FairsByUserComponent
+  },
+  {
+    path: 'feedback/:extraActivityId',
+    component: FeedbackComponent
   }
 
 ];

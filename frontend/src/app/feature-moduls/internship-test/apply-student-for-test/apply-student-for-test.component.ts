@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./apply-student-for-test.component.css']
 })
 export class ApplyStudentForTestComponent {
-
+  // Your component logic here
 }

@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Fair } from 'src/app/model/Fair.model';
 import { FairPsychology } from 'src/app/model/FairPsychology.model';
 import { ExtraActivity } from 'src/app/model/ExtraActivity.model';
+import { Time } from '@angular/common';
 
 @Component({
   selector: 'app-all-fairs',
@@ -15,6 +16,7 @@ export class AllFairsComponent implements OnInit {
   renderselectFaculty: boolean = false;
   selectFair: Fair | undefined;
   eventForm: FormGroup;
+  renderApplyButton: boolean = true;
 
   constructor(private fairService: FairService, private fb: FormBuilder) {
     this.eventForm = this.fb.group({
@@ -27,7 +29,6 @@ export class AllFairsComponent implements OnInit {
       capacity: ['']
     });
   }
-
 
   selectedFair(fair: Fair): void {
     this.renderselectFaculty = true;
@@ -51,27 +52,28 @@ export class AllFairsComponent implements OnInit {
       next: (result: Fair[]) => {
         this.fairs = result;
         console.log(this.fairs);
-        console.log("DONE WITH THIS")
+        console.log("DONE WITH THIS");
       },
     });
   }
 
   createExtraActivity(): void {
+    if (!this.eventForm.valid) {
+      return;
+    }
+
     this.renderselectFaculty = false;
     const extraActivity: ExtraActivity = {
       name: this.eventForm.value.name || '',
       activityType: this.eventForm.value.activityType || '',
-      startTime: this.eventForm.value.startTime || '',
-      endTime: this.eventForm.value.endTime || '',
-      date: this.eventForm.value.date || '',
+      startTime: this.eventForm.value.startTime || ({} as Time),
+      endTime: this.eventForm.value.endTime || ({} as Time),
+      date: this.eventForm.value.date || new Date(),
       fairPsychologyId: 1,
       classroom: this.eventForm.value.classroom || '',
-      capacity: this.eventForm.value.calendar || 0
+      capacity: this.eventForm.value.capacity || 0,
+      rate:true
     };
-   
-    if (!this.eventForm.valid) {
-      return;
-    }
    
     this.fairService.createExtraActivity(extraActivity).subscribe({
       next: () => {
@@ -86,8 +88,15 @@ export class AllFairsComponent implements OnInit {
       }
     });
     console.log("Ovo je posle poziva createExtraActivity");
-    
-    
+  }
+
+  openModal(fair: Fair): void {
+    this.selectFair = fair;
+    this.renderselectFaculty = true;
+  }
+
+  closeModal(): void {
+    this.selectFair = undefined;
+    this.renderselectFaculty = false;
   }
 }
-

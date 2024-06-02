@@ -25,15 +25,17 @@
                         <ul>
                             <li *ngFor="let extraActivity of fair.activites">
                                 Topic: {{ extraActivity.name }} (Classroom: {{ extraActivity.classroom }})
+
+                                <button class="button" *ngIf="renderRate && extraActivity.id ==1 && fair.psychologists?.length" (click)="rateFair(extraActivity.id)">
+                                    Rate this extra activity!
+                                </button>
                             </li>
                         </ul>
                     </li>
                 </ul>
             </div>
             
-            <button class="button" *ngIf="!fair.publish && fair.psychologists?.length" (click)="publishFair(fair)">
-                Publish this fair!
-            </button>
+            
         </div>
     </div>
 </div>

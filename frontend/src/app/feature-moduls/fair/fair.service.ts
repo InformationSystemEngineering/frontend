@@ -4,6 +4,9 @@ import { Observable } from 'rxjs';
 import { ExtraActivity } from 'src/app/model/ExtraActivity.model';
 import { Fair } from 'src/app/model/Fair.model';
 import { FairPsychology } from 'src/app/model/FairPsychology.model';
+import { FeedbackFair } from 'src/app/model/FeedbackFair.model';
+import { FeedbackJournaling } from 'src/app/model/FeedbackJournaling.model';
+import { FeedbackReport } from 'src/app/model/FeedbackReport.model';
 import { Psychologist } from 'src/app/model/Psychologist.model';
 import { StudentExtraActivity } from 'src/app/model/StudentExtraActivity.model';
 import { environment } from 'src/env/environment';
@@ -66,5 +69,23 @@ export class FairService {
   createStudentExtraActivity(studentExtraActivity: StudentExtraActivity) : Observable<void>{
     return this.http.post<void>(environment.apiHost + 'studentextraactivity', studentExtraActivity);
   }
+
+  getFeedbacksByExtraActivity(extraActivityId: number):Observable<FeedbackFair[]> {
+    console.log("ID OD EXTRA ACTIVITY", extraActivityId)
+    return this.http.get<FeedbackFair[]>(environment.apiHost + 'feedbacksFair/' + extraActivityId);
+  }
+
+  createFeedback(feedback: FeedbackFair): Observable<FeedbackFair> {
+    console.log("ne ide")
+    return this.http.post<FeedbackFair>(environment.apiHost + 'feedbacksFair', feedback);
+  }
+
+  getFeedbackReport(): Observable<FeedbackReport> {
+    return this.http.get<FeedbackReport>(environment.apiHost + 'feedbacksFair/report');
+  }
+
+  getJournalById(id: number) :Observable<FeedbackJournaling> {
+    return this.http.get<FeedbackJournaling>(environment.apiHost + 'feedbacksJournaling/' + id);
+  } 
 
 }

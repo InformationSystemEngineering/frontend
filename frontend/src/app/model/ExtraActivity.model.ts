@@ -10,4 +10,5 @@ export interface ExtraActivity {
     fairPsychologyId: number;
     classroom: String;
     capacity: number;
+    rate: boolean;
   }

@@ -14,3 +14,5 @@ export interface Fair {
   activites?: ExtraActivity[];
   psychologists?: Psychologist[];
 }
+
+

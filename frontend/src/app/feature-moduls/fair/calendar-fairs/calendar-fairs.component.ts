@@ -41,10 +41,6 @@ export class CalendarFairsComponent  implements OnInit {
     views: {
       timeGrid: {
         dayMaxEvents: 4
-      },
-      year: {
-        type: 'dayGrid',
-        duration: { years: 1 }
       }
     },
 

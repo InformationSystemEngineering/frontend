@@ -1,9 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FairService } from '../fair.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Fair } from 'src/app/model/Fair.model';
 import { FairPsychology } from 'src/app/model/FairPsychology.model';
-import { ExtraActivity } from 'src/app/model/ExtraActivity.model';
+import { ActivityType, ExtraActivity } from 'src/app/model/ExtraActivity.model';
 import { Time } from '@angular/common';
 
 @Component({
@@ -17,6 +17,9 @@ export class AllFairsComponent implements OnInit {
   selectFair: Fair | undefined;
   eventForm: FormGroup;
   renderApplyButton: boolean = true;
+  @ViewChild('scrollableContainer') private scrollableContainer!: ElementRef;
+
+  activityTypes = Object.values(ActivityType);
 
   constructor(private fairService: FairService, private fb: FormBuilder) {
     this.eventForm = this.fb.group({
@@ -24,7 +27,7 @@ export class AllFairsComponent implements OnInit {
       date: ['', Validators.required],
       startTime: ['', Validators.required],
       endTime: ['', Validators.required],
-      activityType: [''],
+      activityType: [ActivityType.WORKSHOP],
       classroom: [''],
       capacity: ['']
     });
@@ -88,6 +91,7 @@ export class AllFairsComponent implements OnInit {
       }
     });
     console.log("Ovo je posle poziva createExtraActivity");
+    this.closeModal();
   }
 
   openModal(fair: Fair): void {
@@ -98,5 +102,14 @@ export class AllFairsComponent implements OnInit {
   closeModal(): void {
     this.selectFair = undefined;
     this.renderselectFaculty = false;
+    this.eventForm.reset();
+  }
+
+  scrollLeft() {
+    this.scrollableContainer.nativeElement.scrollBy({ left: -250, behavior: 'smooth' });
+  }
+
+  scrollRight() {
+    this.scrollableContainer.nativeElement.scrollBy({ left: 250, behavior: 'smooth' });
   }
 }

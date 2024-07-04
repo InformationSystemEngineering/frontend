@@ -40,6 +40,7 @@ import { StarComponentComponent } from './feature-moduls/fair/star-component/sta
 import { FeedbackJournalingDialogComponent } from './feature-moduls/feedback-journaling-dialog/feedback-journaling-dialog.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatListModule } from '@angular/material/list';
+import { DragDropModule } from '@angular/cdk/drag-drop';
 
 
 @NgModule({
@@ -84,6 +85,8 @@ import { MatListModule } from '@angular/material/list';
     MatDialogModule,
     MatListModule,
     MatButtonModule,
+    DragDropModule,
+    BrowserModule,
 
     JwtModule.forRoot({
       config: {

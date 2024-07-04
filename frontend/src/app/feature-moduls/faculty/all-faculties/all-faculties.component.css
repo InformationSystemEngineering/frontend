@@ -1,93 +1,98 @@
-/* styles.css */
-.all-faculties{
+.container {
     display: flex;
-    flex-direction: row;
+    flex-wrap: wrap;
     justify-content: center;
-    margin-top: 20px;
-    gap: 10px;
+    padding-top: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+    transition: justify-content 0.5s ease-in-out;
+}
+
+.form-open {
+    justify-content: space-between;
+}
+
+.all-faculties {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    transition: width 0.5s ease-in-out;
+}
+
+.form-open .all-faculties {
+    width: 55%;
 }
 
 .faculty-container {
-    
-    background-color: #85aedc;
-    padding: 10px;
-    border: 1px solid #85aedc;
+    width: calc(33.33% - 13.33px); /* Tri kartice u redu sa razmakom */
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 16px;
     margin-bottom: 20px;
-    width: 300px;
-    height: 300px;
+    text-align: center;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-h2 {
-    font-size: 24px;
-    color: #333;
-}
-
-p {
-    font-size: 16px;
-    color: #666;
+.faculty-photo {
+    width: 100%;
+    height: auto;
+    max-height: 200px;
+    object-fit: cover;
+    margin-bottom: 16px;
 }
 
 .button {
-    margin-top: 50px;
-}
-
-.full{
-    width: 100%;
-}
-
- .one-faculty{
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    margin-top: 20px;
-    margin-right: 30px;
-    gap: 10px;
-}
-
-.faculty-container-one{
-    background-color: #85aedc;
-    padding: 10px;
-    border: 1px solid #85aedc;
-    margin-bottom: 20px;
-    width: 600px;
-    height: 500px;
-}
-
-
-
-.event-form {
-    max-width: 400px;
-    margin: 0 auto;
-}
-
-.form-group {
-    margin-bottom: 20px;
-}
-
-label {
-    display: block;
-    margin-bottom: 5px;
-}
-
-input[type="date"],
-input[type="time"],
-textarea {
-    width: 100%;
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
-}
-
-button {
-    background-color: #007bff;
-    color: #fff;
-    border: none;
+    margin-top: 16px;
     padding: 10px 20px;
-    border-radius: 4px;
+    background-color: #a25a17;
+    color: white;
+    border: none;
+    border-radius: 5px;
     cursor: pointer;
+    font-size: 16px;
 }
 
-button:hover {
-    background-color: #0056b3;
+.button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+.disabled {
+    opacity: 0.5;
+    pointer-events: none;
+}
+
+.one-faculty {
+    width: 40%;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.one-faculty.hidden {
+    opacity: 0;
+}
+
+.faculty-container-one {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 16px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.event-form .form-group {
+    margin-bottom: 16px;
+}
+
+.event-form .button1 {
+    padding: 10px 20px;
+    background-color: #105b0f;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-left: 190px;
 }

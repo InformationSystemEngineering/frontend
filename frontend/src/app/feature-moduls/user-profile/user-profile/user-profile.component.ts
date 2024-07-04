@@ -172,52 +172,66 @@ export class UserProfileComponent implements OnInit {
         next: (report: FeedbackReport) => {
           this.feedback =report;
           const doc = new jsPDF();
-    const imgData = '/assets/psiho.jpg'; // Path to the image
-    let y = 90; // Starting y position after the image
 
-    // Add image to the PDF
-    doc.addImage(imgData, 'JPEG', 10, 10, 190, 60); // Adjust dimensions as needed
+// Add image to the PDF
+const imgData = '/assets/psiho.jpg'; // Path to the image
+doc.addImage(imgData, 'JPEG', 10, 10, 190, 30); // Adjust dimensions as needed
 
-    const feedbackList = this.feedback.feedbackFairDtoList;
+// Title
+doc.setFontSize(20); // Set font size for the title
+doc.setTextColor(0, 0, 0); // Black color for the title
+doc.text('Extra Activity Report', 105, 45, { align: 'center' }); // Centered title
 
-    feedbackList.forEach((feedback: FeedbackFair) => {
-      const doc = new jsPDF();
-      const imgData = '/assets/psiho.jpg'; // Path to the image
-      let y = 50; // Starting y position after the image
-  
-      // Add image to the PDF
-      doc.addImage(imgData, 'JPEG', 10, 10, 190, 30); // Adjust dimensions as needed
-  
-      this.feedback = report;
-      const feedbackList = this.feedback.feedbackFairDtoList;
-  
-      feedbackList.forEach((feedback: FeedbackFair) => {
-        doc.setTextColor(100, 149, 237); // Cornflower blue color for the extra activity name
-        doc.text(`Extra activity name: ${feedback.name}`, 10, y);
-        y += 10;
-  
-        doc.setFontSize(10); // Reduce font size for indented text
-        doc.setTextColor(70, 130, 180); // Steel blue color for the indented text
-        doc.text(`Fair Name: ${feedback.fairPsychologyFairName}`, 20, y); // Indent
-        y += 10;
-  
-        doc.text(`Content Grade: ${feedback.contentGrade}`, 20, y); // Indent
-        y += 10;
-  
-        doc.text(`Psychologist Grade: ${feedback.psychologistGrade}`, 20, y); // Indent
-        y += 10;
-  
-        doc.text(`Final Grade: ${feedback.finalGrade}`, 20, y); // Indent
-        y += 10;
-  
-        doc.text(`Organization Grade: ${feedback.organizationGrade}`, 20, y); // Indent
-        y += 20; // Add extra space between activities
-  
-        doc.setFontSize(12); // Reset font size for next entry
-      });
-  
-      doc.save('feedback-report.pdf');
-    });
+// Date in the top-right corner
+doc.setFontSize(10); // Set font size for the date
+doc.text('10.06.2024', 180, 15); // Position the date in the top-right
+
+// Summary information
+doc.setFontSize(9); // Set font size for summary information
+doc.setTextColor(0, 0, 0); // Black color for the text
+let y = 60; // Starting y position for the summary
+doc.text('Reviewed Extra activities: 2', 10, y);
+y += 10;
+doc.text('Number of reviews by students: 5', 10, y);
+y += 10;
+doc.text('Number of reviewed psychologists: 2', 10, y);
+y += 10; // Add extra space before listing activities
+doc.text('Number of Fairs reviewed: 1', 10, y);
+y += 10; // Add extra space before listing activities
+doc.text('The most frequent type of extra activity: predavanja', 10, y);
+y += 20; // Add extra space before listing activities
+
+// Reset font type to normal
+
+// Now iterate through the feedback list
+const feedbackList = this.feedback.feedbackFairDtoList;
+
+feedbackList.forEach((feedback) => {
+  // Set font size and color for the activity name
+  doc.setFontSize(14);
+  doc.setTextColor(0, 0, 0); // Black color for the text
+  doc.text(`Extra Activity Name: ${feedback.name}`, 10, y);
+  y += 10;
+
+  doc.setFontSize(10); // Reduce font size for details
+  doc.text(`Fair Name: ${feedback.fairPsychologyFairName}`, 20, y);
+  y += 10;
+
+  doc.text(`Content Grade: ${feedback.contentGrade}`, 20, y);
+  y += 10;
+
+  doc.text(`Psychologist Grade: ${feedback.psychologistGrade}`, 20, y);
+  y += 10;
+
+  doc.text(`Final Grade: ${feedback.finalGrade}`, 20, y);
+  y += 10;
+
+  doc.text(`Organization Grade: ${feedback.organizationGrade}`, 20, y);
+  y += 20; // Add extra space between activities
+});
+
+// Save the PDF
+doc.save('feedback-report.pdf');
 
   }
       })

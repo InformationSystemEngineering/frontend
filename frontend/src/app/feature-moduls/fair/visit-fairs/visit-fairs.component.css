@@ -1,19 +1,81 @@
 .container {
     display: flex;
-    align-items: flex-start;
+    flex-direction: column;
+    align-items: center;
     padding: 20px;
 }
 .image {
-    width: 40%;
-    height: 680px;
+    width: 30%;
+    height: auto;
     margin-right: 20px;
     border-radius: 8px;
 }
-.all-faculties {
+.scroll-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+.scroll-button {
+    background-color: #9370db;
+    color: white;
+    border: none;
+    padding: 10px;
+    font-size: 1.5em;
+    cursor: pointer;
+    border-radius: 5px;
+    position: absolute;
+    z-index: 1000;
+}
+.scroll-button.left {
+    left: 0;
+}
+.scroll-button.right {
+    right: 0;
+}
+.all-months {
+    display: flex;
+    overflow-x: scroll;
+    scroll-behavior: smooth;
+    width: 100%;
+    padding: 0 50px;
+}
+.month-container {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin-bottom: 20px;
+    margin-right: 20px;
+    width: calc(50% - 20px);
+    box-sizing: border-box;
+    position: relative;
+}
+.month-image-container {
+    position: relative;
+    width: 100%;
+}
+.month-image {
+    width: 100%;
+    border-radius: 8px;
+    filter: blur(5px);
+}
+.month-title {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 2em;
+    font-weight: bold;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+}
+.fairs-container {
     display: flex;
     flex-direction: column;
     gap: 20px;
-    width: 60%;
+    margin-top: 20px;
 }
 .faculty-container {
     background-color: #fff;
@@ -44,7 +106,7 @@
     margin: 0;
 }
 .faculty-container-pink {
-    background-color: #ffe4e1;
+    background-color: #e6e6fa; /* Light purple background */
     border-radius: 5px;
     padding: 10px;
     margin-bottom: 10px;
@@ -66,7 +128,7 @@
     justify-content: space-between;
 }
 .button {
-    background-color: #f96d3e;
+    background-color: #9370db; /* Light purple color */
     color: white;
     border: none;
     padding: 10px 20px;
@@ -77,7 +139,7 @@
     gap: 10px;
 }
 .button:hover {
-    background-color: #218838;
+    background-color: #7a42f4; /* Darker purple on hover */
 }
 .modal {
     display: flex;
@@ -92,12 +154,15 @@
     z-index: 1000;
 }
 .modal-content {
-    background-color: #ffe4e1;
+    background-color: #e6e6fa; /* Light purple color */
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    width: 50%;
+    width: 400px; /* Wider width */
     position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 .close {
     position: absolute;
@@ -105,21 +170,26 @@
     right: 10px;
     font-size: 1.5em;
     cursor: pointer;
+    color: white; /* White color for the close button */
 }
 .form-group {
     margin-bottom: 15px;
+    width: 100%; /* Ensure form fields take full width */
 }
 .form-group label {
     display: block;
     margin-bottom: 5px;
+    color: black; /* White color for the labels */
 }
 .form-control {
     width: 100%;
     padding: 8px;
     box-sizing: border-box;
+    border-radius: 4px;
+    border: 1px solid #ccc;
 }
 .button1 {
-    background-color: #f96d3e;
+    background-color: #9370db; /* Light purple color */
     color: white;
     border: none;
     padding: 10px 20px;
@@ -127,7 +197,10 @@
     cursor: pointer;
     border-radius: 5px;
     transition: background-color 0.3s;
+    margin-top: 20px; /* Margin to center the button better */
+    align-self: center; /* Centering the button */
+    margin-left: 60px;
 }
 .button1:hover {
-    background-color: #0056b3;
+    background-color: #7a42f4; /* Darker purple on hover */
 }

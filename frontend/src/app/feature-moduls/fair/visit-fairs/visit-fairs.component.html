@@ -1,5 +1,4 @@
 <div class="container">
-    <h1>Incoming Fairs...</h1>
     <div class="scroll-container">
         <button class="scroll-button left" (click)="scrollLeft()"><</button>
         <div class="all-months" #scrollableContainer>
@@ -8,7 +7,7 @@
                     <img class="month-image" src="https://img.freepik.com/premium-vector/metaphor-bipolar-disorder-mind-mental-2-head-silhouette-with-flowering-tree-bare-tree_175061-662.jpg" alt="Month image">
                     <h2 class="month-title">{{ month.key }}</h2>
                 </div>
-                <div class="fairs-container">
+                <div class="fairs-container" *ngIf="month.key != 'Januar 2024' && month.key != 'Februar 2024' && month.key != 'Mart 2024' && month.key != 'April 2024' && month.key != 'May 2024' && month.key != 'June 2024'; else rateMessage">
                     <div class="faculty-container" *ngFor="let fair of month.value">
                         <h2>{{ fair.name }}</h2>
                         <div class="faculty-details">
@@ -31,7 +30,7 @@
                                             <div class="apply-extraActivity">
                                                 Topic: {{ extraActivity.name }} (Classroom: {{ extraActivity.classroom }})
                                                 <button class="button" *ngIf="!extraActivity.applied && renderButton && extraActivity.capacity > 0" (click)="openModal(extraActivity)">Apply</button>
-                                              </div>
+                                            </div>
                                         </li>
                                     </ul>
                                 </li>
@@ -39,6 +38,12 @@
                         </div>
                     </div>
                 </div>
+                <ng-template #rateMessage>
+                    <div class="rate-message">
+                        <p>You can only rate these fairs, because they passed!</p>
+                        <button class="button" (click)="navigateToMyFairs()">Rate Fairs</button>
+                    </div>
+                </ng-template>
             </div>
         </div>
         <button class="scroll-button right" (click)="scrollRight()">></button>

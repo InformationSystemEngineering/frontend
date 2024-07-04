@@ -16,7 +16,7 @@
     object-fit:cover; /* Cover the container, image will be cropped if necessary */
   }
   .feedback-form {
-    background: url('../../../../assets/psihic.webp') no-repeat center center;
+    background: url('../../../../assets/Screenshot 2024-07-04 133753.png') no-repeat center center;
     background-size: cover; /* Ensures the whole image fits inside the element */
     width: 50%;
     min-height: 80vh; /* Adjust based on your layout needs */
@@ -100,7 +100,7 @@
     margin-top: 10px; /* Space above the comment section */
     padding: 10px;
     background-color: #f9f9f9; /* Slightly off-white background for the comment */
-    border-left: 5px solid #007bff; /* Blue left border for emphasis */
+    border-left: 5px solid #cf17a4; /* Blue left border for emphasis */
     width: 100%; /* Ensures the comment section fills the card */
     font-style: italic; /* Italic font for the comment */
   }
@@ -108,9 +108,9 @@
   
   /* Styling headings within the feedback */
   .feedback-list h3 {
-    color: #0056b3;
+    color: #cf17a4;
     padding-bottom: 10px;
-    border-bottom: 2px solid #0056b3;
+    border-bottom: 2px solid #9f117e;
     margin-bottom: 15px;
     font-size: 24px;
   }
@@ -124,32 +124,35 @@
   
   /* Emphasize important elements */
   .feedback-list li p strong {
-    color: #007bff;
+    color: #cf17a4;
     font-weight: bold;
   }
   
   
 
-.feedback-form button {
+  .feedback-form button {
     padding: 10px 20px;  /* Adjust padding for better fit of text */
     width: auto;  /* Set width to auto to fit the text, or specify a fixed width */
-    background-color: #3498db;  /* A pleasant shade of blue */
+    background-color: #9f117e;  /* A pleasant shade of purple */
     color: #fff;  /* White text color for contrast */
     border: none;
     border-radius: 5px;
-    width: 40%;
     cursor: pointer;
-    margin-right: 10px;
     margin-bottom: 10px;  /* Add bottom margin for spacing */
     transition: background-color 0.3s;  /* Smooth transition for hover effect */
     font-weight: bold;  /* Makes the text bold */
     text-transform: uppercase;  /* Optional: transforms text to uppercase */
     box-shadow: 0 2px 4px rgba(0,0,0,0.2);  /* Subtle shadow for depth */
+    display: block;  /* Ensure the button is a block element */
+    margin-left: auto;  /* Auto margin on the left */
+    margin-right: auto;  /* Auto margin on the right */
+    text-align: center;  /* Center text inside the button */
 }
 
 .feedback-form button:hover {
-    background-color: #2186c7;  /* Darker blue on hover for interactive effect */
+    background-color: #720d5a;  /* Darker purple on hover for interactive effect */
 }
+
 
   
   textarea {

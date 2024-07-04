@@ -133,4 +133,8 @@ export class VisitFairsComponent implements OnInit {
     this.selectActivity = undefined;
     this.renderselectActivity = false;
   }
+
+  navigateToMyFairs(): void {
+    this.router.navigate(['/my-fairs']);
+  }
 }

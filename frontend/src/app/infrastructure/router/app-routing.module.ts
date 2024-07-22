@@ -23,6 +23,7 @@ import { VisitFairsComponent } from 'src/app/feature-moduls/fair/visit-fairs/vis
 import { ApplyStudentForTestComponent } from 'src/app/feature-moduls/internship-test/apply-student-for-test/apply-student-for-test.component';
 import { FairsByUserComponent } from 'src/app/feature-moduls/fair/fairs-by-user/fairs-by-user.component';
 import { FeedbackComponent } from 'src/app/feature-moduls/fair/feedback/feedback.component';
+import { SendRequestComponent } from 'src/app/feature-moduls/faculty/send-request/send-request.component';
 
 
 const routes: Routes = [
@@ -74,6 +75,10 @@ const routes: Routes = [
   {
     path: 'feedback/:extraActivityId',
     component: FeedbackComponent
+  },
+  {
+    path: 'send_request/:facultyId',
+    component: SendRequestComponent
   }
 
 ];

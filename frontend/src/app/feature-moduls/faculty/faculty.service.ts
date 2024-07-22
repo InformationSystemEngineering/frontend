@@ -15,4 +15,9 @@ export class FacultyService {
   getAllFaculties(): Observable<Faculty[]> {
     return this.http.get<Faculty[]>(environment.apiHost + 'faculties/getAll');
   }
+
+  getFacultyById(id: number) :Observable<Faculty> {
+    console.log(id)
+    return this.http.get<Faculty>(environment.apiHost + 'faculties/getById/' + id);
+  } 
 }

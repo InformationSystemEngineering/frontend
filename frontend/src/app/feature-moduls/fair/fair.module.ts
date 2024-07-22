@@ -11,6 +11,7 @@ import { StarComponentComponent } from './star-component/star-component.componen
 import { FeedbackJournalingDialogComponent } from '../feedback-journaling-dialog/feedback-journaling-dialog.component';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { BrowserModule } from '@angular/platform-browser';
+import { SendRequestComponent } from './send-request/send-request.component';
 
 
 @NgModule({
@@ -23,6 +24,7 @@ import { BrowserModule } from '@angular/platform-browser';
     FairsByUserComponent,
     StarComponentComponent,
     FeedbackJournalingDialogComponent,
+    SendRequestComponent,
   ],
   imports: [
     CommonModule,

@@ -36,12 +36,12 @@ export class AllFairsComponent implements OnInit {
   selectedFair(fair: Fair): void {
     this.renderselectFaculty = true;
     this.selectFair = fair;
-
+  
     const fairPsychology: FairPsychology = {
       psychologistId: 1 || 0,
       fairId: this.selectFair?.id || 0,
     };
-
+  
     this.fairService.createFairPsychology(fairPsychology).subscribe({
       next: () => {
         console.log("JEL DODJES?");
@@ -49,6 +49,7 @@ export class AllFairsComponent implements OnInit {
       },
     });
   }
+  
 
   ngOnInit(): void {
     this.fairService.getAllFairs().subscribe({
@@ -104,6 +105,7 @@ export class AllFairsComponent implements OnInit {
     this.renderselectFaculty = false;
     this.eventForm.reset();
   }
+  
 
   scrollLeft() {
     this.scrollableContainer.nativeElement.scrollBy({ left: -250, behavior: 'smooth' });

@@ -3,9 +3,55 @@
 </div>
 
 <div class="container">
+    <div class="form-container" *ngIf="renderselectFaculty">
+        <div class="modal-content centered-form">
+            <span class="close" (click)="closeModal()">&times;</span>
+            <h2>{{ selectFair?.name }}</h2>
+            <form [formGroup]="eventForm" (ngSubmit)="createExtraActivity()" class="event-form">
+                <div class="form-group">
+                    <label for="name">Extra activity name:</label>
+                    <input type="text" id="name" formControlName="name" class="form-control">
+                </div>
+
+                <div class="form-group">
+                    <label for="date">Select Date:</label>
+                    <input type="date" id="date" formControlName="date" class="form-control">
+                </div>
+
+                <div class="form-group">
+                    <label for="startTime">Start Time:</label>
+                    <input type="time" id="startTime" formControlName="startTime" class="form-control">
+                </div>
+
+                <div class="form-group">
+                    <label for="endTime">End Time:</label>
+                    <input type="time" id="endTime" formControlName="endTime" class="form-control">
+                </div>
+
+                <div class="form-group">
+                    <label for="activityType">Activity type:</label>
+                    <select id="activityType" formControlName="activityType" class="form-control">
+                        <option *ngFor="let type of activityTypes" [value]="type">{{ type }}</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="classroom">Classroom:</label>
+                    <input type="text" id="classroom" formControlName="classroom" class="form-control">
+                </div>
+
+                <div class="form-group">
+                    <label for="capacity">Classroom capacity:</label>
+                    <input type="number" id="capacity" formControlName="capacity" class="form-control">
+                </div>
+
+                <button type="submit" class="button1">Done</button>
+            </form>
+        </div>
+    </div>
+
     <div class="scroll-container">
-        <button class="scroll-button left" (click)="scrollLeft()"><</button>
-        <div class="all-faculties" #scrollableContainer>
+        <div class="all-faculties">
             <div class="faculty-container" *ngFor="let fair of fairs">
                 <h2>{{ fair.name }}</h2>
 
@@ -26,58 +72,8 @@
                     </div>
                 </div>
 
-                <button class="button" (click)="openModal(fair)">Join this fair!</button>
+                <button class="button" (click)="selectedFair(fair)">Join this fair!</button>
             </div>
         </div>
-        <button class="scroll-button right" (click)="scrollRight()">></button>
     </div>
 </div>
-
-<!-- Modal for the form -->
-<div class="modal" *ngIf="renderselectFaculty">
-    <div class="modal-content">
-        <span class="close" (click)="closeModal()">&times;</span>
-        <h2>{{ selectFair?.name }}</h2>
-        <form [formGroup]="eventForm" (ngSubmit)="createExtraActivity()" class="event-form">
-            <div class="form-group">
-                <label for="name">Extra activity name:</label>
-                <input type="text" id="name" formControlName="name" class="form-control">
-            </div>
-
-            <div class="form-group">
-                <label for="date">Select Date:</label>
-                <input type="date" id="date" formControlName="date" class="form-control">
-            </div>
-
-            <div class="form-group">
-                <label for="startTime">Start Time:</label>
-                <input type="time" id="startTime" formControlName="startTime" class="form-control">
-            </div>
-
-            <div class="form-group">
-                <label for="endTime">End Time:</label>
-                <input type="time" id="endTime" formControlName="endTime" class="form-control">
-            </div>
-
-            <div class="form-group">
-                <label for="activityType">Activity type:</label>
-                <select id="activityType" formControlName="activityType" class="form-control">
-                    <option *ngFor="let type of activityTypes" [value]="type">{{ type }}</option>
-                </select>
-            </div>
-
-            <div class="form-group">
-                <label for="classroom">Classroom:</label>
-                <input type="text" id="classroom" formControlName="classroom" class="form-control">
-            </div>
-
-            <div class="form-group">
-                <label for="capacity">Classroom capacity:</label>
-                <input type="number" id="capacity" formControlName="capacity" class="form-control">
-            </div>
-
-            <button type="submit" class="button1">Done</button>
-        </form>
-    </div>
-</div>
-

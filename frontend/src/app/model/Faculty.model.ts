@@ -3,4 +3,5 @@ export interface Faculty {
     name: String;
     isFree: boolean;
     photo: String;
+    email: String;
   }

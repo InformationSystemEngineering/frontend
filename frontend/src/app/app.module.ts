@@ -41,6 +41,8 @@ import { FeedbackJournalingDialogComponent } from './feature-moduls/feedback-jou
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatListModule } from '@angular/material/list';
 import { DragDropModule } from '@angular/cdk/drag-drop';
+import { SendRequestComponent } from './feature-moduls/faculty/send-request/send-request.component';
+
 
 
 @NgModule({
@@ -59,6 +61,7 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
     ApplyStudentForTestComponent,
     FairsByUserComponent,
     StarComponentComponent,
+    SendRequestComponent,
 
     LoginComponent,
       HomeComponent,

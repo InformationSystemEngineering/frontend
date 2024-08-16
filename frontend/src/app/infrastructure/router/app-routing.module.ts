@@ -24,7 +24,7 @@ import { ApplyStudentForTestComponent } from 'src/app/feature-moduls/internship-
 import { FairsByUserComponent } from 'src/app/feature-moduls/fair/fairs-by-user/fairs-by-user.component';
 import { FeedbackComponent } from 'src/app/feature-moduls/fair/feedback/feedback.component';
 import { SendRequestComponent } from 'src/app/feature-moduls/faculty/send-request/send-request.component';
-
+import { AllRequestsComponent } from 'src/app/feature-moduls/request/all-requests/all-requests.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -79,6 +79,10 @@ const routes: Routes = [
   {
     path: 'send_request/:facultyId',
     component: SendRequestComponent
+  },
+  {
+    path: 'all_requests',
+    component: AllRequestsComponent
   }
 
 ];

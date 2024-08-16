@@ -5,10 +5,10 @@
         <button (click)="sortFaculties('desc')" class="sort-button">Sort Z-A</button>
     </div>
     <div class="all-faculties">
-        <div class="faculty-container" *ngFor="let faculty of filteredFaculties" [class.disabled]="!faculty.isFree">
+        <div class="faculty-container" *ngFor="let faculty of filteredFaculties" [class.disabled]="!faculty.activeContract">
             <h2> {{ faculty.name }} </h2>
             <img [src]="faculty.photo" alt="{{ faculty.name }}" class="faculty-photo">
-            <button class="button" (click)="selectedCompany(faculty)" [disabled]="!faculty.isFree">Book your fair</button>
+            <button class="button" (click)="selectedCompany(faculty)" [disabled]="!faculty.activeContract">Book your fair</button>
         </div>
     </div>
 </div>

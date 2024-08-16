@@ -55,6 +55,8 @@
 
 .faculty-photo {
     width: 100%;
+    min-height: 220px;
+    max-height: 220px;
     height: auto;
     margin-bottom: 10px;
 }

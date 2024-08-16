@@ -42,7 +42,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatListModule } from '@angular/material/list';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { SendRequestComponent } from './feature-moduls/faculty/send-request/send-request.component';
-
+import { AllRequestsComponent } from './feature-moduls/request/all-requests/all-requests.component';
 
 
 @NgModule({
@@ -62,6 +62,7 @@ import { SendRequestComponent } from './feature-moduls/faculty/send-request/send
     FairsByUserComponent,
     StarComponentComponent,
     SendRequestComponent,
+    AllRequestsComponent,
 
     LoginComponent,
       HomeComponent,

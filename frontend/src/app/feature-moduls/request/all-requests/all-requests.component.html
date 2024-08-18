@@ -1,1 +1,40 @@
-<p>all-requests works!</p>
+<div class="container">
+    <div class="search-sort-container">
+        <input type="text" placeholder="Search by request name..." [(ngModel)]="searchTerm" (input)="filterRequests()" class="search-input">
+        <button (click)="sortRequests('asc')" class="sort-button">Sort A-Z</button>
+        <button (click)="sortRequests('desc')" class="sort-button">Sort Z-A</button>
+    </div>
+
+    <div class="all-requests">
+        <div class="request-container" *ngFor="let requestDetail of filteredRequests">
+            <h2>{{ requestDetail.request.name }}</h2>
+            
+            <div *ngIf="requestDetail.fair" class="fair-details">
+                <p *ngIf="requestDetail.faculty?.name" class="faculty-name">{{ requestDetail.faculty.name }}</p>
+
+                <p class="fair-dates">{{ requestDetail.fair.approvedStartDate | date }} - {{ requestDetail.fair.approvedEndDate | date }}</p>
+                <p class="fair-published">Published: {{ requestDetail.fair.isPublish ? 'Yes' : 'No' }}</p>
+            </div>
+
+            <div *ngIf="requestDetail.classrooms.length > 0" class="classrooms-container">
+                <!-- <h3>Classrooms:</h3> -->
+                
+                <div *ngFor="let date of getUniqueDates(requestDetail.classrooms)">
+                    <h4>{{ date | date }}</h4>
+                    <div class="classroom-circles">
+                        <div class="classroom-circle" *ngFor="let classroom of getClassroomsByDate(requestDetail.classrooms, date)">
+                            <p>{{ classroom.name }}</p>
+                            <p>{{ classroom.startTime }} - {{ classroom.endTime }}</p>
+                            <p>Floor: {{ classroom.floor }}</p>
+                            <p>Capacity: {{ classroom.capacity }}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <button class="button" (click)="selectedRequest(requestDetail.request)">
+                Pick a fair
+            </button>
+        </div>
+    </div>
+</div>

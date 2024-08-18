@@ -63,12 +63,9 @@ export class CalendarFairsComponent  implements OnInit {
 
   updateCalendarEvents(): void {
     const events: EventInput[] = this.fairs.map((fair) => {
-        const dateObject = fair.date; // Assuming fair.date is already a Date object
 
         return {
             id: String(fair.id),
-            title: `${fair.name} - Started: ${fair.startTime} hours`,
-            start: dateObject
         };
     });
 

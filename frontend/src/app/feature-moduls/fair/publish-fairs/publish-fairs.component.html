@@ -4,32 +4,20 @@
             <h2>Unpublished Fairs</h2>
             <div cdkDropList id="unpublishedFairs" [cdkDropListData]="unpublishedFairs" cdkDropListConnectedTo="publishedFairs" class="fair-list" (cdkDropListDropped)="drop($event)">
                 <div class="faculty-container" *ngFor="let fair of unpublishedFairs" cdkDrag>
-                    <h2>{{ fair.name }}</h2>
                     
                     <div class="faculty-details">
                         <div class="faculty-container-form">
                             <h3>📅 Date:</h3>
-                            <p>{{ fair.date | date:'dd.MM.yyyy' }}</p>
                         </div>
                         
                         <div class="faculty-container-form">
                             <h3>⌚ Time:</h3>
-                            <p>{{ fair.startTime }} - {{ fair.endTime }}</p>
                         </div>
                     </div>
 
                     <div class="faculty-container-pink">
                         <h3>👨‍⚕️ Psychologists:</h3>
-                        <ul>
-                            <li *ngFor="let psychologist of fair.psychologists">
-                                {{ psychologist.name }} {{ psychologist.lastName }}
-                                <ul>
-                                    <li *ngFor="let extraActivity of fair.activites">
-                                        Topic: {{ extraActivity.name }} (Classroom: {{ extraActivity.classroom }})
-                                    </li>
-                                </ul>
-                            </li>
-                        </ul>
+                        
                     </div>
                 </div>
             </div>
@@ -39,32 +27,20 @@
             <h2>Published Fairs</h2>
             <div cdkDropList id="publishedFairs" [cdkDropListData]="publishedFairs" cdkDropListConnectedTo="unpublishedFairs" class="fair-list" (cdkDropListDropped)="drop($event)">
                 <div class="faculty-container" *ngFor="let fair of publishedFairs" cdkDrag>
-                    <h2>{{ fair.name }}</h2>
                     
                     <div class="faculty-details">
                         <div class="faculty-container-form">
                             <h3>📅 Date:</h3>
-                            <p>{{ fair.date | date:'dd.MM.yyyy' }}</p>
                         </div>
                         
                         <div class="faculty-container-form">
                             <h3>⌚ Time:</h3>
-                            <p>{{ fair.startTime }} - {{ fair.endTime }}</p>
                         </div>
                     </div>
 
                     <div class="faculty-container-pink">
                         <h3>👨‍⚕️ Psychologists:</h3>
-                        <ul>
-                            <li *ngFor="let psychologist of fair.psychologists">
-                                {{ psychologist.name }} {{ psychologist.lastName }}
-                                <ul>
-                                    <li *ngFor="let extraActivity of fair.activites">
-                                        Topic: {{ extraActivity.name }} (Classroom: {{ extraActivity.classroom }})
-                                    </li>
-                                </ul>
-                            </li>
-                        </ul>
+                        
                     </div>
                 </div>
             </div>

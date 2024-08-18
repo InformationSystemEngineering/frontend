@@ -9,34 +9,17 @@
                 </div>
                 <div class="fairs-container" *ngIf="month.key != 'July 2024' && month.key != 'August 2024' && month.key != 'September 2024' && month.key != 'October 2024' && month.key != 'November 2024' && month.key != 'December 2024'; else rateMessage">
                     <div class="faculty-container" *ngFor="let fair of month.value">
-                        <h2>{{ fair.name }}</h2>
                         <div class="faculty-details">
                             <div class="faculty-container-form">
                                 <h3>📅 Date:</h3>
-                                <p>{{ fair.date | date:'dd.MM.yyyy' }}</p>
                             </div>
                             <div class="faculty-container-form">
                                 <h3>⌚ Time:</h3>
-                                <p>{{ fair.startTime }} - {{ fair.endTime }}</p>
                             </div>
                         </div>
                         <div class="faculty-container-pink">
                             <h3>👨‍⚕️ Psychologists:</h3>
-                            <ul>
-                                <li *ngFor="let psychologist of fair.psychologists">
-                                    {{ psychologist.name }} {{ psychologist.lastName }}
-                                    <ul *ngIf="fair.activites && fair.activites.length > 0">
-                                        <li *ngFor="let extraActivity of fair.activites">
-                                            <div class="apply-extraActivity">
-                                                Topic: {{ extraActivity.name }} (Classroom: {{ extraActivity.classroom }})
-                                                <button class="button" *ngIf="renderRate" (click)="rateFair(extraActivity?.id)">
-                                                    Rate this extra activity!
-                                                </button>
-                                            </div>
-                                        </li>
-                                    </ul>
-                                </li>
-                            </ul>
+                            
                         </div>
                     </div>
                 </div>

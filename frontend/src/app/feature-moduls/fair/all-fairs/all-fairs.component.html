@@ -6,7 +6,6 @@
     <div class="form-container" *ngIf="renderselectFaculty">
         <div class="modal-content centered-form">
             <span class="close" (click)="closeModal()">&times;</span>
-            <h2>{{ selectFair?.name }}</h2>
             <form [formGroup]="eventForm" (ngSubmit)="createExtraActivity()" class="event-form">
                 <div class="form-group">
                     <label for="name">Extra activity name:</label>
@@ -53,22 +52,18 @@
     <div class="scroll-container">
         <div class="all-faculties">
             <div class="faculty-container" *ngFor="let fair of fairs">
-                <h2>{{ fair.name }}</h2>
 
                 <div class="faculty-details">
                     <div class="faculty-container-form">
                         <h3>📅 Date:</h3>
-                        <p>{{ fair.date | date:'dd.MM.yyyy' }}</p>
                     </div>
 
                     <div class="faculty-container-form">
                         <h3>⌚ Time:</h3>
-                        <p>{{ fair.startTime }} - {{ fair.endTime }}</p>
                     </div>
 
                     <div class="faculty-container-form">
                         <h3>✒️ Description:</h3>
-                        <p>{{ fair.description }}</p>
                     </div>
                 </div>
 

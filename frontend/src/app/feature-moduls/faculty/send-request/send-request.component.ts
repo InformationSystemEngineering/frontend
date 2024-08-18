@@ -8,6 +8,7 @@ import { CustomRequest } from 'src/app/model/Request.model';
 import { Status } from 'src/app/model/Request.model';
 import { RequestService } from '../../request/request.service';
 import { Router } from '@angular/router';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-send-request',
@@ -26,7 +27,8 @@ export class SendRequestComponent implements OnInit {
     private fairService: FairService,
     private requestService: RequestService,
     private fb: FormBuilder,
-    private router: Router
+    private router: Router,
+    private snackBar: MatSnackBar
   ) {
 
     const today = new Date();
@@ -75,23 +77,28 @@ export class SendRequestComponent implements OnInit {
 
     const request: CustomRequest = {
       name: this.eventForm.value.name,
-      startDate: new Date(this.eventForm.value.startDate), // Pretpostavlja se da je this.eventForm.value.startDate string
+      startDate: new Date(this.eventForm.value.startDate),
       endDate: new Date(this.eventForm.value.endDate),
       facultyId: this.selectedFaculty?.id,
-      description: this.eventForm.value.description, // Pretpostavlja se da postoji opis u formi
+      description: this.eventForm.value.description,
       status: Status.PENDING,
       userId: 3,
       email: 'katarina.medic01@gmail.com'
     };
     
-
     this.requestService.createRequest(request).subscribe({
       next: () => {
         console.log("Request created successfully");
+        this.snackBar.open('Request sent successfully!', 'Close', {
+          duration: 3000, // Trajanje prikaza poruke u milisekundama
+        });
         this.router.navigate(['/all_requests']);
       },
       error: (error) => {
         console.error("Error creating request:", error);
+        this.snackBar.open('Error sending request. Please try again.', 'Close', {
+          duration: 3000,
+        });
       },
       complete: () => {
         console.log("Request creation request completed.");

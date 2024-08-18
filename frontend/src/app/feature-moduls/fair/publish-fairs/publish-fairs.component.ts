@@ -26,13 +26,11 @@ export class PublishFairsComponent implements OnInit {
         this.fairs.forEach(fair => {
           this.fairService.getExtraActivitesForFair(fair?.id || 0).subscribe({
             next: (activities: ExtraActivity[]) => {
-              fair.activites = activities;
             }
           });
 
           this.fairService.getPsychologistsForFair(fair?.id || 0).subscribe({
             next: (psychologists: Psychologist[]) => {
-              fair.psychologists = psychologists;
               // Filter out fairs without psychologists
               this.filterFairs();
             }
@@ -43,8 +41,8 @@ export class PublishFairsComponent implements OnInit {
   }
 
   filterFairs() {
-    this.unpublishedFairs = this.fairs.filter(fair => !fair.publish && fair.psychologists && fair.psychologists.length > 0);
-    this.publishedFairs = this.fairs.filter(fair => fair.publish && fair.psychologists && fair.psychologists.length > 0);
+    // this.unpublishedFairs = this.fairs.filter(fair => !fair.publish && fair.psychologists && fair.psychologists.length > 0);
+    // this.publishedFairs = this.fairs.filter(fair => fair.publish && fair.psychologists && fair.psychologists.length > 0);
   }
 
   drop(event: CdkDragDrop<Fair[]>) {
@@ -62,11 +60,11 @@ export class PublishFairsComponent implements OnInit {
   }
 
   updatePublishState(containerId: string, fair: Fair) {
-    if (containerId === 'publishedFairs') {
-      fair.publish = true;
-    } else {
-      fair.publish = false;
-    }
+    // if (containerId === 'publishedFairs') {
+    //   fair.publish = true;
+    // } else {
+    //   fair.publish = false;
+    // }
 
     this.fairService.publishFair(fair).subscribe({
       next: () => {
@@ -77,13 +75,13 @@ export class PublishFairsComponent implements OnInit {
             this.fairs.forEach(fair => {
               this.fairService.getExtraActivitesForFair(fair?.id || 0).subscribe({
                 next: (activities: ExtraActivity[]) => {
-                  fair.activites = activities;
+                  // fair.activites = activities;
                 }
               });
 
               this.fairService.getPsychologistsForFair(fair?.id || 0).subscribe({
                 next: (psychologists: Psychologist[]) => {
-                  fair.psychologists = psychologists;
+                  // fair.psychologists = psychologists;
                   this.filterFairs();
                 }
               });

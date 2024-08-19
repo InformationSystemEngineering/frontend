@@ -56,7 +56,7 @@ export class AllRequestsComponent implements OnInit{
 
 
   selectedRequest(request: CustomRequest): void {
-    this.router.navigate(['/request-details', request.id]);
+    this.router.navigate(['/pick_request', request.id]);
   }
 
   filterRequests(): void {

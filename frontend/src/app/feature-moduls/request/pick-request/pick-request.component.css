@@ -1,0 +1,110 @@
+.container {
+    display: flex;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    background-color: #f4f7fa;
+}
+
+.left-side {
+    flex: 1;
+    padding: 20px;
+    overflow-y: auto;
+    background-color: #f4f7fa;
+}
+
+.right-side {
+    flex: 1;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; /* Pomera sadržaj na vrh */
+    background-color: #fff;
+}
+
+.step-indicators {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 30px; /* Povećan razmak ispod stepenih indikatora */
+}
+
+.step-indicators div {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #ddd;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2em;
+    color: #555;
+    position: relative;
+    z-index: 1;
+}
+
+.step-indicators div.active {
+    background-color: #007bff;
+    color: white;
+}
+
+.step-connector {
+    width: 50px; /* Širina linije između koraka */
+    height: 2px;
+    background-color: #ddd;
+    margin: 0 10px;
+    position: relative;
+    top: -20px;
+    z-index: 0;
+}
+
+.form-group {
+    margin-top: 20px;
+}
+
+.form-control {
+    padding: 8px;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.button {
+    padding: 10px 15px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+.button:hover {
+    background-color: #0056b3;
+}
+
+.classroom-circles {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.classroom-circle {
+    background-color: #e0f7fa;
+    border: 2px solid #007bff;
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 15px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.classroom-circle p {
+    margin: 5px 0;
+    font-size: 1em;
+    color: #007bff;
+}

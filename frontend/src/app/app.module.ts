@@ -43,7 +43,7 @@ import { MatListModule } from '@angular/material/list';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { SendRequestComponent } from './feature-moduls/faculty/send-request/send-request.component';
 import { AllRequestsComponent } from './feature-moduls/request/all-requests/all-requests.component';
-
+import { PickRequestComponent } from './feature-moduls/request/pick-request/pick-request.component';
 
 @NgModule({
   declarations: [
@@ -63,6 +63,7 @@ import { AllRequestsComponent } from './feature-moduls/request/all-requests/all-
     StarComponentComponent,
     SendRequestComponent,
     AllRequestsComponent,
+    PickRequestComponent,
 
     LoginComponent,
       HomeComponent,

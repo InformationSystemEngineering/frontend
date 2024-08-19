@@ -25,6 +25,7 @@ import { FairsByUserComponent } from 'src/app/feature-moduls/fair/fairs-by-user/
 import { FeedbackComponent } from 'src/app/feature-moduls/fair/feedback/feedback.component';
 import { SendRequestComponent } from 'src/app/feature-moduls/faculty/send-request/send-request.component';
 import { AllRequestsComponent } from 'src/app/feature-moduls/request/all-requests/all-requests.component';
+import { PickRequestComponent } from 'src/app/feature-moduls/request/pick-request/pick-request.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -83,6 +84,10 @@ const routes: Routes = [
   {
     path: 'all_requests',
     component: AllRequestsComponent
+  },
+  {
+    path: 'pick_request/:requestId',
+    component: PickRequestComponent
   }
 
 ];

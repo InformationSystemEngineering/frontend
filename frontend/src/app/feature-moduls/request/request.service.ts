@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { CustomRequest } from 'src/app/model/Request.model';
 import { RequestDetailDto } from 'src/app/model/RequestDetailDto.model';
+import { Topic } from 'src/app/model/Topic.model';
 import { environment } from 'src/env/environment';
 
 @Injectable({
@@ -23,5 +24,23 @@ export class RequestService {
 
   getAllRequestDetails(): Observable<RequestDetailDto[]> {
     return this.http.get<RequestDetailDto[]>(environment.apiHost + 'requests/getAllAcceptedRequestDetails');
+  }
+
+  getRequestDetails(id: number) :Observable<RequestDetailDto> {
+    console.log(id)
+    return this.http.get<RequestDetailDto>(environment.apiHost + 'requests/getRequestDetails/' + id);
+  } 
+
+  addTopic(requestId: number, name: string): Observable<Topic> {
+    const topicData = {
+      requestId: requestId,
+      name: name,
+      duration: 0, // ili neki drugi default value ako želite
+      availableSpots: 0 // ili neki drugi default value
+    };
+
+    console.log("PRIKAZI MI OVO", topicData)
+
+    return this.http.post<Topic>(`${environment.apiHost}topics/create`, topicData);
   }
 }

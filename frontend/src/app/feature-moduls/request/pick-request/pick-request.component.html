@@ -1,0 +1,53 @@
+<div class="container">
+    <div class="left-side">
+        <div *ngIf="requestDetail">
+            <h2>{{ requestDetail.request.name }}</h2>
+            
+            <div *ngIf="requestDetail.fair" class="fair-details">
+                <p *ngIf="requestDetail.faculty?.name" class="faculty-name">{{ requestDetail.faculty.name }}</p>
+
+                <p class="fair-dates">{{ requestDetail.fair.approvedStartDate | date }} - {{ requestDetail.fair.approvedEndDate | date }}</p>
+                <p class="fair-published">Published: {{ requestDetail.fair.isPublish ? 'Yes' : 'No' }}</p>
+            </div>
+
+            <div *ngIf="requestDetail.classrooms.length > 0" class="classrooms-container">
+                <div *ngFor="let date of getUniqueDates(requestDetail.classrooms)">
+                    <h4>{{ date | date }}</h4>
+                    <div class="classroom-circles">
+                        <div class="classroom-circle" *ngFor="let classroom of getClassroomsByDate(requestDetail.classrooms, date)">
+                            <p>{{ classroom.name }}</p>
+                            <p>{{ classroom.startTime }} - {{ classroom.endTime }}</p>
+                            <p>Floor: {{ classroom.floor }}</p>
+                            <p>Capacity: {{ classroom.capacity }}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <button class="button" (click)="organizeFair(requestDetail.request)">
+                Organize fair
+            </button>
+        </div>
+    </div>
+
+    <div class="right-side">
+        <div class="step-indicators">
+            <div [class.active]="currentStep === 1">1</div>
+            <div [class.active]="currentStep === 2">2</div>
+            <div [class.active]="currentStep === 3">3</div>
+        </div>
+
+        <div *ngIf="currentStep === 1" class="step">
+            <h3>Set Topic</h3>
+            <div *ngFor="let topic of topics">
+                <p>{{ topic }}</p>
+            </div>
+            <div class="form-group">
+                <label for="topic">Name of the topic:</label>
+                <input type="text" id="topic" [(ngModel)]="newTopic" class="form-control">
+                <button (click)="addTopic()">Add Topic</button>
+            </div>
+            <button class="button" (click)="nextStep()">Next</button>
+        </div>
+    </div>
+</div>

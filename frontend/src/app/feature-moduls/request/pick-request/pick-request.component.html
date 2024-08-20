@@ -14,7 +14,12 @@
                 <div *ngFor="let date of getUniqueDates(requestDetail.classrooms)">
                     <h4>{{ date | date }}</h4>
                     <div class="classroom-circles">
-                        <div class="classroom-circle" *ngFor="let classroom of getClassroomsByDate(requestDetail.classrooms, date)">
+                        <div 
+                            class="classroom-circle" 
+                            *ngFor="let classroom of getClassroomsByDate(requestDetail.classrooms, date)"
+                            [class.selected]="selectedClassroom === classroom"
+                            [class.disabled]="classroom.disabled"
+                            (click)="selectClassroom(classroom)">
                             <p>{{ classroom.name }}</p>
                             <p>{{ classroom.startTime }} - {{ classroom.endTime }}</p>
                             <p>Floor: {{ classroom.floor }}</p>
@@ -23,31 +28,33 @@
                     </div>
                 </div>
             </div>
+            
 
-            <button class="button" (click)="organizeFair(requestDetail.request)">
-                Organize fair
-            </button>
         </div>
     </div>
 
-    <div class="right-side">
-        <div class="step-indicators">
-            <div [class.active]="currentStep === 1">1</div>
-            <div [class.active]="currentStep === 2">2</div>
-            <div [class.active]="currentStep === 3">3</div>
-        </div>
-
-        <div *ngIf="currentStep === 1" class="step">
-            <h3>Set Topic</h3>
-            <div *ngFor="let topic of topics">
-                <p>{{ topic }}</p>
-            </div>
+    <div class="right-side" *ngIf="selectedClassroom">
+        <div class="step">
+            <h3>Max duration of topic: {{ maxDuration }} minutes</h3>
             <div class="form-group">
                 <label for="topic">Name of the topic:</label>
                 <input type="text" id="topic" [(ngModel)]="newTopic" class="form-control">
-                <button (click)="addTopic()">Add Topic</button>
             </div>
-            <button class="button" (click)="nextStep()">Next</button>
+            <div class="form-group">
+                <label for="duration">Duration of the topic (in minutes):</label>
+                <input type="number" id="duration" [(ngModel)]="topicDuration" class="form-control">
+            </div>
+            <button class="button" (click)="addTopic()">Add Topic</button>
+
+            <div *ngIf="suggestedTimes.length > 0">
+                <h4>Suggested times:</h4>
+                <div *ngFor="let time of suggestedTimes">
+                    <button (click)="setTopic(time)">{{ time.start }} - {{ time.end }}</button>
+                </div>
+            </div>
+            <div *ngIf="showError" class="error-message">
+                <p>{{ errorMessage }}</p>
+            </div>
         </div>
     </div>
 </div>

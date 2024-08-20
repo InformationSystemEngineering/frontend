@@ -108,3 +108,41 @@
     font-size: 1em;
     color: #007bff;
 }
+
+
+.container {
+    display: flex;
+}
+
+.left-side, .right-side {
+    width: 50%;
+    padding: 20px;
+}
+
+.classroom-circle.selected {
+    background-color: #cfe3ff;
+    border: 2px solid #007bff;
+}
+
+.step {
+    background-color: #f7f7f7;
+    padding: 20px;
+    border-radius: 8px;
+    margin-top: 20px;
+}
+
+.error-message {
+    color: red;
+    font-weight: bold;
+    margin-top: 10px;
+}
+.classroom-circle.disabled {
+    background-color: #ffcccc; /* Svetlo crvena boja za disabled učionicu */
+    border: 2px solid #ff0000; /* Crveni okvir za disabled učionicu */
+    cursor: not-allowed; /* Pokazivač kursora označava da je onemogućeno */
+    opacity: 0.6; /* Smanjuje prozirnost za disabled učionicu */
+}
+
+.classroom-circle.disabled p {
+    color: #ff0000; /* Crveni tekst u disabled učionici */
+}

@@ -1,6 +1,7 @@
 import { Time } from "@angular/common";
 
 export interface Classroom {
+    disabled: boolean;
     id?: number;
     name: string;
     date: Date;

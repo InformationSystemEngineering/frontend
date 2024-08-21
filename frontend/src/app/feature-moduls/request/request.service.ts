@@ -58,4 +58,19 @@ createReservation(reservationData: { startTime: string, endTime: string, classro
   return this.http.post<Reservation>(`${environment.apiHost}reservations/create`, modifiedReservationData);
 }
 
+updateTopicWithReservation(topicName: string, reservationId: number): Observable<any> {
+  return this.http.put(`${environment.apiHost}topics/update-reservation`, { topicName, reservationId });
+}
+
+
+getTopicsWithDetails(requestId: number): Observable<any[]> {
+  return this.http.get<any[]>(`${environment.apiHost}topics/topics-with-details/${requestId}`);
+}
+
+getAllPsychologists(): Observable<any[]> {
+  return this.http.get<any[]>(`${environment.apiHost}psychologists/psychologists`);
+}
+
+
+
 }

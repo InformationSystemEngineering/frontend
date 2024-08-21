@@ -4,6 +4,7 @@ import { RequestDetailDto } from 'src/app/model/RequestDetailDto.model';
 import { RequestService } from '../request.service';
 import { Classroom } from 'src/app/model/Classroom.model';
 import { CustomRequest } from 'src/app/model/Request.model';
+import { TopicDetails } from 'src/app/model/TopicDetails.model';
 
 @Component({
   selector: 'app-pick-request',
@@ -24,6 +25,13 @@ requestDetail: RequestDetailDto | undefined;
   maxDuration: number = 0;
   suggestedTimes: {start: string, end: string}[] = [];
   showError: boolean = false;
+  psychologists: any[] = [];
+
+  topics1: TopicDetails[] = [];
+
+  // topics1: { name: string, classroom: { name: string }, startTime: string, endTime: string }[] = [];
+  // topics1: Array<{ name: string, classroom: { name: string }, startTime: string, endTime: string }> = [];
+
 
   constructor(
     private route: ActivatedRoute,
@@ -45,7 +53,41 @@ requestDetail: RequestDetailDto | undefined;
         }
       });
     }
+
+    this.requestService.getAllPsychologists().subscribe({
+      next: (psychologists: any[]) => {
+          this.psychologists = psychologists;
+      },
+      error: (err: any) => {
+          console.error("Error fetching psychologists:", err);
+      }
+  });
   }
+
+  nextStep(): void {
+    if (this.currentStep === 1 && this.requestDetail) {
+        this.requestService.getTopicsWithDetails(this.requestDetail.request.id || 0).subscribe({
+            next: (topics: any[]) => {
+                this.topics1 = topics.map(topic => ({
+                    id: topic.id,
+                    name: topic.topicName,
+                    duration: topic.duration,
+                    availableSpots: topic.availableSpots,
+                    classroom: { name: topic.classroomName },
+                    startTime: topic.startTime,
+                    endTime: topic.endTime
+                }));
+                this.currentStep++;
+            },
+            error: (err) => {
+                console.error("Error fetching topics with details:", err);
+            }
+        });
+    }
+}
+
+
+
 
   addTopic(): void {
     if (this.newTopic && this.requestDetail && this.requestDetail.request.id !== undefined) {
@@ -69,22 +111,6 @@ requestDetail: RequestDetailDto | undefined;
 
                     console.log("Topic added successfully:", topic);
 
-
-                    // Proveri da li je preostalo vreme manje od 30 minuta ili 0
-                    //OVO CE ICI TEK TAMO ISPOD 
-                    // if (this.maxDuration < 30) {
-                    //     if (this.selectedClassroom) {
-                    //         this.selectedClassroom.disabled = true; // Označi učionicu kao onemogućenu
-                    //     }
-                    //     this.selectedClassroom = undefined;
-                    //     this.showError = true;
-                    //     this.errorMessage = 'No more topics can be organized in this classroom.';
-                    //  }
-                    //  else {
-                    //     console.log("USLA SAMMMM");
-                    //     this.calculateSuggestedTimes(); // Prikazivanje predloženih vremena
-                        
-                    // }
                 },
                 error: (error) => {
                     console.error("Error adding topic:", error);
@@ -99,9 +125,6 @@ requestDetail: RequestDetailDto | undefined;
         console.error("Request ID is undefined or topic name is empty.");
     }
 }
-
-
-
 
 
 selectClassroom(classroom: Classroom): void {
@@ -155,55 +178,61 @@ selectClassroom(classroom: Classroom): void {
 }
 
 setTopic(time: { start: string, end: string }): void {
-    if (this.selectedClassroom && this.selectedClassroom.id !== undefined) {
-        const reservationData = {
-            startTime: time.start,
-            endTime: time.end,
-            classroomId: this.selectedClassroom.id  // Prilagođavanje formata
-        };
+  if (this.selectedClassroom && this.selectedClassroom.id !== undefined) {
+      const reservationData = {
+          startTime: time.start,
+          endTime: time.end,
+          classroomId: this.selectedClassroom.id
+      };
 
-        // Poziv servisa za kreiranje rezervacije
-        this.requestService.createReservation(reservationData).subscribe({
-            next: (reservation) => {
-                console.log(`Reservation created for topic: ${this.newTopic} from ${time.start} to ${time.end}`);
-                
-                this.newTopic = ''; 
-                this.topicDuration = undefined;
-
-                if (this.maxDuration < 30) {
-                  if (this.selectedClassroom) {
-                      this.selectedClassroom.disabled = true;
+      // Poziv servisa za kreiranje rezervacije
+      this.requestService.createReservation(reservationData).subscribe({
+          next: (reservation) => {
+              console.log(`Reservation created with ID: ${reservation.id} for topic: ${this.newTopic} from ${time.start} to ${time.end}`);
+              
+              // Nakon što je rezervacija kreirana, ažuriraj temu s ID-em rezervacije
+              this.requestService.updateTopicWithReservation(this.newTopic, reservation.id || 0).subscribe({
+                  next: (updatedTopic) => {
+                      console.log("Topic updated successfully with reservation ID:", updatedTopic);
+                  },
+                  error: (error) => {
+                      console.error("Error updating topic with reservation ID:", error);
                   }
-                  this.selectedClassroom = undefined;
-                  this.showError = true;
-                  this.errorMessage = 'No more topics can be organized in this classroom.';
-              } else {
-                  this.calculateSuggestedTimes();
-              }
-            },
-            error: (error) => {
-                console.error("Error creating reservation:", error);
+              });
+
+              this.newTopic = ''; 
+              this.topicDuration = undefined;
+
+              if (this.maxDuration < 30) {
+                if (this.selectedClassroom) {
+                    this.selectedClassroom.disabled = true;
+                }
+                this.selectedClassroom = undefined;
+                this.showError = true;
+                this.errorMessage = 'No more topics can be organized in this classroom.';
+            } else {
+                this.calculateSuggestedTimes();
             }
-        });
+          },
+          error: (error) => {
+              console.error("Error creating reservation:", error);
+          }
+      });
 
-        this.showError = false;
-    } else {
-        this.showError = true;
-        this.errorMessage = 'Duration exceeds available time in the classroom.';
-    }
+      this.showError = false;
+  } else {
+      this.showError = true;
+      this.errorMessage = 'Duration exceeds available time in the classroom.';
+  }
 }
-
-
-
-
 
   
 
-  nextStep(): void {
-    if (this.topics.length > 0) {
-      this.currentStep++;
-    }
-  }
+  // nextStep(): void {
+  //   if (this.topics.length > 0) {
+  //     this.currentStep++;
+  //   }
+  // }
 
   getUniqueDates(classrooms: Classroom[]): Date[] {
     const dates = classrooms.map(classroom => classroom.date);

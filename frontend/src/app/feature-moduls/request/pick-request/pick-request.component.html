@@ -28,12 +28,13 @@
                     </div>
                 </div>
             </div>
-            
-
         </div>
+
+        <button class="button" (click)="nextStep()">Next Step</button>
     </div>
 
-    <div class="right-side" *ngIf="selectedClassroom">
+    <div class="right-side" *ngIf="currentStep === 1 && selectedClassroom">
+        <!-- Step 1: Kreiranje topica -->
         <div class="step">
             <h3>Max duration of topic: {{ maxDuration }} minutes</h3>
             <div class="form-group">
@@ -54,6 +55,23 @@
             </div>
             <div *ngIf="showError" class="error-message">
                 <p>{{ errorMessage }}</p>
+            </div>
+            
+        </div>
+    </div>
+
+    <div class="right-side" *ngIf="currentStep === 2">
+        <!-- Step 2: Prikaz topica i psihologa -->
+        <div class="step">
+            <h3>Topics and Schedule</h3>
+            <div *ngFor="let topic of topics1">
+                <p>{{ topic.name }} - {{ topic.classroom.name }} ({{ topic.startTime }} - {{ topic.endTime }})</p>
+            </div>
+            
+
+            <h3>Select which psychologist you would like to see at the fair</h3>
+            <div *ngFor="let psychologist of psychologists">
+                <p>{{ psychologist.name }}</p>
             </div>
         </div>
     </div>

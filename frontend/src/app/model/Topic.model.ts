@@ -1,5 +1,5 @@
 export interface Topic {
-    id?: number;
+    id: number;
     name: string;
     duration: number;
     availableSpots: number;

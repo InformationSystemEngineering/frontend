@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { Message } from 'src/app/model/Message.model';
 import { CustomRequest } from 'src/app/model/Request.model';
 import { RequestDetailDto } from 'src/app/model/RequestDetailDto.model';
 import { Reservation } from 'src/app/model/Reservation.model';
@@ -71,6 +72,18 @@ getAllPsychologists(): Observable<any[]> {
   return this.http.get<any[]>(`${environment.apiHost}psychologists/psychologists`);
 }
 
+getMessages(topicId: number, psychologistId: number): Observable<Message[]> {
+  return this.http.get<Message[]>(`${environment.apiHost}messages?topicId=${topicId}&psychologistId=${psychologistId}`);
+}
 
+addMessage(message: Message): Observable<Message> {
+  console.log("Sending message:", message);
+  return this.http.post<Message>(`${environment.apiHost}messages`, message);
+}
+
+
+readMessage(message: Message): Observable<void> {
+  return this.http.put<void>(`${environment.apiHost}messages/${message.id}/read`, {});
+}
 
 }

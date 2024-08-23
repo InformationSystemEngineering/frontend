@@ -66,13 +66,24 @@
             <h3>Topics and Schedule</h3>
             <div *ngFor="let topic of topics1">
                 <p>{{ topic.name }} - {{ topic.classroom.name }} ({{ topic.startTime }} - {{ topic.endTime }})</p>
+            
+                <h3>Select which psychologist you would like to see at the fair</h3>
+                <div *ngFor="let psychologist of psychologists">
+                    <button (click)="openChat(topic.id || 1, psychologist.id)">{{ psychologist.name }}</button>
+                </div>
             </div>
             
 
-            <h3>Select which psychologist you would like to see at the fair</h3>
+            <!-- <h3>Select which psychologist you would like to see at the fair</h3>
             <div *ngFor="let psychologist of psychologists">
-                <p>{{ psychologist.name }}</p>
-            </div>
+                <button (click)="openChat(topic.id, psychologist.id)">{{ psychologist.name }}</button>
+            </div> -->
         </div>
+
+        <app-chat *ngIf="selectedTopicId && selectedPsychologistId"
+                [selectedTopicId]="selectedTopicId"
+                [selectedPsychologistId]="selectedPsychologistId">
+        </app-chat>
+
     </div>
 </div>

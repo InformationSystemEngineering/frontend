@@ -44,6 +44,7 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
 import { SendRequestComponent } from './feature-moduls/faculty/send-request/send-request.component';
 import { AllRequestsComponent } from './feature-moduls/request/all-requests/all-requests.component';
 import { PickRequestComponent } from './feature-moduls/request/pick-request/pick-request.component';
+import { ChatComponent } from './feature-moduls/request/chat/chat.component';
 
 @NgModule({
   declarations: [
@@ -64,6 +65,7 @@ import { PickRequestComponent } from './feature-moduls/request/pick-request/pick
     SendRequestComponent,
     AllRequestsComponent,
     PickRequestComponent,
+    ChatComponent,
 
     LoginComponent,
       HomeComponent,

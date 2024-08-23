@@ -5,6 +5,8 @@ import { RequestService } from '../request.service';
 import { Classroom } from 'src/app/model/Classroom.model';
 import { CustomRequest } from 'src/app/model/Request.model';
 import { TopicDetails } from 'src/app/model/TopicDetails.model';
+import { MatDialog } from '@angular/material/dialog';
+import { ChatComponent } from '../chat/chat.component';
 
 @Component({
   selector: 'app-pick-request',
@@ -13,6 +15,8 @@ import { TopicDetails } from 'src/app/model/TopicDetails.model';
 })
 export class PickRequestComponent implements OnInit{
   errorMessage: string;
+  selectedPsychologistId: number | undefined;
+  selectedTopicId!: number;
 organizeFair(arg0: CustomRequest) {
 throw new Error('Method not implemented.');
 }
@@ -26,16 +30,13 @@ requestDetail: RequestDetailDto | undefined;
   suggestedTimes: {start: string, end: string}[] = [];
   showError: boolean = false;
   psychologists: any[] = [];
-
   topics1: TopicDetails[] = [];
-
-  // topics1: { name: string, classroom: { name: string }, startTime: string, endTime: string }[] = [];
-  // topics1: Array<{ name: string, classroom: { name: string }, startTime: string, endTime: string }> = [];
 
 
   constructor(
     private route: ActivatedRoute,
-    private requestService: RequestService
+    private requestService: RequestService,
+    private dialog: MatDialog
   ) { { 
     this.errorMessage = ''; // Inicijalizacija u konstruktoru
   }}
@@ -84,6 +85,21 @@ requestDetail: RequestDetailDto | undefined;
             }
         });
     }
+}
+
+openChat(topicId: number, psychologistId: number): void {
+  const dialogRef = this.dialog.open(ChatComponent, {
+    width: '400px',
+    data: {
+      selectedTopicId: topicId,
+      selectedPsychologistId: psychologistId
+    }
+  });
+
+  dialogRef.afterClosed().subscribe(result => {
+    console.log('Chat dialog was closed');
+    // Ako je potrebno, osvežite ili ažurirajte podatke
+  });
 }
 
 

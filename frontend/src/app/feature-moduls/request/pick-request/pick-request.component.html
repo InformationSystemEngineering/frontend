@@ -1,3 +1,21 @@
+<div class="step-navigation">
+    <div 
+        class="step-circle" 
+        [class.active]="currentStep === 1" 
+        [class.disabled]="stepDisabled === 1" 
+        (click)="!stepDisabled && goToStep(1)">
+        1
+    </div>
+    <div class="step-connector"></div>
+    <div 
+        class="step-circle" 
+        [class.active]="currentStep === 2" 
+        [class.disabled]="stepDisabled === 2" 
+        (click)="!stepDisabled && goToStep(2)">
+        2
+    </div>
+</div>
+
 <div class="container">
     <div class="left-side">
         <div *ngIf="requestDetail">
@@ -30,7 +48,7 @@
             </div>
         </div>
 
-        <button class="button" (click)="nextStep()">Next Step</button>
+        <!-- <button class="button" (click)="nextStep()">Next Step</button> -->
     </div>
 
     <div class="right-side" *ngIf="currentStep === 1 && selectedClassroom">

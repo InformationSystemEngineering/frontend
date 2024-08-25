@@ -37,7 +37,8 @@ requestDetail: RequestDetailDto | undefined;
   groupedTopics: Map<string, TopicDetails[]> = new Map(); // To store topics grouped by date
   classroomDates: Map<number, string> = new Map(); // Use a map to store classroom dates by topic ID
   searchQuery: string = '';
-    filteredTopics: TopicDetails[] = [];
+  filteredTopics: TopicDetails[] = [];
+  stepDisabled: number | null = null;
 
 
   constructor(
@@ -161,6 +162,8 @@ sortTopics(order: 'asc' | 'desc'): void {
         });
     }
     // this.groupedTopics = this.getGroupedTopicsByDate(this.topics1);
+      this.disableStep(this.currentStep); // Disable the current step
+      this.currentStep++; // Move to the next step
 
 }
 
@@ -375,5 +378,14 @@ getGroupedTopicsByDate(topics: TopicDetails[]): Map<string, TopicDetails[]> {
   return groupedTopics;
 }
 
-  
+goToStep(step: number): void {
+  if (this.stepDisabled !== step) {
+    this.currentStep = step;
+  }
+}
+
+disableStep(step: number): void {
+  this.stepDisabled = step;
+}
+
 }

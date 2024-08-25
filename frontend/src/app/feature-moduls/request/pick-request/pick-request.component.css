@@ -232,3 +232,35 @@
     width: 18%;
 }
 
+.step-navigation {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.step-circle {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #ddd;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2em;
+    color: #555;
+    cursor: pointer;
+    position: relative;
+    margin: 0 10px;
+}
+
+.step-circle.active {
+    background-color: #007bff;
+    color: white;
+}
+
+.step-connector {
+    width: 50px;
+    height: 2px;
+    background-color: #ddd;
+}

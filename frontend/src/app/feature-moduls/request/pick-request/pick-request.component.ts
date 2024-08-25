@@ -293,6 +293,7 @@ setTopic(time: { start: string, end: string }): void {
               this.requestService.updateTopicWithReservation(this.newTopic, reservation.id || 0).subscribe({
                   next: (updatedTopic) => {
                       console.log("Topic updated successfully with reservation ID:", updatedTopic);
+                      this.reloadTopics(); // Ponovo učitavanje tema nakon uspešnog ažuriranja
                   },
                   error: (error) => {
                       console.error("Error updating topic with reservation ID:", error);
@@ -324,6 +325,32 @@ setTopic(time: { start: string, end: string }): void {
       this.errorMessage = 'Duration exceeds available time in the classroom.';
   }
 }
+
+reloadTopics(): void {
+  const requestId = this.requestDetail?.request.id || 0;
+  this.requestService.getTopicsWithDetails(requestId).subscribe({
+    next: (topics: any[]) => {
+      this.topics1 = topics.map((topic) => ({
+        id: topic.topicId,
+        name: topic.topicName,
+        duration: topic.duration,
+        availableSpots: topic.availableSpots,
+        classroom: { name: topic.classroomName },
+        startTime: topic.startTime,
+        endTime: topic.endTime,
+        reservationId: topic.reservationId,
+        psychologistId: topic.psychologistId
+      }));
+      this.filteredTopics = this.topics1; // Ažuriranje prikaza filtriranih tema
+      this.updateFilteredTopics(); // Osvežavanje filtrirane liste tema
+      console.log("Topics reloaded successfully:", this.topics1);
+    },
+    error: (err) => {
+      console.error("Error reloading topics:", err);
+    }
+  });
+}
+
 
 
   getUniqueDates(classrooms: Classroom[]): Date[] {
@@ -392,29 +419,28 @@ disableStep(step: number): void {
 }
 
 confirmPsychologist(topicId: number, psychologistId: number, topicName: string, psychologistName: string): void {
-  const dialogRef = this.dialog.open(ConfirmationDialogComponent, {
-    width: '400px',
-    data: {
-      message: `Do you want to assign psychologist ${psychologistName} to topic ${topicName}?`,
-      yesButtonText: 'Yes',
-      noButtonText: 'No'
-    }
-  });
+    const dialogRef = this.dialog.open(ConfirmationDialogComponent, {
+      width: '400px',
+      data: {
+        message: `Do you want to assign psychologist ${psychologistName} to topic ${topicName}?`,
+        yesButtonText: 'Yes',
+        noButtonText: 'No'
+      }
+    });
 
-  dialogRef.afterClosed().subscribe(result => {
-    if (result === true) {  // Change from 'yes' to true
-      // Call the backend API to update the topic with the psychologist
-      this.requestService.updateTopicWithPsychologist(topicName, 1).subscribe({
-        next: (response) => {
-          console.log("Psychologist assigned successfully:", response);
-        },
-        error: (error) => {
-          console.error("Error assigning psychologist:", error);
-        }
-      });
-    }
-  });
-}
-
+    dialogRef.afterClosed().subscribe(result => {
+      if (result === 'yes') {
+        // Call the backend API to update the topic with the psychologist
+        this.requestService.updateTopicWithPsychologist(topicName, psychologistId).subscribe({
+          next: (response) => {
+            console.log("Psychologist assigned successfully:", response);
+          },
+          error: (error) => {
+            console.error("Error assigning psychologist:", error);
+          }
+        });
+      }
+    });
+  }
 
 }

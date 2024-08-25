@@ -40,7 +40,7 @@
   >
 
   <a mat-button routerLink="/internship-tasks" *ngIf="userRole == 'ROLE_PSYCHOLOG' || userRole == 'ROLE_STUDENT'"
-    > My Intrenships |</a
+    >| My Intrenships |</a
 >
   <a mat-button routerLink="/internship-overview" *ngIf="userRole == 'ROLE_MANAGER'"
   matBadge="3"
@@ -92,9 +92,9 @@
 
   <a
   mat-button
-  routerLink="/pick-fair"
+  routerLink="/psychologist_apply"
   *ngIf="userRole == 'ROLE_PSYCHOLOG'"
-  > Pick a fair |</a
+  > Application for topic |</a
 >
 
 

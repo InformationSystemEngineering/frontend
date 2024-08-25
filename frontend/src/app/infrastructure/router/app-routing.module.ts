@@ -27,6 +27,7 @@ import { SendRequestComponent } from 'src/app/feature-moduls/faculty/send-reques
 import { AllRequestsComponent } from 'src/app/feature-moduls/request/all-requests/all-requests.component';
 import { PickRequestComponent } from 'src/app/feature-moduls/request/pick-request/pick-request.component';
 import { ChatComponent } from 'src/app/feature-moduls/request/chat/chat.component';
+import { PsychologistApplyComponent } from 'src/app/feature-moduls/request/psychologist-apply/psychologist-apply.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -93,6 +94,10 @@ const routes: Routes = [
   {
     path: 'chat/message',
     component: ChatComponent
+  },
+  {
+    path: 'psychologist_apply',
+    component: PsychologistApplyComponent
   }
 
 ];

@@ -4,6 +4,7 @@ import { AllRequestsComponent } from './all-requests/all-requests.component';
 import { PickRequestComponent } from './pick-request/pick-request.component';
 import { ChatComponent } from './chat/chat.component';
 import { ConfirmationDialogComponent } from './confirmation-dialog/confirmation-dialog.component';
+import { PsychologistApplyComponent } from './psychologist-apply/psychologist-apply.component';
 
 
 
@@ -12,7 +13,8 @@ import { ConfirmationDialogComponent } from './confirmation-dialog/confirmation-
     AllRequestsComponent,
     PickRequestComponent,
     ChatComponent,
-    ConfirmationDialogComponent
+    ConfirmationDialogComponent,
+    PsychologistApplyComponent
   ],
   imports: [
     CommonModule

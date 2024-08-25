@@ -46,6 +46,7 @@ import { AllRequestsComponent } from './feature-moduls/request/all-requests/all-
 import { PickRequestComponent } from './feature-moduls/request/pick-request/pick-request.component';
 import { ChatComponent } from './feature-moduls/request/chat/chat.component';
 import { ConfirmationDialogComponent } from './feature-moduls/request/confirmation-dialog/confirmation-dialog.component';
+import { PsychologistApplyComponent } from './feature-moduls/request/psychologist-apply/psychologist-apply.component';
 
 @NgModule({
   declarations: [
@@ -68,6 +69,7 @@ import { ConfirmationDialogComponent } from './feature-moduls/request/confirmati
     PickRequestComponent,
     ChatComponent,
     ConfirmationDialogComponent,
+    PsychologistApplyComponent,
 
     LoginComponent,
       HomeComponent,

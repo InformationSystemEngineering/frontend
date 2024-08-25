@@ -11,6 +11,7 @@ import { Reservation } from 'src/app/model/Reservation.model';
 import { ClassroomDateDto } from 'src/app/model/ClassroomDateDto.model';
 import { catchError, map, Observable, of } from 'rxjs';
 import { ConfirmationDialogComponent } from '../confirmation-dialog/confirmation-dialog.component';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-pick-request',
@@ -45,7 +46,8 @@ requestDetail: RequestDetailDto | undefined;
   constructor(
     private route: ActivatedRoute,
     private requestService: RequestService,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private snackBar: MatSnackBar
   ) { { 
     this.errorMessage = ''; // Inicijalizacija u konstruktoru
   }}
@@ -85,7 +87,8 @@ requestDetail: RequestDetailDto | undefined;
           startTime: topic.startTime,
           endTime: topic.endTime,
           reservationId: 1,
-          psychologistId: topic.psychologistId
+          psychologistId: topic.psychologistId,
+          psychologists: topic.psychologists
         }));
         this.filteredTopics = this.topics1; // Inicijalno popunjava filteredTopics sa svim topicima
         this.updateFilteredTopics(); // Pozovite metodu za ažuriranje
@@ -143,7 +146,8 @@ sortTopics(order: 'asc' | 'desc'): void {
                     startTime: topic.startTime,
                     endTime: topic.endTime,
                     reservationId: 1,
-                    psychologistId: topic.psychologistId
+                    psychologistId: topic.psychologistId,
+                    psychologists: topic.psychologists
                 }));
 
                 console.log("Topics with assigned IDs:", this.topics1);
@@ -339,7 +343,8 @@ reloadTopics(): void {
         startTime: topic.startTime,
         endTime: topic.endTime,
         reservationId: topic.reservationId,
-        psychologistId: topic.psychologistId
+        psychologistId: topic.psychologistId,
+        psychologists: topic.psychologists
       }));
       this.filteredTopics = this.topics1; // Ažuriranje prikaza filtriranih tema
       this.updateFilteredTopics(); // Osvežavanje filtrirane liste tema
@@ -431,15 +436,20 @@ confirmPsychologist(topicId: number, psychologistId: number, topicName: string, 
   dialogRef.afterClosed().subscribe(result => {
     if (result === true) {
       // Call the backend API to update the topic with the psychologist
-      this.requestService.updateTopicWithPsychologist(topicName, 1).subscribe({
+      this.requestService.updateTopicWithPsychologist(topicName, 2).subscribe({
         next: (response) => {
           console.log("Psychologist assigned successfully:", response);
+
+          this.snackBar.open(`Successfully sent invitation to ${topicName}`, 'Close', {
+            duration: 3000
+          });
           
           // Remove the assigned topic from the filteredTopics list immediately
           this.filteredTopics = this.filteredTopics.filter(topic => topic.id !== topicId);
           
           // Log message to confirm removal
           console.log(`Topic with ID ${topicId} has been removed from the list.`);
+          this.removePsychologistFromConflictingTopics(topicName, psychologistId);
         },
         error: (error) => {
           console.error("Error assigning psychologist:", error);
@@ -448,6 +458,28 @@ confirmPsychologist(topicId: number, psychologistId: number, topicName: string, 
     }
   });
 }
+removePsychologistFromConflictingTopics(topicName: string, psychologistId: number): void {
+  const updatedTopic = this.topics1.find(topic => topic.name === topicName);
+  if (updatedTopic) {
+    const topicDate = new Date(updatedTopic.startTime).toDateString();
+    const topicStartTime = new Date(updatedTopic.startTime).getTime();
+    const topicEndTime = new Date(updatedTopic.endTime).getTime();
 
+    this.filteredTopics.forEach(topic => {
+      const otherDate = new Date(topic.startTime).toDateString();
+      const otherStartTime = new Date(topic.startTime).getTime();
+      const otherEndTime = new Date(topic.endTime).getTime();
+
+      const isOverlapping = (topicDate === otherDate) &&
+        ((topicStartTime >= otherStartTime && topicStartTime < otherEndTime) ||
+         (topicEndTime > otherStartTime && topicEndTime <= otherEndTime) ||
+         (topicStartTime <= otherStartTime && topicEndTime >= otherEndTime));
+
+      if (isOverlapping) {
+        // topic.psychologists = topic.psychologists.filter((psych) => psych.id !== psychologistId);
+      }
+    });
+  }
+}
 
 }

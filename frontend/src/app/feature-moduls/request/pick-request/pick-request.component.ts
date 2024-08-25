@@ -419,28 +419,35 @@ disableStep(step: number): void {
 }
 
 confirmPsychologist(topicId: number, psychologistId: number, topicName: string, psychologistName: string): void {
-    const dialogRef = this.dialog.open(ConfirmationDialogComponent, {
-      width: '400px',
-      data: {
-        message: `Do you want to assign psychologist ${psychologistName} to topic ${topicName}?`,
-        yesButtonText: 'Yes',
-        noButtonText: 'No'
-      }
-    });
+  const dialogRef = this.dialog.open(ConfirmationDialogComponent, {
+    width: '400px',
+    data: {
+      message: `Do you want to assign psychologist ${psychologistName} to topic ${topicName}?`,
+      yesButtonText: 'Yes',
+      noButtonText: 'No'
+    }
+  });
 
-    dialogRef.afterClosed().subscribe(result => {
-      if (result === 'yes') {
-        // Call the backend API to update the topic with the psychologist
-        this.requestService.updateTopicWithPsychologist(topicName, psychologistId).subscribe({
-          next: (response) => {
-            console.log("Psychologist assigned successfully:", response);
-          },
-          error: (error) => {
-            console.error("Error assigning psychologist:", error);
-          }
-        });
-      }
-    });
-  }
+  dialogRef.afterClosed().subscribe(result => {
+    if (result === true) {
+      // Call the backend API to update the topic with the psychologist
+      this.requestService.updateTopicWithPsychologist(topicName, 1).subscribe({
+        next: (response) => {
+          console.log("Psychologist assigned successfully:", response);
+          
+          // Remove the assigned topic from the filteredTopics list immediately
+          this.filteredTopics = this.filteredTopics.filter(topic => topic.id !== topicId);
+          
+          // Log message to confirm removal
+          console.log(`Topic with ID ${topicId} has been removed from the list.`);
+        },
+        error: (error) => {
+          console.error("Error assigning psychologist:", error);
+        }
+      });
+    }
+  });
+}
+
 
 }

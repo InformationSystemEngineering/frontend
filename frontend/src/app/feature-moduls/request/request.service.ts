@@ -1,11 +1,14 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { Classroom } from 'src/app/model/Classroom.model';
+import { ClassroomDateDto } from 'src/app/model/ClassroomDateDto.model';
 import { Message } from 'src/app/model/Message.model';
 import { CustomRequest } from 'src/app/model/Request.model';
 import { RequestDetailDto } from 'src/app/model/RequestDetailDto.model';
 import { Reservation } from 'src/app/model/Reservation.model';
 import { Topic } from 'src/app/model/Topic.model';
+import { TopicDetails } from 'src/app/model/TopicDetails.model';
 import { environment } from 'src/env/environment';
 
 @Injectable({
@@ -64,9 +67,14 @@ updateTopicWithReservation(topicName: string, reservationId: number): Observable
 }
 
 
-getTopicsWithDetails(requestId: number): Observable<any[]> {
-  return this.http.get<any[]>(`${environment.apiHost}topics/topics-with-details/${requestId}`);
+// getTopicsWithDetails(requestId: number): Observable<any[]> {
+//   return this.http.get<any[]>(`${environment.apiHost}topics/topics-with-details/${requestId}`);
+// }
+
+getTopicsWithDetails(requestId: number): Observable<TopicDetails[]> {
+  return this.http.get<TopicDetails[]>(`${environment.apiHost}topics/topics-with-details/${requestId}`);
 }
+
 
 getAllPsychologists(): Observable<any[]> {
   return this.http.get<any[]>(`${environment.apiHost}psychologists/psychologists`);
@@ -84,6 +92,18 @@ addMessage(message: Message): Observable<Message> {
 
 readMessage(message: Message): Observable<void> {
   return this.http.put<void>(`${environment.apiHost}messages/${message.id}/read`, {});
+}
+
+getReservationById(reservationId: number): Observable<Reservation> {
+  return this.http.get<Reservation>(`${environment.apiHost}reservations/${reservationId}`);
+}
+
+getClassroomById(classroomId: number): Observable<Classroom> {
+  return this.http.get<Classroom>(`${environment.apiHost}classrooms/${classroomId}`);
+}
+
+getClassroomDateByTopicId(topicId: number): Observable<ClassroomDateDto> {
+  return this.http.get<ClassroomDateDto>(`${environment.apiHost}classrooms/date/byTopic/${topicId}`);
 }
 
 }

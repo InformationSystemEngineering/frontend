@@ -3,4 +3,5 @@ export interface Topic {
     name: string;
     duration: number;
     availableSpots: number;
+    reservationId: number;
   }

@@ -146,3 +146,89 @@
 .classroom-circle.disabled p {
     color: #ff0000; /* Crveni tekst u disabled učionici */
 }
+
+
+.topic-title {
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+.psychologist-button {
+    background-color: #e0f7fa;
+    border: 2px solid #007bff;
+    padding: 10px;
+    margin: 5px;
+    cursor: pointer;
+}
+
+.psychologist-button.selected {
+    background-color: #cfe3ff;
+    border: 2px solid #0056b3;
+}
+
+.step {
+    background-color: #f7f7f7;
+    padding: 20px;
+    border-radius: 8px;
+    margin-top: 10px;
+}
+
+.error-message {
+    color: red;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.right-side .step {
+    background-color: #f9f9f9;
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.right-side .topic-title {
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+.psychologists-container {
+    display: flex;
+    flex-wrap: wrap;  /* Omogućava prelamanje u novi red */
+    gap: 10px;  /* Razmak između dugmadi */
+}
+
+.psychologist-button {
+    margin: 5px;
+    padding: 10px 15px;
+    background-color: #007bff;
+    color: white;
+    border: 1px solid #007bff;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.psychologist-button.selected {
+    background-color: #0056b3;
+    border-color: #0056b3;
+}
+
+.psychologist-button:hover {
+    background-color: #0056b3;
+}
+
+.search-sort-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.search-sort-container .form-control {
+    width: 60%;
+}
+
+.search-sort-container .button {
+    width: 18%;
+}
+

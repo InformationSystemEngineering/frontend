@@ -7,6 +7,9 @@ import { CustomRequest } from 'src/app/model/Request.model';
 import { TopicDetails } from 'src/app/model/TopicDetails.model';
 import { MatDialog } from '@angular/material/dialog';
 import { ChatComponent } from '../chat/chat.component';
+import { Reservation } from 'src/app/model/Reservation.model';
+import { ClassroomDateDto } from 'src/app/model/ClassroomDateDto.model';
+import { catchError, map, Observable, of } from 'rxjs';
 
 @Component({
   selector: 'app-pick-request',
@@ -31,6 +34,10 @@ requestDetail: RequestDetailDto | undefined;
   showError: boolean = false;
   psychologists: any[] = [];
   topics1: TopicDetails[] = [];
+  groupedTopics: Map<string, TopicDetails[]> = new Map(); // To store topics grouped by date
+  classroomDates: Map<number, string> = new Map(); // Use a map to store classroom dates by topic ID
+  searchQuery: string = '';
+    filteredTopics: TopicDetails[] = [];
 
 
   constructor(
@@ -40,6 +47,7 @@ requestDetail: RequestDetailDto | undefined;
   ) { { 
     this.errorMessage = ''; // Inicijalizacija u konstruktoru
   }}
+
 
   ngOnInit(): void {
     const requestId = Number(this.route.snapshot.paramMap.get('requestId'));
@@ -57,27 +65,94 @@ requestDetail: RequestDetailDto | undefined;
 
     this.requestService.getAllPsychologists().subscribe({
       next: (psychologists: any[]) => {
-          this.psychologists = psychologists;
+        this.psychologists = psychologists;
       },
       error: (err: any) => {
-          console.error("Error fetching psychologists:", err);
+        console.error("Error fetching psychologists:", err);
       }
-  });
+    });
+
+    this.requestService.getTopicsWithDetails(requestId).subscribe({
+      next: (topics: any[]) => {
+        this.topics1 = topics.map((topic) => ({
+          id: topic.topicId,
+          name: topic.topicName,
+          duration: topic.duration,
+          availableSpots: topic.availableSpots,
+          classroom: { name: topic.classroomName },
+          startTime: topic.startTime,
+          endTime: topic.endTime,
+          reservationId: 1
+        }));
+        this.filteredTopics = this.topics1; // Inicijalno popunjava filteredTopics sa svim topicima
+        this.updateFilteredTopics(); // Pozovite metodu za ažuriranje
+
+        this.topics1.forEach(topic => {
+          if (topic.id) {
+              this.getClassroomDate(topic); // Setovanje datuma direktno u topic
+          } else {
+              console.warn("Topic ID is undefined for topic:", topic);
+          }
+      });
+      },
+      error: (err) => {
+        console.error("Error fetching topics with details:", err);
+      }
+    });
+
   }
+
+  updateFilteredTopics(): void {
+    const searchLower = this.searchQuery.toLowerCase();
+    
+    this.filteredTopics = this.topics1.filter(topic => {
+        const topicNameMatches = topic.name.toLowerCase().includes(searchLower);
+
+        // Osigurajte se da je `topic.date` definisan i da je u formatu datuma
+        const topicDate = topic.date ? new Date(topic.date).toDateString().toLowerCase() : '';
+        const topicDateMatches = topicDate.includes(searchLower);
+
+        return topicNameMatches || topicDateMatches;
+    });
+}
+
+
+
+sortTopics(order: 'asc' | 'desc'): void {
+    this.filteredTopics.sort((a, b) => {
+        const dateA = new Date(a.date || '');
+        const dateB = new Date(b.date || '');
+        return order === 'asc' ? dateA.getTime() - dateB.getTime() : dateB.getTime() - dateA.getTime();
+    });
+}
+
 
   nextStep(): void {
     if (this.currentStep === 1 && this.requestDetail) {
         this.requestService.getTopicsWithDetails(this.requestDetail.request.id || 0).subscribe({
             next: (topics: any[]) => {
-                this.topics1 = topics.map(topic => ({
-                    id: topic.id,
+                this.topics1 = topics.map((topic) => ({
+                    id: topic.topicId,  // Dodeljuje redni ID počevši od 1
                     name: topic.topicName,
                     duration: topic.duration,
                     availableSpots: topic.availableSpots,
                     classroom: { name: topic.classroomName },
                     startTime: topic.startTime,
-                    endTime: topic.endTime
+                    endTime: topic.endTime,
+                    reservationId: 1
                 }));
+
+                console.log("Topics with assigned IDs:", this.topics1);
+
+                // Pozovi getClassroomDate za svaki topic i setuj datum
+                this.topics1.forEach(topic => {
+                    if (topic.id) {
+                        this.getClassroomDate(topic); // Setovanje datuma direktno u topic
+                    } else {
+                        console.warn("Topic ID is undefined for topic:", topic);
+                    }
+                });
+
                 this.currentStep++;
             },
             error: (err) => {
@@ -85,7 +160,12 @@ requestDetail: RequestDetailDto | undefined;
             }
         });
     }
+    // this.groupedTopics = this.getGroupedTopicsByDate(this.topics1);
+
 }
+
+
+  
 
 openChat(topicId: number, psychologistId: number): void {
   const dialogRef = this.dialog.open(ChatComponent, {
@@ -101,9 +181,6 @@ openChat(topicId: number, psychologistId: number): void {
     // Ako je potrebno, osvežite ili ažurirajte podatke
   });
 }
-
-
-
 
   addTopic(): void {
     if (this.newTopic && this.requestDetail && this.requestDetail.request.id !== undefined) {
@@ -242,13 +319,6 @@ setTopic(time: { start: string, end: string }): void {
   }
 }
 
-  
-
-  // nextStep(): void {
-  //   if (this.topics.length > 0) {
-  //     this.currentStep++;
-  //   }
-  // }
 
   getUniqueDates(classrooms: Classroom[]): Date[] {
     const dates = classrooms.map(classroom => classroom.date);
@@ -258,6 +328,52 @@ setTopic(time: { start: string, end: string }): void {
   getClassroomsByDate(classrooms: Classroom[], date: Date): Classroom[] {
     return classrooms.filter(classroom => classroom.date === date);
   }
+
+
+
+  getUniqueDatesFromTopics(topics: TopicDetails[]): Date[] {
+    const dates = topics.map(topic => {
+        const dateString = topic.startTime.split('T')[0]; // Extracting the date part
+        return new Date(dateString);
+    });
+    return Array.from(new Set(dates));
+}
+
+getTopicsByDate(topics: TopicDetails[], date: Date): TopicDetails[] {
+    return topics.filter(topic => {
+        const topicDate = new Date(topic.startTime.split('T')[0]); // Extracting the date part
+        return topicDate.getTime() === date.getTime();
+    });
+}
+
+
+getClassroomDate(topic: TopicDetails): void {
+  if (topic.id) {
+      this.requestService.getClassroomDateByTopicId(topic.id).subscribe({
+          next: (classroomDateDto: ClassroomDateDto) => {
+              topic.date = new Date(classroomDateDto.date); // Postavi datum direktno u topic
+              console.log(`Date set for topic ID ${topic.id}:`, topic.date);
+          },
+          error: (err) => {
+              console.error(`Error fetching classroom date for topic ID ${topic.id}:`, err);
+          }
+      });
+  } else {
+      console.error("Topic ID is undefined:", topic);
+  }
+}
+
+getGroupedTopicsByDate(topics: TopicDetails[]): Map<string, TopicDetails[]> {
+  const groupedTopics = new Map<string, TopicDetails[]>();
+  topics.forEach(topic => {
+      const date = new Date(topic.startTime).toDateString(); // Extract date in a simple format
+      if (!groupedTopics.has(date)) {
+          groupedTopics.set(date, []);
+      }
+      groupedTopics.get(date)?.push(topic);
+  });
+  return groupedTopics;
+}
 
   
 }

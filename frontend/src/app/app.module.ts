@@ -45,6 +45,7 @@ import { SendRequestComponent } from './feature-moduls/faculty/send-request/send
 import { AllRequestsComponent } from './feature-moduls/request/all-requests/all-requests.component';
 import { PickRequestComponent } from './feature-moduls/request/pick-request/pick-request.component';
 import { ChatComponent } from './feature-moduls/request/chat/chat.component';
+import { ConfirmationDialogComponent } from './feature-moduls/request/confirmation-dialog/confirmation-dialog.component';
 
 @NgModule({
   declarations: [
@@ -66,6 +67,7 @@ import { ChatComponent } from './feature-moduls/request/chat/chat.component';
     AllRequestsComponent,
     PickRequestComponent,
     ChatComponent,
+    ConfirmationDialogComponent,
 
     LoginComponent,
       HomeComponent,

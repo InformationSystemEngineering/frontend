@@ -99,9 +99,9 @@
                 <div class="psychologists-container">
                     <div *ngFor="let psychologist of psychologists">
                         <button class="psychologist-button"
-                                [class.selected]="psychologist.id === selectedPsychologistId"
-                                (click)="openChat(topic.id || 1, psychologist.id)">
-                            {{ psychologist.name }} {{ psychologist.lastName}}
+                            [class.selected]="psychologist.id === selectedPsychologistId"
+                            (click)="confirmPsychologist(topic.id, psychologist.selectedPsychologistId, topic.name, psychologist.name)">
+                            {{ psychologist.name }} {{ psychologist.lastName }}
                         </button>
                     </div>
                 </div>

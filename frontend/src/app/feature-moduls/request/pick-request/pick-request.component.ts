@@ -10,6 +10,7 @@ import { ChatComponent } from '../chat/chat.component';
 import { Reservation } from 'src/app/model/Reservation.model';
 import { ClassroomDateDto } from 'src/app/model/ClassroomDateDto.model';
 import { catchError, map, Observable, of } from 'rxjs';
+import { ConfirmationDialogComponent } from '../confirmation-dialog/confirmation-dialog.component';
 
 @Component({
   selector: 'app-pick-request',
@@ -83,7 +84,8 @@ requestDetail: RequestDetailDto | undefined;
           classroom: { name: topic.classroomName },
           startTime: topic.startTime,
           endTime: topic.endTime,
-          reservationId: 1
+          reservationId: 1,
+          psychologistId: topic.psychologistId
         }));
         this.filteredTopics = this.topics1; // Inicijalno popunjava filteredTopics sa svim topicima
         this.updateFilteredTopics(); // Pozovite metodu za ažuriranje
@@ -140,7 +142,8 @@ sortTopics(order: 'asc' | 'desc'): void {
                     classroom: { name: topic.classroomName },
                     startTime: topic.startTime,
                     endTime: topic.endTime,
-                    reservationId: 1
+                    reservationId: 1,
+                    psychologistId: topic.psychologistId
                 }));
 
                 console.log("Topics with assigned IDs:", this.topics1);
@@ -387,5 +390,31 @@ goToStep(step: number): void {
 disableStep(step: number): void {
   this.stepDisabled = step;
 }
+
+confirmPsychologist(topicId: number, psychologistId: number, topicName: string, psychologistName: string): void {
+  const dialogRef = this.dialog.open(ConfirmationDialogComponent, {
+    width: '400px',
+    data: {
+      message: `Do you want to assign psychologist ${psychologistName} to topic ${topicName}?`,
+      yesButtonText: 'Yes',
+      noButtonText: 'No'
+    }
+  });
+
+  dialogRef.afterClosed().subscribe(result => {
+    if (result === true) {  // Change from 'yes' to true
+      // Call the backend API to update the topic with the psychologist
+      this.requestService.updateTopicWithPsychologist(topicName, 1).subscribe({
+        next: (response) => {
+          console.log("Psychologist assigned successfully:", response);
+        },
+        error: (error) => {
+          console.error("Error assigning psychologist:", error);
+        }
+      });
+    }
+  });
+}
+
 
 }

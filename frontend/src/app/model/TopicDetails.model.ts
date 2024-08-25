@@ -1,4 +1,5 @@
 export interface TopicDetails {
+    psychologistId: any;
     id: number; // Obavezno postavi ispravnu tipizaciju
     name: string;
     duration: number;

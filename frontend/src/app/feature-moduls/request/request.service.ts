@@ -106,4 +106,8 @@ getClassroomDateByTopicId(topicId: number): Observable<ClassroomDateDto> {
   return this.http.get<ClassroomDateDto>(`${environment.apiHost}classrooms/date/byTopic/${topicId}`);
 }
 
+updateTopicWithPsychologist(topicName: string, psychologistId: number): Observable<any> {
+  return this.http.put(`${environment.apiHost}topics/update-psychologist`, { topicName, psychologistId });
+}
+
 }

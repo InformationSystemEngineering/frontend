@@ -4,4 +4,5 @@ export interface Topic {
     duration: number;
     availableSpots: number;
     reservationId: number;
+    psychologistId: number;
   }

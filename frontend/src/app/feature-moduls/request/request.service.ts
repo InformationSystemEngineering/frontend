@@ -67,12 +67,12 @@ updateTopicWithReservation(topicName: string, reservationId: number): Observable
 }
 
 
-// getTopicsWithDetails(requestId: number): Observable<any[]> {
-//   return this.http.get<any[]>(`${environment.apiHost}topics/topics-with-details/${requestId}`);
-// }
-
 getTopicsWithDetails(requestId: number): Observable<TopicDetails[]> {
   return this.http.get<TopicDetails[]>(`${environment.apiHost}topics/topics-with-details/${requestId}`);
+}
+
+getTopicsWithDetailsNoPsychologist(requestId: number): Observable<TopicDetails[]> {
+  return this.http.get<TopicDetails[]>(`${environment.apiHost}topics/topics-with-details-no-psychologist/${requestId}`);
 }
 
 

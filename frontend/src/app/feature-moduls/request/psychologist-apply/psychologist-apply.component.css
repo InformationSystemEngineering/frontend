@@ -1,0 +1,109 @@
+.container {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.search-sort-container {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.search-input {
+    width: 70%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.sort-button {
+    padding: 10px 15px;
+    border: none;
+    background-color: #007bff;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-left: 5px;
+}
+
+.sort-button:hover {
+    background-color: #0056b3;
+}
+
+.request-container {
+    background-color: #ffffff;
+    margin-bottom: 20px;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.request-title {
+    margin-bottom: 10px;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.fair-details p {
+    margin: 5px 0;
+}
+
+.dropdown-arrow {
+    display: flex;
+    align-items: center;
+    background: none;
+    border: none;
+    color: #007bff;
+    cursor: pointer;
+    font-size: 16px;
+    padding: 5px;
+    margin-top: 10px;
+}
+
+.dropdown-arrow:hover {
+    text-decoration: underline;
+}
+
+.arrow-icon {
+    margin-right: 5px;
+}
+
+.topic-details {
+    margin-top: 10px;
+    padding-left: 10px;
+    border-left: 2px solid #007bff;
+}
+
+.topic-date {
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.topic-step {
+    margin-bottom: 10px;
+    padding: 10px;
+    background-color: #f1f1f1;
+    border-radius: 4px;
+}
+
+.apply-button {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.apply-button:hover {
+    background-color: #218838;
+}
+
+.no-topics-message {
+    font-style: italic;
+    color: #888;
+}

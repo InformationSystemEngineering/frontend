@@ -1,1 +1,41 @@
-<p>psychologist-apply works!</p>
+<div class="container">
+    <div class="search-sort-container">
+        <input type="text" placeholder="Search by request name..." [(ngModel)]="searchTerm" (input)="filterRequests()" class="search-input">
+        <button (click)="sortRequests('asc')" class="sort-button">Sort A-Z</button>
+        <button (click)="sortRequests('desc')" class="sort-button">Sort Z-A</button>
+    </div>
+
+    <div class="all-requests">
+        <div class="request-container" *ngFor="let requestDetail of filteredRequests">
+            <h2 class="request-title">{{ requestDetail.request.name }}</h2>
+            <div *ngIf="requestDetail.fair" class="fair-details">
+                <p *ngIf="requestDetail.faculty?.name" class="faculty-name">{{ requestDetail.faculty.name }}</p>
+                <p class="fair-dates">{{ requestDetail.fair.approvedStartDate | date }} - {{ requestDetail.fair.approvedEndDate | date }}</p>
+                <p class="fair-published">Published: {{ requestDetail.fair.isPublish ? 'Yes' : 'No' }}</p>
+            </div>
+            <button (click)="toggleDetails(requestDetail)" class="dropdown-arrow">
+                <i class="arrow-icon">{{ requestDetail.showDetails ? '▲' : '▼' }}</i> {{ requestDetail.showDetails ? 'Hide Topics' : 'Show Topics' }}
+            </button>
+            
+            <div *ngIf="requestDetail.showDetails" class="topic-details">
+                <div *ngIf="requestDetail.topics && requestDetail.topics.length > 0; else noTopics">
+                    <div *ngFor="let topic of requestDetail.topics; let i = index">
+                        <!-- Prikaz datuma samo ako je različit od prethodnog -->
+                        <h4 *ngIf="i === 0 || (topic.date | date:'yyyy-MM-dd') !== (requestDetail.topics[i - 1]?.date | date:'yyyy-MM-dd')" class="topic-date">
+                            {{ topic.date | date }}
+                        </h4>
+                        <div class="topic-step">
+                            <p class="topic-title">
+                                {{ topic.name }} - {{ topic.classroom.name }} ({{ topic.startTime }} - {{ topic.endTime }})
+                            </p>
+                            <button (click)="confirmPsychologist(topic.id, 2, topic.name, 'Adamovic Nikola')" class="apply-button">Apply for topic now</button>
+                        </div>
+                    </div>
+                </div>
+                <ng-template #noTopics>
+                    <p class="no-topics-message">No topics available for this request.</p>
+                </ng-template>
+            </div>
+        </div>
+    </div>
+</div>

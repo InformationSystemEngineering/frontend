@@ -41,6 +41,7 @@ export class AllRequestsComponent implements OnInit{
             console.log(requestDetail.request.facultyId);
             this.facultyService.getFacultyById(requestDetail.request.facultyId).subscribe(faculty => {
                 requestDetail.faculty.name = faculty.name;
+                requestDetail.faculty.photo = faculty.photo;
             });
           }
         });

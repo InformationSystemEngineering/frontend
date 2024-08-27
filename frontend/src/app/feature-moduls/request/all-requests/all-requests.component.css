@@ -3,10 +3,16 @@
     display: flex;
     flex-direction: column;
     padding: 20px;
-    width: 100%;
-    height: 100vh;
+    width: 100%; /* Ensure the container is full width */
+    max-width: 100%; /* Ensure no maximum width limit */
     overflow: auto;
     background-color: #f4f7fa;
+    margin: 0 auto; /* Center the container if it has a max-width */
+    box-sizing: border-box; /* Ensure padding is included in width calculations */
+}
+
+#date{
+   font-weight: bold;
 }
 
 .container::before {
@@ -63,6 +69,7 @@
 .all-requests {
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
     gap: 30px; /* Povećan razmak između kartica */
     z-index: 1;
 }
@@ -73,7 +80,7 @@
     border-radius: 8px;
     padding: 25px; /* Povećano margine unutar kartice */
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    width: calc(50% - 30px); /* Šire kartice */
+    width: calc(50% - 60px); /* Šire kartice */
     display: flex;
     flex-direction: column;
 }
@@ -104,6 +111,22 @@
     margin-bottom: 5px;
 }
 
+.faculty-info {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px; /* Razmak između fakulteta i ostatka sadržaja */
+}
+
+.faculty-photo {
+    width: 80px; /* Širina slike */
+    height: 80px; /* Visina slike */
+    margin-bottom: 5px; /* Razmak između slike i naziva */
+}
+
+.row{
+    display: flex;
+    flex-direction: row;
+}
 
 .fair-published {
     font-size: 1.1em;
@@ -139,7 +162,7 @@
     background-color: #e0f7fa;
     border: 2px solid #007bff;
     border-radius: 50%;
-    width: 150px; /* Povećana širina kruga */
+    width: 180px; /* Povećana širina kruga */
     height: 150px; /* Povećana visina kruga */
     display: flex;
     flex-direction: column;

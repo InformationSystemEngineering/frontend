@@ -39,8 +39,7 @@
                             [class.disabled]="classroom.disabled"
                             (click)="selectClassroom(classroom)">
                             <p>{{ classroom.name }}</p>
-                            <p>{{ classroom.startTime }} - {{ classroom.endTime }}</p>
-                            <p>Floor: {{ classroom.floor }}</p>
+                            <p class="text-bold">{{ classroom.startTime }} - {{ classroom.endTime }}</p>
                             <p>Capacity: {{ classroom.capacity }}</p>
                         </div>
                     </div>
@@ -76,6 +75,10 @@
             </div>
             
         </div>
+    </div>
+
+    <div class="right-side" *ngIf="currentStep === 1 && !selectedClassroom">
+        <h2 class="center-text">Please select classroom so you choose exact time</h2>
     </div>
 
     <div class="right-side" *ngIf="currentStep === 2">

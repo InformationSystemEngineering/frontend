@@ -10,8 +10,8 @@
             <h2>{{ requestDetail.request.name }}</h2>
             
             <div *ngIf="requestDetail.fair" class="fair-details">
+                <img [src]="requestDetail.faculty.photo" alt="{{ requestDetail.faculty.name }}" class="faculty-photo">
                 <p *ngIf="requestDetail.faculty?.name" class="faculty-name">{{ requestDetail.faculty.name }}</p>
-
                 <p class="fair-dates">{{ requestDetail.fair.approvedStartDate | date }} - {{ requestDetail.fair.approvedEndDate | date }}</p>
                 <p class="fair-published">Published: {{ requestDetail.fair.isPublish ? 'Yes' : 'No' }}</p>
             </div>
@@ -24,8 +24,7 @@
                     <div class="classroom-circles">
                         <div class="classroom-circle" *ngFor="let classroom of getClassroomsByDate(requestDetail.classrooms, date)">
                             <p>{{ classroom.name }}</p>
-                            <p>{{ classroom.startTime }} - {{ classroom.endTime }}</p>
-                            <p>Floor: {{ classroom.floor }}</p>
+                            <p id="date">{{ classroom.startTime }} - {{ classroom.endTime }}</p>
                             <p>Capacity: {{ classroom.capacity }}</p>
                         </div>
                     </div>

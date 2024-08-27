@@ -7,18 +7,18 @@
   <h2 class="nav">EQUILIBRIA</h2>
   <div class="spacer"></div>
   <a mat-button routerLink="/">Home</a>
-  <a
+  <!-- <a
     mat-button
     routerLink="/calendar"
     *ngIf="userRole == 'ROLE_MANAGER'"
     >| Fairs calendar |</a
-  >
-  <a
+  > -->
+  <!-- <a
     mat-button
     routerLink="/sessions"
     *ngIf="userRole == 'ROLE_REGISTERED_USER' || userRole == 'ROLE_PSYCHOLOG'"
     >| My sessions |</a
-  >
+  > -->
   <a
     mat-button
     routerLink="/workshops"
@@ -30,24 +30,24 @@
     mat-button
     routerLink="/organizefair"
     *ngIf="userRole == 'ROLE_MANAGER'"
-    > Invite faculties </a
+    > | Invite faculties </a
   >
   <a mat-button routerLink="/students" *ngIf="userRole == 'ROLE_STUDENT'"
     >| Internship progress |</a>
 
-  <a mat-button routerLink="/test-history" *ngIf="userRole == 'ROLE_PSYCHOLOG'"
+  <!-- <a mat-button routerLink="/test-history" *ngIf="userRole == 'ROLE_PSYCHOLOG'"
     > Intrenship Tests </a
-  >
+  > -->
 
-  <a mat-button routerLink="/internship-tasks" *ngIf="userRole == 'ROLE_PSYCHOLOG' || userRole == 'ROLE_STUDENT'"
-    >| My Intrenships |</a
->
-  <a mat-button routerLink="/internship-overview" *ngIf="userRole == 'ROLE_MANAGER'"
+  <!-- <a mat-button routerLink="/internship-tasks" *ngIf="userRole == 'ROLE_PSYCHOLOG' || userRole == 'ROLE_STUDENT'"
+    >| My Intrenships |</a -->
+
+  <!-- <a mat-button routerLink="/internship-overview" *ngIf="userRole == 'ROLE_MANAGER'"
   matBadge="3"
   matBadgeColor="warn"
   matBadgeOverlap="false"
     >| Organize tests |</a
-  >
+  > -->
 
   <a 
   mat-button 
@@ -55,7 +55,7 @@
   *ngIf="userRole == 'ROLE_MANAGER'"
   
 >
-  Accepted requests |
+  | Accepted requests |
 </a>
 
 
@@ -94,7 +94,7 @@
   mat-button
   routerLink="/psychologist_apply"
   *ngIf="userRole == 'ROLE_PSYCHOLOG'"
-  > Application for topic |</a
+  >| Application for topic |</a
 >
 
 

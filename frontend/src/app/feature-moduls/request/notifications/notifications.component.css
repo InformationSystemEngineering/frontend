@@ -3,63 +3,117 @@
     background-color: #f5f5f5;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    margin: 20px;
-  }
-  
-  h2 {
+    width: 80%;
+    margin: auto;
+}
+
+h2 {
     font-size: 1.5em;
     margin-bottom: 20px;
     color: #333;
-  }
-  
-  .notification-card {
+}
+
+.notification-card {
     background-color: #fff;
     border-radius: 5px;
     padding: 15px;
     margin-bottom: 15px;
     border: 1px solid #ddd;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-  }
-  
-  .topic-title,
-  .topic-classroom,
-  .topic-time {
+}
+
+.topic-faculty,
+.topic-request {
+    margin: 5px 0;
+    font-size: 1.1em;
+    color: #333;
+    font-weight: bold;
+    padding: 8px;
+    background-color: #e7f3ff; /* Light blue background to stand out */
+    border-radius: 5px;
+}
+
+.topic-title,
+.topic-classroom,
+.topic-time {
     margin: 5px 0;
     font-size: 1em;
     color: #555;
-  }
-  
-  .topic-buttons {
+}
+
+.topic-details {
     margin-top: 10px;
-  }
-  
-  .accept-button,
-  .decline-button {
+}
+
+.topic-buttons {
+    margin-top: 10px;
+}
+
+.accept-button,
+.decline-button {
     padding: 8px 12px;
     margin-right: 10px;
     border: none;
     border-radius: 4px;
     cursor: pointer;
     font-size: 0.9em;
-  }
-  
-  .accept-button {
+}
+
+.accept-button {
     background-color: #4CAF50; /* Green */
     color: white;
     transition: background-color 0.3s;
-  }
-  
-  .decline-button {
+}
+
+.decline-button {
     background-color: #f44336; /* Red */
     color: white;
     transition: background-color 0.3s;
-  }
-  
-  .accept-button:hover {
+}
+
+.accept-button:hover {
     background-color: #45a049;
-  }
-  
-  .decline-button:hover {
+}
+
+.decline-button:hover {
     background-color: #e53935;
-  }
-  
+}
+
+.disabled {
+    opacity: 0.6;
+    pointer-events: none; /* Prevents interaction */
+}
+
+.disabled .accept-button {
+    background-color: #cccccc; /* Greyed-out color */
+    cursor: not-allowed;
+}
+
+.search-sort-container {
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.search-input {
+    padding: 8px;
+    width: 60%;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.sort-button {
+    padding: 8px 12px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-left: 10px;
+}
+
+.sort-button:hover {
+    background-color: #0056b3;
+}

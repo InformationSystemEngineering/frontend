@@ -1,14 +1,29 @@
 <div class="psychologist-container">
-    <h2 class="header-title">Psychologist Topic Management</h2>
-    <div *ngFor="let psychologist of psychologists" class="psychologist-card">
-        <h3>{{ psychologist.psychologistName }} {{ psychologist.psychologistLastName }}</h3>
-        <div *ngFor="let topic of psychologist.topics" class="topic-card">
-            <p><strong>Topic:</strong> {{ topic.name }}</p>
-            <p><strong>Classroom:</strong> {{ topic.classroom.name }}</p>
-            <p><strong>Time:</strong> {{ topic.startTime }} - {{ topic.endTime }}</p>
-            <div class="action-buttons">
-                <button (click)="acceptTopic(topic)" class="accept-button">Accept</button>
-                <button (click)="declineTopic(topic)" class="decline-button">Decline</button>
+    <h2 class="header-title">Requests from psychologists for topics</h2>
+
+    <!-- Search and Sort Controls -->
+    <div class="search-sort-container">
+        <input type="text" placeholder="Search by psychologist name" [(ngModel)]="searchQuery" (ngModelChange)="filterPsychologists()" class="search-input">
+        <button (click)="sortPsychologists('asc')" class="sort-button">Sort Ascending</button>
+        <button (click)="sortPsychologists('desc')" class="sort-button">Sort Descending</button>
+    </div>
+
+    <div *ngFor="let psychologist of filteredPsychologists" class="psychologist-card">
+        <h1>{{ psychologist.psychologistName }} {{ psychologist.psychologistLastName }}</h1>
+        <div *ngFor="let topic of psychologist.topics; let i = index">
+            <h4 *ngIf="i === 0 || (topic.date | date:'yyyy-MM-dd') !== (psychologist.topics[i - 1].date | date:'yyyy-MM-dd')">
+                {{ topic.date | date }}
+            </h4>
+            <div class="topic-card" [class.disabled]="topic.disabled">
+                <p class="topic-faculty"><strong>Faculty:</strong> {{ topic.facultyName }}</p>
+                <p class="topic-request"><strong>Fair:</strong> {{ topic.requestName }}</p>
+                <p><strong>Topic:</strong> {{ topic.name }}</p>
+                <p><strong>Classroom:</strong> {{ topic.classroom.name }}</p>
+                <p><strong>Time:</strong> {{ topic.startTime }} - {{ topic.endTime }}</p>
+                <div class="action-buttons">
+                    <button (click)="acceptTopic(topic)" [disabled]="topic.disabled" class="accept-button">Accept</button>
+                    <button (click)="declineTopic(topic)" class="decline-button">Decline</button>
+                </div>
             </div>
         </div>
     </div>

@@ -65,10 +65,12 @@
             </div>
             <button class="button" (click)="addTopic()">Add Topic</button>
 
-            <div *ngIf="suggestedTimes.length > 0">
+            <div *ngIf="suggestedTimes.length > 0" class="suggested-times-container">
                 <h4>Suggested times:</h4>
-                <div *ngFor="let time of suggestedTimes">
-                    <button (click)="setTopic(time)">{{ time.start }} - {{ time.end }}</button>
+                <div class="suggested-times-buttons">
+                    <button class="suggested-time-button" *ngFor="let time of suggestedTimes" (click)="setTopic(time)">
+                        {{ time.start }} - {{ time.end }}
+                    </button>
                 </div>
             </div>
             <div *ngIf="showError" class="error-message">

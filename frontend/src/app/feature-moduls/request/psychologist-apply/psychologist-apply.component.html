@@ -21,7 +21,7 @@
                 <div *ngIf="requestDetail.topics && requestDetail.topics.length > 0; else noTopics">
                     <div *ngFor="let topic of requestDetail.topics; let i = index">
                         <!-- Prikaz datuma samo ako je različit od prethodnog -->
-                        <h4 *ngIf="i === 0 || (topic.date | date:'yyyy-MM-dd') !== (requestDetail.topics[i - 1]?.date | date:'yyyy-MM-dd')" class="topic-date">
+                        <h4 *ngIf="i === 0 || (topic.date | date:'yyyy-MM-dd') !== (requestDetail.topics[i - 1].date | date:'yyyy-MM-dd')" class="topic-date">
                             {{ topic.date | date }}
                         </h4>
                         <div class="topic-step">

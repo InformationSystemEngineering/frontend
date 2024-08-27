@@ -89,7 +89,10 @@ export class PsychologistApplyComponent {
                     endTime: topic.endTime,
                     reservationId: 1,
                     psychologistId: topic.psychologistId,
-                    psychologists: topic.psychologists
+                    psychologists: topic.psychologists,
+                    disabled: false,
+                    facultyName: topic.facultyName,
+                    requestName: topic.requestName
                 }));
                 requestDetail.showDetails = true; // Show details after fetching
                 this.topics1 = requestDetail.topics;

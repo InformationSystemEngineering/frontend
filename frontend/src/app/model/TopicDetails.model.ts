@@ -12,4 +12,7 @@ export interface TopicDetails {
     date?: Date;
     psychologists: Psychologist[];
     reservationId: number;
+    disabled: boolean;
+    facultyName: string;
+    requestName: string;
 }

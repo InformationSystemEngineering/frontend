@@ -88,7 +88,10 @@ requestDetail: RequestDetailDto | undefined;
           endTime: topic.endTime,
           reservationId: 1,
           psychologistId: topic.psychologistId,
-          psychologists: topic.psychologists
+          psychologists: topic.psychologists,
+          disabled: false,
+          facultyName: topic.facultyName,
+          requestName: topic.requestName
         }));
         this.filteredTopics = this.topics1; // Inicijalno popunjava filteredTopics sa svim topicima
         this.updateFilteredTopics(); // Pozovite metodu za ažuriranje
@@ -147,7 +150,10 @@ sortTopics(order: 'asc' | 'desc'): void {
                     endTime: topic.endTime,
                     reservationId: 1,
                     psychologistId: topic.psychologistId,
-                    psychologists: topic.psychologists
+                    psychologists: topic.psychologists,
+                    disabled: false,
+                    facultyName: topic.facultyName,
+                    requestName: topic.requestName
                 }));
 
                 console.log("Topics with assigned IDs:", this.topics1);
@@ -344,11 +350,24 @@ reloadTopics(): void {
         endTime: topic.endTime,
         reservationId: topic.reservationId,
         psychologistId: topic.psychologistId,
-        psychologists: topic.psychologists
+        psychologists: topic.psychologists,
+        disabled: false,
+        facultyName: topic.facultyName,
+        requestName: topic.requestName
       }));
       this.filteredTopics = this.topics1; // Ažuriranje prikaza filtriranih tema
       this.updateFilteredTopics(); // Osvežavanje filtrirane liste tema
       console.log("Topics reloaded successfully:", this.topics1);
+
+      this.topics1.forEach(topic => {
+        if (topic.id) {
+            this.getClassroomDate(topic); // Setovanje datuma direktno u topic
+        } else {
+            console.warn("Topic ID is undefined for topic:", topic);
+        }
+    });
+
+  
     },
     error: (err) => {
       console.error("Error reloading topics:", err);

@@ -30,7 +30,10 @@
     mat-button
     routerLink="/organizefair"
     *ngIf="userRole == 'ROLE_MANAGER'"
-    > | Invite faculties </a
+    matBadge="3"
+  matBadgeColor="warn"
+  matBadgeOverlap="false"
+    > | Invite faculties |</a
   >
   <a mat-button routerLink="/students" *ngIf="userRole == 'ROLE_STUDENT'"
     >| Internship progress |</a>
@@ -54,14 +57,15 @@
   routerLink="/all_requests" 
   *ngIf="userRole == 'ROLE_MANAGER'"
   
+  
 >
-  | Accepted requests |
+   Accepted requests |
 </a>
 
 
   <a
     mat-button
-    routerLink="/publishfair"
+    routerLink="/publish"
     *ngIf="userRole == 'ROLE_MANAGER'"
     >Publish fairs |</a
   >

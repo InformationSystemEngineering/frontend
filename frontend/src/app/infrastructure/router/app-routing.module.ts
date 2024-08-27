@@ -30,6 +30,7 @@ import { ChatComponent } from 'src/app/feature-moduls/request/chat/chat.componen
 import { PsychologistApplyComponent } from 'src/app/feature-moduls/request/psychologist-apply/psychologist-apply.component';
 import { NotificationsComponent } from 'src/app/feature-moduls/request/notifications/notifications.component';
 import { NotificationsManagerComponent } from 'src/app/feature-moduls/request/notifications-manager/notifications-manager.component';
+import { PublishComponent } from 'src/app/feature-moduls/request/publish/publish.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -102,7 +103,8 @@ const routes: Routes = [
     component: PsychologistApplyComponent
   },
   { path: 'notifications', component: NotificationsComponent },
-  { path: 'notifications-manager', component: NotificationsManagerComponent }
+  { path: 'notifications-manager', component: NotificationsManagerComponent },
+  { path: 'publish', component: PublishComponent },
 
 ];
 

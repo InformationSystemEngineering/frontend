@@ -7,6 +7,7 @@ import { ConfirmationDialogComponent } from './confirmation-dialog/confirmation-
 import { PsychologistApplyComponent } from './psychologist-apply/psychologist-apply.component';
 import { NotificationsComponent } from './notifications/notifications.component';
 import { NotificationsManagerComponent } from './notifications-manager/notifications-manager.component';
+import { PublishComponent } from './publish/publish.component';
 
 
 
@@ -18,7 +19,8 @@ import { NotificationsManagerComponent } from './notifications-manager/notificat
     ConfirmationDialogComponent,
     PsychologistApplyComponent,
     NotificationsComponent,
-    NotificationsManagerComponent
+    NotificationsManagerComponent,
+    PublishComponent
   ],
   imports: [
     CommonModule

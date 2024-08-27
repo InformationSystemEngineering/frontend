@@ -49,6 +49,7 @@ import { ConfirmationDialogComponent } from './feature-moduls/request/confirmati
 import { PsychologistApplyComponent } from './feature-moduls/request/psychologist-apply/psychologist-apply.component';
 import { NotificationsComponent } from './feature-moduls/request/notifications/notifications.component';
 import { NotificationsManagerComponent } from './feature-moduls/request/notifications-manager/notifications-manager.component';
+import { PublishComponent } from './feature-moduls/request/publish/publish.component';
 
 @NgModule({
   declarations: [
@@ -74,6 +75,7 @@ import { NotificationsManagerComponent } from './feature-moduls/request/notifica
     PsychologistApplyComponent,
     NotificationsComponent,
     NotificationsManagerComponent,
+    PublishComponent,
 
     LoginComponent,
       HomeComponent,

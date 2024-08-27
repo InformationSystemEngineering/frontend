@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { AuthServiceService } from 'src/app/infrastructure/auth/register/auth-service.service';
 import { InternshipTest } from 'src/app/model/internship.model';
 import { Observable } from 'rxjs';
+import { TopicDetails } from 'src/app/model/TopicDetails.model';
 
 @Component({
   selector: 'app-home',
@@ -23,44 +24,57 @@ export class HomeComponent implements OnInit {
     private router: Router,
     private authService: AuthServiceService){}
 
-  ngOnInit(): void {
-    this.authService.loginStatus$.subscribe(loggedIn => {
-      if (loggedIn) {
-        const token = localStorage.getItem('token');
-        this.userClaims = this.authService.decodeToken();
-        this.userRole = this.userClaims.role[0].authority; 
-      } else {
-        this.userRole = '';
-      }
-    });
-
-    if(this.userRole == 'ROLE_PSYCHOLOG'){
-      this.showNotification();
-    }
-  }
-
-    
-  showNotification(): void {
-    this.areThereUnreviewedTests()
-      .subscribe((isThere: boolean) => {
-        console.log("is there: ", isThere)
-        if (isThere) {
-          const toast = this.notifications.info(
-            'Ima nepregledanih testova!',
-            'Udjite da biste uneli rezultate!',
-            {
-              timeOut: 2500,
-              showProgressBar: true,
-              clickToClose: true,
-            }
-          );
-
-          toast.click?.subscribe(() => {
-            this.router.navigate(['/test-history']);
-          });
+    ngOnInit(): void {
+      this.authService.loginStatus$.subscribe((loggedIn) => {
+        if (loggedIn) {
+          this.userClaims = this.authService.decodeToken();
+          this.userRole = this.userClaims.role[0].authority;
+          if (this.userRole === 'ROLE_PSYCHOLOG') {
+            this.showNotification();
+          }
+          else if (this.userRole === 'ROLE_MANAGER'){
+            this.showNotification1();
+          }
+        } else {
+          this.userRole = '';
         }
       });
-  }
+    }
+  
+    showNotification(): void {
+      const toast = this.notifications.info(
+        'New Topic Invitations',
+        'Click here to view your topic invitations.',
+        {
+          timeOut: 5000,
+          showProgressBar: true,
+          clickToClose: true,
+          pauseOnHover: true,
+        }
+      );
+  
+      toast.click?.subscribe(() => {
+        this.router.navigate(['/notifications']); // Navigate to the notifications component
+      });
+    }
+
+    showNotification1(): void {
+      const toast = this.notifications.info(
+        'Psychologist request for topic',
+        'Click here to view psychologist request.',
+        {
+          timeOut: 5000,
+          showProgressBar: true,
+          clickToClose: true,
+          pauseOnHover: true,
+        }
+      );
+  
+      toast.click?.subscribe(() => {
+        this.router.navigate(['/notifications-manager']); // Navigate to the notifications component
+      });
+    }
+
 
   areThereUnreviewedTests(): Observable<boolean> {
     console.log("here");

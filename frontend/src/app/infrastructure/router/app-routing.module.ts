@@ -28,6 +28,8 @@ import { AllRequestsComponent } from 'src/app/feature-moduls/request/all-request
 import { PickRequestComponent } from 'src/app/feature-moduls/request/pick-request/pick-request.component';
 import { ChatComponent } from 'src/app/feature-moduls/request/chat/chat.component';
 import { PsychologistApplyComponent } from 'src/app/feature-moduls/request/psychologist-apply/psychologist-apply.component';
+import { NotificationsComponent } from 'src/app/feature-moduls/request/notifications/notifications.component';
+import { NotificationsManagerComponent } from 'src/app/feature-moduls/request/notifications-manager/notifications-manager.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -98,7 +100,9 @@ const routes: Routes = [
   {
     path: 'psychologist_apply',
     component: PsychologistApplyComponent
-  }
+  },
+  { path: 'notifications', component: NotificationsComponent },
+  { path: 'notifications-manager', component: NotificationsManagerComponent }
 
 ];
 

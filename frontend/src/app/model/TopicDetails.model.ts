@@ -10,5 +10,6 @@ export interface TopicDetails {
     startTime: string;
     endTime: string;
     date?: Date;
-    psychologists: Psychologist[]
+    psychologists: Psychologist[];
+    reservationId: number;
 }

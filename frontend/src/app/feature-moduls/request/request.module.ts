@@ -5,6 +5,8 @@ import { PickRequestComponent } from './pick-request/pick-request.component';
 import { ChatComponent } from './chat/chat.component';
 import { ConfirmationDialogComponent } from './confirmation-dialog/confirmation-dialog.component';
 import { PsychologistApplyComponent } from './psychologist-apply/psychologist-apply.component';
+import { NotificationsComponent } from './notifications/notifications.component';
+import { NotificationsManagerComponent } from './notifications-manager/notifications-manager.component';
 
 
 
@@ -14,7 +16,9 @@ import { PsychologistApplyComponent } from './psychologist-apply/psychologist-ap
     PickRequestComponent,
     ChatComponent,
     ConfirmationDialogComponent,
-    PsychologistApplyComponent
+    PsychologistApplyComponent,
+    NotificationsComponent,
+    NotificationsManagerComponent
   ],
   imports: [
     CommonModule

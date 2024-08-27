@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { Classroom } from 'src/app/model/Classroom.model';
 import { ClassroomDateDto } from 'src/app/model/ClassroomDateDto.model';
 import { Message } from 'src/app/model/Message.model';
+import { PsychologistWithTopicsDto } from 'src/app/model/PsychologistWithTopicsDto.model';
 import { CustomRequest } from 'src/app/model/Request.model';
 import { RequestDetailDto } from 'src/app/model/RequestDetailDto.model';
 import { Reservation } from 'src/app/model/Reservation.model';
@@ -110,4 +111,11 @@ updateTopicWithPsychologist(topicName: string, psychologistId: number): Observab
   return this.http.put(`${environment.apiHost}topics/update-psychologist`, { topicName, psychologistId });
 }
 
+getTopicsForPsychologist(psychologistId: number): Observable<TopicDetails[]> {
+  return this.http.get<TopicDetails[]>(`${environment.apiHost}topics/psychologist?psychologistId=2`);
+}
+
+getAllPsychologistsWithTopics(): Observable<PsychologistWithTopicsDto[]> {
+  return this.http.get<PsychologistWithTopicsDto[]>(`${environment.apiHost}psychologists/with-topics`);
+}
 }

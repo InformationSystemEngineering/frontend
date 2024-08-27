@@ -1,0 +1,14 @@
+<!-- notifications.component.html -->
+<div class="notifications-container">
+    <h2>Your Topic Invitations</h2>
+    <div *ngFor="let topic of topics" class="notification-card">
+      <p class="topic-title"><strong>Topic:</strong> {{ topic.name }}</p>
+      <p class="topic-classroom"><strong>Classroom:</strong> {{ topic.classroom.name }}</p>
+      <p class="topic-time"><strong>Time:</strong> {{ topic.startTime  }} - {{ topic.endTime }}</p>
+      <div class="topic-buttons">
+        <button (click)="acceptInvitation(topic)" class="accept-button">Accept</button>
+        <button (click)="declineInvitation(topic)" class="decline-button">Decline</button>
+      </div>
+    </div>
+  </div>
+  

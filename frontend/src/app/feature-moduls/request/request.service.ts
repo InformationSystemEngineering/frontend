@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { Classroom } from 'src/app/model/Classroom.model';
 import { ClassroomDateDto } from 'src/app/model/ClassroomDateDto.model';
 import { Message } from 'src/app/model/Message.model';
+import { PsychologistDto } from 'src/app/model/PsychologistDto.model';
 import { PsychologistWithTopicsDto } from 'src/app/model/PsychologistWithTopicsDto.model';
 import { CustomRequest } from 'src/app/model/Request.model';
 import { RequestDetailDto } from 'src/app/model/RequestDetailDto.model';
@@ -117,5 +118,13 @@ getTopicsForPsychologist(psychologistId: number): Observable<TopicDetails[]> {
 
 getAllPsychologistsWithTopics(): Observable<PsychologistWithTopicsDto[]> {
   return this.http.get<PsychologistWithTopicsDto[]>(`${environment.apiHost}psychologists/with-topics`);
+}
+
+getPsychologistByTopicId(topicId: number): Observable<PsychologistDto> {
+  return this.http.get<PsychologistDto>(`${environment.apiHost}psychologists/${topicId}/psychologist`);
+}
+
+updateFairPublishStatus(fairId: number, isPublish: boolean): Observable<void> {
+  return this.http.put<void>(`${environment.apiHost}fairs/${fairId}/publish?isPublish=${isPublish}`, {});
 }
 }

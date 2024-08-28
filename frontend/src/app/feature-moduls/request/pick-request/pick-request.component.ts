@@ -91,7 +91,9 @@ requestDetail: RequestDetailDto | undefined;
           psychologists: topic.psychologists,
           disabled: false,
           facultyName: topic.facultyName,
-          requestName: topic.requestName
+          requestName: topic.requestName,
+          psychologistName: topic.psychologistName, // Include psychologist's name
+          psychologistSurname: topic.psychologistSurname
         }));
         this.filteredTopics = this.topics1; // Inicijalno popunjava filteredTopics sa svim topicima
         this.updateFilteredTopics(); // Pozovite metodu za ažuriranje
@@ -153,7 +155,9 @@ sortTopics(order: 'asc' | 'desc'): void {
                     psychologists: topic.psychologists,
                     disabled: false,
                     facultyName: topic.facultyName,
-                    requestName: topic.requestName
+                    requestName: topic.requestName,
+                    psychologistName: topic.psychologistName, // Include psychologist's name
+                    psychologistSurname: topic.psychologistSurname
                 }));
 
                 console.log("Topics with assigned IDs:", this.topics1);
@@ -353,7 +357,8 @@ reloadTopics(): void {
         psychologists: topic.psychologists,
         disabled: false,
         facultyName: topic.facultyName,
-        requestName: topic.requestName
+        requestName: topic.requestName,
+        psychologistName: topic.psychologistName
       }));
       this.filteredTopics = this.topics1; // Ažuriranje prikaza filtriranih tema
       this.updateFilteredTopics(); // Osvežavanje filtrirane liste tema

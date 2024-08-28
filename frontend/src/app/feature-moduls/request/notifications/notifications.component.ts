@@ -33,7 +33,8 @@ export class NotificationsComponent implements OnInit {
           date: undefined,  // Initially undefined
           disabled: false ,
           facultyName: topic.facultyName,
-          requestName: topic.requestName  // Initially not disabled
+          requestName: topic.requestName ,
+          psychologistName: topic.psychologistName, // Include psychologist's name
         }));
 
         this.topics.forEach(topic => {

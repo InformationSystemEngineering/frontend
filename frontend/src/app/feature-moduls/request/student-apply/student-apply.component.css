@@ -1,0 +1,201 @@
+.fairs-container {
+    display: flex;
+    flex-direction: column;
+    width: 90%; /* Increased width to span more of the screen */
+    margin: 20px auto;
+    margin-top: 100px;
+    /* margin-bottom: 300px; */
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    min-height: 500px;
+}
+
+.search-sort-container {
+    margin-bottom: 20px;
+}
+
+.search-input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.carousel-container {
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.fairs-list {
+    display: flex;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    padding: 10px 0;
+    white-space: nowrap;
+    width: 100%;
+    max-width: 100%; /* Full width for the container */
+}
+
+.fair-item {
+    background-color: #f1f1f1;
+    margin: 0 20px; /* Increased margin for more spacing */
+    padding: 20px; /* Increased padding for larger boxes */
+    border-radius: 8px;
+    min-width: 650px; /* Increased minimum width */
+    max-width: 650px; /* Consistent width for each item */
+    box-sizing: border-box;
+}
+
+.fair-item:hover {
+    background-color: #e0e0e0;
+}
+
+.request-title {
+    font-size: 20px; /* Increased font size */
+    font-weight: bold;
+}
+
+.fair-details {
+    margin-top: 10px;
+}
+
+.dropdown-arrow {
+    background: none;
+    border: none;
+    color: #007bff;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 10px;
+}
+
+.dropdown-arrow:hover {
+    text-decoration: underline;
+}
+
+.topic-details {
+    margin-top: 10px;
+    padding-left: 10px;
+    border-left: 2px solid #007bff;
+}
+
+.published {
+    color: green;
+}
+
+.unpublished {
+    color: green;
+}
+
+.carousel-nav {
+    background: none;
+    border: none;
+    font-size: 36px; /* Increased font size for better visibility */
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 1;
+}
+
+.left-nav {
+    left: -40px; /* Adjusted position for visibility */
+}
+
+.right-nav {
+    right: -40px; /* Adjusted position for visibility */
+}
+
+.highlight {
+    color: red;  /* Sets the text color to red */
+    font-weight: bold;  /* Makes the text bold */
+}
+
+.large-blue-text {
+    font-size: 18px; /* Adjust the size as needed */
+    color: blue;
+    font-weight: bold; /* Optional: Add bold for better readability */
+}
+
+.join-form {
+    margin-bottom: 20px;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    width: 550px;
+    align-items: center;
+    gap: 10px;
+    margin: 0 auto; /* centrirano */
+    margin-bottom: 10px;
+}
+
+.form-title {
+    font-size: 18px;
+    font-weight: bold;
+    color: #007bff;
+    margin-bottom: 10px;
+}
+
+.form-input {
+    width: 80%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    font-size: 16px;
+}
+
+.submit-button {
+    padding: 10px 20px;
+    background-color: #28a745;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.submit-button:hover {
+    background-color: #218838;
+}
+
+.highlighted {
+    background-color: #f0f8ff;
+    border: 2px solid #007bff;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s, border 0.3s;
+}
+
+.join-topic-button {
+    padding: 10px 20px;
+    background-color: #1f528c;  /* Green background color */
+    color: white;               /* White text color */
+    border: none;               /* Remove border */
+    border-radius: 5px;         /* Rounded corners */
+    font-size: 14px;            /* Font size */
+    cursor: pointer;            /* Change cursor to pointer */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+    transition: background-color 0.3s, box-shadow 0.3s; /* Smooth transitions */
+}
+
+.join-topic-button:hover {
+    background-color: #14365c;  /* Darker green on hover */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Stronger shadow on hover */
+}
+
+.join-topic-button:active {
+    background-color: #1f528c;  /* Even darker green on click */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Smaller shadow on click */
+}
+
+.disabled-button {
+    background-color: #ccc;
+    color: #666;
+    cursor: not-allowed;
+  }
+  

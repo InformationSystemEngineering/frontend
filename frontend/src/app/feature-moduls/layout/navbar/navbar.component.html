@@ -70,12 +70,12 @@
     >Publish fairs |</a
   >
 
-  <a
+  <!-- <a
     mat-button
     routerLink="/my-fairs"
     *ngIf="userRole == 'ROLE_STUDENT'"
     >My fairs |</a
-  >
+  > -->
 
   <!-- <a mat-button routerLink="/materialfair" *ngIf="userRole == 'ROLE_MANAGER'"
     >| Material for fair |</a
@@ -89,7 +89,7 @@
 
   <a
   mat-button
-  routerLink="/visitfairs"
+  routerLink="/student_apply"
   *ngIf="userRole == 'ROLE_REGISTERED_USER' || userRole == 'ROLE_STUDENT'"
   >  Visit fairs |</a
 >

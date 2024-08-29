@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { ApplicationDto } from 'src/app/model/ApplicationDto.model';
 import { Classroom } from 'src/app/model/Classroom.model';
 import { ClassroomDateDto } from 'src/app/model/ClassroomDateDto.model';
 import { Message } from 'src/app/model/Message.model';
@@ -31,6 +32,10 @@ export class RequestService {
 
   getAllRequestDetails(): Observable<RequestDetailDto[]> {
     return this.http.get<RequestDetailDto[]>(environment.apiHost + 'requests/getAllAcceptedRequestDetails');
+  }
+
+  getAllPublishedRequestDetails(): Observable<RequestDetailDto[]> {
+    return this.http.get<RequestDetailDto[]>(environment.apiHost + 'requests/getAllAcceptedPublishedRequestDetails');
   }
 
   getRequestDetails(id: number) :Observable<RequestDetailDto> {
@@ -127,4 +132,14 @@ getPsychologistByTopicId(topicId: number): Observable<PsychologistDto> {
 updateFairPublishStatus(fairId: number, isPublish: boolean): Observable<void> {
   return this.http.put<void>(`${environment.apiHost}fairs/${fairId}/publish?isPublish=${isPublish}`, {});
 }
+
+applyForTopic(applicationData: ApplicationDto): Observable<any> {
+  return this.http.post(`${environment.apiHost}applications/apply`, applicationData);
+}
+
+getTopicsByStudentId(studentId: number): Observable<TopicDetails[]> {
+  const url = `${environment.apiHost}applications/topics-by-student/${studentId}`;
+  return this.http.get<TopicDetails[]>(url);
+}
+
 }

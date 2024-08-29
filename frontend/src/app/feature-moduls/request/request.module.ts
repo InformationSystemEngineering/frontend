@@ -8,6 +8,8 @@ import { PsychologistApplyComponent } from './psychologist-apply/psychologist-ap
 import { NotificationsComponent } from './notifications/notifications.component';
 import { NotificationsManagerComponent } from './notifications-manager/notifications-manager.component';
 import { PublishComponent } from './publish/publish.component';
+import { StudentApplyComponent } from './student-apply/student-apply.component';
+import { NotificationsStudentComponent } from './notifications-student/notifications-student.component';
 
 
 
@@ -20,7 +22,9 @@ import { PublishComponent } from './publish/publish.component';
     PsychologistApplyComponent,
     NotificationsComponent,
     NotificationsManagerComponent,
-    PublishComponent
+    PublishComponent,
+    StudentApplyComponent,
+    NotificationsStudentComponent
   ],
   imports: [
     CommonModule

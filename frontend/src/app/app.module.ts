@@ -50,6 +50,8 @@ import { PsychologistApplyComponent } from './feature-moduls/request/psychologis
 import { NotificationsComponent } from './feature-moduls/request/notifications/notifications.component';
 import { NotificationsManagerComponent } from './feature-moduls/request/notifications-manager/notifications-manager.component';
 import { PublishComponent } from './feature-moduls/request/publish/publish.component';
+import { StudentApplyComponent } from './feature-moduls/request/student-apply/student-apply.component';
+import { NotificationsStudentComponent } from './feature-moduls/request/notifications-student/notifications-student.component';
 
 @NgModule({
   declarations: [
@@ -76,6 +78,8 @@ import { PublishComponent } from './feature-moduls/request/publish/publish.compo
     NotificationsComponent,
     NotificationsManagerComponent,
     PublishComponent,
+    StudentApplyComponent,
+    NotificationsStudentComponent,
 
     LoginComponent,
       HomeComponent,

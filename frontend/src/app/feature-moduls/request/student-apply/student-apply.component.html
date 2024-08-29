@@ -1,0 +1,75 @@
+<div class="fairs-container">
+
+    <!-- Forma za prijavu -->
+    <div *ngIf="showJoinForm" class="join-form">
+        <h3 class="form-title">Join Topic: {{ selectedTopicName }}</h3>
+        <input type="text" placeholder="Name" [(ngModel)]="applicationData.name" class="form-input">
+        <input type="text" placeholder="Last Name" [(ngModel)]="applicationData.surname" class="form-input">
+        <input type="text" placeholder="Study Year" [(ngModel)]="applicationData.studyYear" class="form-input">
+        <input type="text" placeholder="Email" [(ngModel)]="applicationData.email" class="form-input">
+        <button (click)="submitApplication()" class="submit-button">Join</button>
+    </div>
+
+    <!-- Search bar i filter -->
+    <div class="search-sort-container">
+        <input type="text" placeholder="Search by fair name..." [(ngModel)]="searchTerm" (input)="filterRequests()" class="search-input">
+    </div>
+
+    <div class="carousel-container">
+        <button class="carousel-nav left-nav" (click)="scrollLeft()">&#9664;</button>
+        
+        <div class="fairs-list" #fairsList>
+            <div class="fair-item" *ngFor="let requestDetail of filteredRequests">
+                <h2 class="request-title">{{ requestDetail.request.name }}</h2>
+                <div *ngIf="requestDetail.fair" class="fair-details">
+                    <p *ngIf="requestDetail.faculty?.name" class="faculty-name">{{ requestDetail.faculty.name }}</p>
+                    <p class="fair-dates">{{ requestDetail.fair.approvedStartDate | date }} - {{ requestDetail.fair.approvedEndDate | date }}</p>
+                    <p class="fair-published" [ngClass]="{'published': requestDetail.fair.isPublish, 'unpublished': !requestDetail.fair.isPublish}">
+                        Published: Yes
+                    </p>
+                </div>
+                <button (click)="toggleDetails(requestDetail)" class="dropdown-arrow">
+                    <i class="arrow-icon">{{ requestDetail.showDetails ? '▲' : '▼' }}</i> {{ requestDetail.showDetails ? 'Hide Topics' : 'Show Topics' }}
+                </button>
+                <div *ngIf="requestDetail.showDetails" class="topic-details">
+                    <div *ngIf="requestDetail.topics && requestDetail.topics.length > 0; else noTopics">
+                        <div *ngFor="let topic of requestDetail.topics; let i = index" [ngClass]="{'highlighted': topic.id === selectedTopicId}">
+                            <h4 *ngIf="i === 0 || (topic.date | date:'yyyy-MM-dd') !== (requestDetail.topics[i - 1].date | date:'yyyy-MM-dd')" class="topic-date">
+                                {{ topic.date | date }}
+                            </h4>
+                            <div class="topic-step">
+                                <p class="topic-title">
+                                  <span class="topic-title large-blue-text">
+                                    {{ topic.name }} - {{ topic.classroom.name }} ({{ topic.startTime }} - {{ topic.endTime }})
+                                  </span>
+                                  <br>
+                                  <span *ngIf="getPsychologistFullName(topic.id)">
+                                    <strong>Psychologist in charge:</strong> {{ getPsychologistFullName(topic.id) }}
+                                  </span>
+                                  <br>
+                                  <span class="highlight">Only {{ topic.availableSpots }} available spots left!</span>
+                                </p>
+                                <button 
+                                    (click)="openJoinForm(topic)" 
+                                    class="join-topic-button" 
+                                    [disabled]="topic.disabled || joinedTopics.has(topic.id)"
+                                    [ngClass]="{'disabled-button': topic.disabled || joinedTopics.has(topic.id)}"
+                                    >
+                                    Join this topic
+                                </button>
+
+
+                              </div>
+                              
+                        </div>
+                    </div>
+                    <ng-template #noTopics>
+                        <p class="no-topics-message">No topics available for this request.</p>
+                    </ng-template>
+                </div>
+            </div>
+        </div>
+
+        <button class="carousel-nav right-nav" (click)="scrollRight()">&#9654;</button>
+    </div>
+</div>

@@ -35,6 +35,9 @@ export class HomeComponent implements OnInit {
           else if (this.userRole === 'ROLE_MANAGER'){
             this.showNotification1();
           }
+          else if (this.userRole === 'ROLE_STUDENT'){
+            this.showNotification2();
+          }
         } else {
           this.userRole = '';
         }
@@ -55,6 +58,23 @@ export class HomeComponent implements OnInit {
   
       toast.click?.subscribe(() => {
         this.router.navigate(['/notifications']); // Navigate to the notifications component
+      });
+    }
+
+    showNotification2(): void {
+      const toast = this.notifications.info(
+        'Reminder: Your topic that you signed up for is tomorrow.',
+        'Click here to view topic.',
+        {
+          timeOut: 5000,
+          showProgressBar: true,
+          clickToClose: true,
+          pauseOnHover: true,
+        }
+      );
+  
+      toast.click?.subscribe(() => {
+        this.router.navigate(['/notifications-student']); // Navigate to the notifications component
       });
     }
 

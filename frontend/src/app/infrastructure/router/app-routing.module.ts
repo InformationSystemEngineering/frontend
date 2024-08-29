@@ -31,6 +31,8 @@ import { PsychologistApplyComponent } from 'src/app/feature-moduls/request/psych
 import { NotificationsComponent } from 'src/app/feature-moduls/request/notifications/notifications.component';
 import { NotificationsManagerComponent } from 'src/app/feature-moduls/request/notifications-manager/notifications-manager.component';
 import { PublishComponent } from 'src/app/feature-moduls/request/publish/publish.component';
+import { StudentApplyComponent } from 'src/app/feature-moduls/request/student-apply/student-apply.component';
+import { NotificationsStudentComponent } from 'src/app/feature-moduls/request/notifications-student/notifications-student.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -105,6 +107,8 @@ const routes: Routes = [
   { path: 'notifications', component: NotificationsComponent },
   { path: 'notifications-manager', component: NotificationsManagerComponent },
   { path: 'publish', component: PublishComponent },
+  { path: 'student_apply', component: StudentApplyComponent },
+  { path: 'notifications-student', component: NotificationsStudentComponent },
 
 ];
 

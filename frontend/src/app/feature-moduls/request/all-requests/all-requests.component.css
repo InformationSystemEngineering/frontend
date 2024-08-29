@@ -1,33 +1,10 @@
 .container {
     position: relative;
-    display: flex;
-    flex-direction: column;
     padding: 20px;
-    width: 100%; /* Ensure the container is full width */
-    max-width: 100%; /* Ensure no maximum width limit */
-    overflow: auto;
     background-color: #f4f7fa;
-    margin: 0 auto; /* Center the container if it has a max-width */
-    box-sizing: border-box; /* Ensure padding is included in width calculations */
-}
-
-#date{
-   font-weight: bold;
-}
-
-.container::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 1200px;
-    height: 100%;
-    background-image: url('https://img.freepik.com/premium-vector/metaphor-bipolar-disorder-mind-mental-2-head-silhouette-with-flowering-tree-bare-tree_175061-662.jpg');
-    background-size: cover;
-    background-position: center;
-    filter: blur(8px);
-    z-index: -1;
-    opacity: 0.3;
+    width: 100%;
+    max-width: 100%;
+    margin: 0 auto;
 }
 
 .search-sort-container {
@@ -66,12 +43,20 @@
     background-color: #0056b3;
 }
 
-.all-requests {
+.carousel-container {
+    position: relative;
     display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 30px; /* Povećan razmak između kartica */
-    z-index: 1;
+    align-items: center;
+    overflow: hidden;
+    width: 100%;
+}
+
+.carousel {
+    display: flex;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+    width: calc(100% - 20px); /* Adjust width to fit two cards and buttons */
+    gap: 30px; /* Space between cards */
 }
 
 .request-container {
@@ -80,7 +65,7 @@
     border-radius: 8px;
     padding: 25px; /* Povećano margine unutar kartice */
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    width: calc(50% - 60px); /* Šire kartice */
+    min-width: calc(50% - 60px); /* Šire kartice */
     display: flex;
     flex-direction: column;
 }
@@ -89,6 +74,22 @@
     font-size: 1.8em; /* Povećana veličina naslova */
     margin-bottom: 15px;
     color: #333;
+}
+
+.carousel-nav {
+    background: none;
+    border: none;
+    font-size: 2em;
+    cursor: pointer;
+    z-index: 1;
+}
+
+.left-nav {
+    margin-right: -30px;
+}
+
+.right-nav {
+    margin-left: -30px;
 }
 
 .fair-details {
@@ -149,7 +150,7 @@
     margin-bottom: 15px;
     color: #333;
     margin-top: 20px;
-    margin-left: 210px;
+    /* margin-left: 210px; */
 }
 
 .classroom-circles {

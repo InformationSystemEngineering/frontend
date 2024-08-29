@@ -87,5 +87,27 @@ getClassroomsByDate(classrooms: Classroom[], date: Date): Classroom[] {
     return classrooms.filter(classroom => classroom.date === date);
 }
 
+// student-apply.component.ts
+
+scrollLeft(): void {
+  const carousel = document.querySelector('.carousel');
+  if (carousel) {
+      carousel.scrollBy({
+          left: -300, // Adjust this value based on the card width
+          behavior: 'smooth'
+      });
+  }
+}
+
+scrollRight(): void {
+  const carousel = document.querySelector('.carousel');
+  if (carousel) {
+      carousel.scrollBy({
+          left: 300, // Adjust this value based on the card width
+          behavior: 'smooth'
+      });
+  }
+}
+
 
 }

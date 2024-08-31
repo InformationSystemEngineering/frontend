@@ -25,9 +25,20 @@
                             {{ topic.date | date }}
                         </h4>
                         <div class="topic-step">
-                            <p class="topic-title">
+                            <h4 class="topic-title">
                                 {{ topic.name }} - {{ topic.classroom.name }} ({{ topic.startTime }} - {{ topic.endTime }})
-                            </p>
+                            </h4>
+                            <p>Select how would you like to apply for this topic:</p>
+                            
+                            <!-- Radio buttons to select psychologist category -->
+                            <div class="radio-group">
+                                <label>
+                                    <input type="radio" name="psychologistType"> Psychologists for Organization
+                                </label>
+                                <label>
+                                    <input type="radio" name="psychologistType"> Psychologists for Presentation
+                                </label>
+                            </div>
 
                             <div *ngIf="topic.showOpenFileButton">
                                 <button class="apply-button" (click)="openFilePicker(topic)">Upload PDF</button>

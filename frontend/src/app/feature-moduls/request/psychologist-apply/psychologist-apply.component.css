@@ -107,3 +107,23 @@
     font-style: italic;
     color: #888;
 }
+
+.topic-title{
+    color: #0056b3;
+    font-weight: bold;
+}
+
+.radio-group {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 40px; /* Space between radio buttons */
+    margin-bottom: 20px;
+}
+
+.radio-group label {
+    font-size: 16px;
+    font-weight: bold;
+    color: #333;
+    cursor: pointer;
+}

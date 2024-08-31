@@ -34,7 +34,8 @@ export class NotificationsComponent implements OnInit {
           disabled: false ,
           facultyName: topic.facultyName,
           requestName: topic.requestName ,
-          psychologistName: topic.psychologistName, // Include psychologist's name
+          psychologistName: topic.psychologistName,
+          pdfUrl: '' // Include psychologist's name
         }));
 
         this.topics.forEach(topic => {

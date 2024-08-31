@@ -12,6 +12,7 @@ import { ClassroomDateDto } from 'src/app/model/ClassroomDateDto.model';
 import { catchError, map, Observable, of } from 'rxjs';
 import { ConfirmationDialogComponent } from '../confirmation-dialog/confirmation-dialog.component';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { PsychologistDto } from 'src/app/model/PsychologistDto.model';
 
 @Component({
   selector: 'app-pick-request',
@@ -41,6 +42,9 @@ requestDetail: RequestDetailDto | undefined;
   searchQuery: string = '';
   filteredTopics: TopicDetails[] = [];
   stepDisabled: number | null = null;
+  selectedCategory: string = ''; // To store the selected category
+  organizationPsychologists: PsychologistDto[] = [];
+  nonOrganizationPsychologists: PsychologistDto[] = [];
 
 
   constructor(
@@ -93,7 +97,8 @@ requestDetail: RequestDetailDto | undefined;
           facultyName: topic.facultyName,
           requestName: topic.requestName,
           psychologistName: topic.psychologistName, // Include psychologist's name
-          psychologistSurname: topic.psychologistSurname
+          psychologistSurname: topic.psychologistSurname,
+          pdfUrl: ''
         }));
         this.filteredTopics = this.topics1; // Inicijalno popunjava filteredTopics sa svim topicima
         this.updateFilteredTopics(); // Pozovite metodu za ažuriranje
@@ -157,7 +162,8 @@ sortTopics(order: 'asc' | 'desc'): void {
                     facultyName: topic.facultyName,
                     requestName: topic.requestName,
                     psychologistName: topic.psychologistName, // Include psychologist's name
-                    psychologistSurname: topic.psychologistSurname
+                    psychologistSurname: topic.psychologistSurname,
+                    pdfUrl: ''
                 }));
 
                 console.log("Topics with assigned IDs:", this.topics1);
@@ -358,7 +364,8 @@ reloadTopics(): void {
         disabled: false,
         facultyName: topic.facultyName,
         requestName: topic.requestName,
-        psychologistName: topic.psychologistName
+        psychologistName: topic.psychologistName,
+        pdfUrl: ''
       }));
       this.filteredTopics = this.topics1; // Ažuriranje prikaza filtriranih tema
       this.updateFilteredTopics(); // Osvežavanje filtrirane liste tema
@@ -446,7 +453,6 @@ goToStep(step: number): void {
 disableStep(step: number): void {
   this.stepDisabled = step;
 }
-
 confirmPsychologist(topicId: number, psychologistId: number, topicName: string, psychologistName: string): void {
   const dialogRef = this.dialog.open(ConfirmationDialogComponent, {
     width: '400px',
@@ -460,7 +466,7 @@ confirmPsychologist(topicId: number, psychologistId: number, topicName: string, 
   dialogRef.afterClosed().subscribe(result => {
     if (result === true) {
       // Call the backend API to update the topic with the psychologist
-      this.requestService.updateTopicWithPsychologist(topicName, 2).subscribe({
+      this.requestService.updateTopicWithPsychologist(topicName, psychologistId).subscribe({
         next: (response) => {
           console.log("Psychologist assigned successfully:", response);
 
@@ -482,6 +488,7 @@ confirmPsychologist(topicId: number, psychologistId: number, topicName: string, 
     }
   });
 }
+
 removePsychologistFromConflictingTopics(topicName: string, psychologistId: number): void {
   const updatedTopic = this.topics1.find(topic => topic.name === topicName);
   if (updatedTopic) {
@@ -505,5 +512,58 @@ removePsychologistFromConflictingTopics(topicName: string, psychologistId: numbe
     });
   }
 }
+
+onCategoryChange(category: string): void {
+  this.selectedCategory = category;
+
+  // Fetch psychologists who are part of the center
+  this.requestService.getAllPsychologistsOrg().subscribe({
+    next: (psychologists: PsychologistDto[]) => {
+      this.organizationPsychologists = psychologists;
+    },
+    error: (err: any) => {
+      console.error("Error fetching psychologists who are part of the center:", err);
+    }
+  });
+
+  // Fetch psychologists who are not part of the center
+  this.requestService.getAllPsychologistsNotOrg().subscribe({
+    next: (psychologists: PsychologistDto[]) => {
+      this.nonOrganizationPsychologists = psychologists;
+    },
+    error: (err: any) => {
+      console.error("Error fetching psychologists who are not part of the center:", err);
+    }
+  });
+}
+
+onPsychologistSelect(topicId: number, psychologistId: number, topicName: string, psychologistName: string): void {
+  if (psychologistId) {
+    // Directly call the confirmPsychologist method with the passed parameters
+    this.confirmPsychologist(topicId, psychologistId, topicName, psychologistName);
+  } else {
+    console.error("No psychologist selected.");
+  }
+}
+
+publishFair(): void {
+  // Logic to publish the fair
+  console.log("Fair published successfully!");
+
+  // Show a success message using MatSnackBar
+  this.snackBar.open('The fair has been successfully published and is now publicly accessible to all participants!', 'Close', {
+    duration: 3000, // Duration of the snackbar message in milliseconds
+    verticalPosition: 'bottom', // Position of the snackbar (bottom or top)
+    horizontalPosition: 'center' // Align center horizontally
+  });
+}
+
+cancelPublish(): void {
+  // Logic to cancel publishing the fair
+  console.log("Fair publishing canceled.");
+  // You can add more logic here if needed
+}
+
+
 
 }

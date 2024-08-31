@@ -62,6 +62,16 @@
    Accepted requests |
 </a>
 
+<a 
+  mat-button 
+  routerLink="/request_on_hold" 
+  *ngIf="userRole == 'ROLE_MANAGER'"
+  
+  
+>
+   Requests still on hold |
+</a>
+
 
   <a
     mat-button

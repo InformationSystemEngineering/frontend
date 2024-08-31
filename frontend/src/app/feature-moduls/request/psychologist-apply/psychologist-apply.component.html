@@ -28,7 +28,18 @@
                             <p class="topic-title">
                                 {{ topic.name }} - {{ topic.classroom.name }} ({{ topic.startTime }} - {{ topic.endTime }})
                             </p>
-                            <button (click)="confirmPsychologist(topic.id, 2, topic.name, 'Adamovic Nikola')" class="apply-button">Apply for topic now</button>
+
+                            <div *ngIf="topic.showOpenFileButton">
+                                <button class="apply-button" (click)="openFilePicker(topic)">Upload PDF</button>
+                            </div>
+                            <div *ngIf="topic.pdfUrl">
+                                <iframe [src]="topic.pdfUrl" width="100%" height="500px"></iframe>
+                                <button class="apply-button" (click)="uploadPdf(topic)">Send PDF</button>
+                            </div>
+                            <div *ngIf="topic.showApplyButton">
+                                <button (click)="confirmPsychologist(topic.id, 2, topic.name, 'Adamovic Nikola')" class="apply-button">Apply for topic now</button>
+                            </div>
+                            
                         </div>
                     </div>
                 </div>

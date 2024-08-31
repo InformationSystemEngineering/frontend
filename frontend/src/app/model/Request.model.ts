@@ -1,3 +1,5 @@
+import { Faculty } from "./Faculty.model";
+
 export interface CustomRequest {
   id?: number;
   name: string;
@@ -8,6 +10,10 @@ export interface CustomRequest {
   status: Status;
   userId: number;
   email?: string;
+  numberOfDays: number;
+  sentDate: Date;
+  faculty?: Faculty;
+  canceled?: boolean;
 }
 
   export enum Status {

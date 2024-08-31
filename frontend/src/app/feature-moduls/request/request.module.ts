@@ -10,6 +10,7 @@ import { NotificationsManagerComponent } from './notifications-manager/notificat
 import { PublishComponent } from './publish/publish.component';
 import { StudentApplyComponent } from './student-apply/student-apply.component';
 import { NotificationsStudentComponent } from './notifications-student/notifications-student.component';
+import { RequestOnHoldComponent } from './request-on-hold/request-on-hold.component';
 
 
 
@@ -24,7 +25,8 @@ import { NotificationsStudentComponent } from './notifications-student/notificat
     NotificationsManagerComponent,
     PublishComponent,
     StudentApplyComponent,
-    NotificationsStudentComponent
+    NotificationsStudentComponent,
+    RequestOnHoldComponent
   ],
   imports: [
     CommonModule

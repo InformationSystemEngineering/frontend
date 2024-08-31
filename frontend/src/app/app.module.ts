@@ -52,6 +52,7 @@ import { NotificationsManagerComponent } from './feature-moduls/request/notifica
 import { PublishComponent } from './feature-moduls/request/publish/publish.component';
 import { StudentApplyComponent } from './feature-moduls/request/student-apply/student-apply.component';
 import { NotificationsStudentComponent } from './feature-moduls/request/notifications-student/notifications-student.component';
+import { RequestOnHoldComponent } from './feature-moduls/request/request-on-hold/request-on-hold.component';
 
 @NgModule({
   declarations: [
@@ -80,6 +81,7 @@ import { NotificationsStudentComponent } from './feature-moduls/request/notifica
     PublishComponent,
     StudentApplyComponent,
     NotificationsStudentComponent,
+    RequestOnHoldComponent,
 
     LoginComponent,
       HomeComponent,

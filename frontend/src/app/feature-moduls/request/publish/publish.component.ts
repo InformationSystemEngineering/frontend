@@ -126,7 +126,9 @@ export class PublishComponent {
             psychologists: topic.psychologists,
             disabled: false,
             facultyName: topic.facultyName,
-            requestName: topic.requestName
+            requestName: topic.requestName,
+            pdfUrl: '',
+            
           }));
 
           requestDetail.showDetails = true;

@@ -34,6 +34,10 @@ export class RequestService {
     return this.http.get<RequestDetailDto[]>(environment.apiHost + 'requests/getAllAcceptedRequestDetails');
   }
 
+  getAllPendingRequestDetails(): Observable<CustomRequest[]> {
+    return this.http.get<CustomRequest[]>(environment.apiHost + 'requests/getAllPendingRequest');
+  }
+
   getAllPublishedRequestDetails(): Observable<RequestDetailDto[]> {
     return this.http.get<RequestDetailDto[]>(environment.apiHost + 'requests/getAllAcceptedPublishedRequestDetails');
   }
@@ -85,6 +89,14 @@ getTopicsWithDetailsNoPsychologist(requestId: number): Observable<TopicDetails[]
 
 getAllPsychologists(): Observable<any[]> {
   return this.http.get<any[]>(`${environment.apiHost}psychologists/psychologists`);
+}
+
+getAllPsychologistsOrg(): Observable<PsychologistDto[]> {
+  return this.http.get<PsychologistDto[]>(`${environment.apiHost}psychologists/psychologistsOrg`);
+}
+
+getAllPsychologistsNotOrg(): Observable<PsychologistDto[]> {
+  return this.http.get<PsychologistDto[]>(`${environment.apiHost}psychologists/psychologistsNotOrg`);
 }
 
 getMessages(topicId: number, psychologistId: number): Observable<Message[]> {

@@ -39,7 +39,8 @@ export class SendRequestComponent implements OnInit {
       startDate: ['', Validators.required],
       endDate: ['', Validators.required],
       description: [''],
-      status: ['']
+      status: [''],
+      numberOfDays: ['']
     });
   }
 
@@ -83,7 +84,9 @@ export class SendRequestComponent implements OnInit {
       description: this.eventForm.value.description,
       status: Status.PENDING,
       userId: 3,
-      email: 'katarina.medic01@gmail.com'
+      email: 'katarina.medic01@gmail.com',
+      numberOfDays: this.eventForm.value.numberOfDays,
+      sentDate: new Date()  ,
     };
     
     this.requestService.createRequest(request).subscribe({

@@ -1,0 +1,57 @@
+<div class="container">
+    <div class="search-sort-container">
+        <input type="text" placeholder="Search by request name..." [(ngModel)]="searchTerm" (input)="filterRequests()" class="search-input">
+        <button (click)="sortRequests('asc')" class="sort-button">Sort A-Z</button>
+        <button (click)="sortRequests('desc')" class="sort-button">Sort Z-A</button>
+    </div>
+
+    <div class="carousel-container">
+        <button class="carousel-nav left-nav" (click)="scrollLeft()">&#9664;</button>
+        
+        <div class="carousel">
+            <div class="request-container" *ngFor="let request of filteredRequests">
+                <ng-container *ngIf="!request.canceled">
+                <!-- Display request name -->
+                <h2>{{ request?.name }}</h2>
+                
+                <!-- Display faculty name -->
+                <p *ngIf="request?.faculty?.name" class="faculty-name">{{ request?.faculty?.name }}</p>
+                
+                <!-- Emphasized request dates and number of days -->
+                <p class="request-detail emphasized">Requested dates: {{ request?.startDate | date:'mediumDate' }} - {{ request?.endDate | date:'mediumDate' }}</p>
+                <p class="request-detail emphasized">Requested number of days: {{ request?.numberOfDays }}</p>
+                
+                <!-- Boxed description -->
+                <div class="description-box">
+                    <p class="request-detail">{{ request?.description }}</p>
+                </div>
+                
+                <!-- Emphasized sent date -->
+                <p class="request-detail emphasized">When the request was sent: {{ request?.sentDate | date:'mediumDate' }}</p>
+                
+                <!-- Button container for organizing fair buttons -->
+                <div class="button-container">
+                    <!-- Button with icon for Resend request, with tooltip -->
+                    <button class="icon-button" (click)="resendRequest(request)" title="Resend request">
+                        <img src="assets/resend.png" alt="Resend Request Icon" class="button-icon">
+                    </button>
+                    
+                    <!-- Cancel request button -->
+                    <button class="icon-button" (click)="cancelRequest(request)" title="Cancel request">
+                        <img src="assets/prohibition.png" alt="Cancel Request Icon" class="button-icon">
+                    </button>
+                </div>
+            </ng-container>
+                
+                <ng-container *ngIf="request.canceled">
+                    <h2>{{ request?.name }}</h2>
+                    <p class="request-detail canceled-message">This request has been canceled.</p>
+                </ng-container>
+                
+           
+            </div>
+        </div>
+
+        <button class="carousel-nav right-nav" (click)="scrollRight()">&#9654;</button>
+    </div>
+</div>

@@ -11,6 +11,7 @@ import { ClassroomDateDto } from 'src/app/model/ClassroomDateDto.model';
 import { ConfirmationDialogComponent } from '../confirmation-dialog/confirmation-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-psychologist-apply',
@@ -22,13 +23,17 @@ export class PsychologistApplyComponent {
   filteredRequests: RequestDetailDto[] = [];
   searchTerm: string = '';
   topics1: TopicDetails[] = [];
+  pdfUrl: SafeResourceUrl | null = null;
+  showApplyButton: boolean = false;
+  showOpenFileButton: boolean = true;
 
   constructor(
     private requestService: RequestService,
     private router: Router,
     private facultyService: FacultyService,
     private dialog: MatDialog,
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar,
+    private sanitizer: DomSanitizer
   ) { }
 
   ngOnInit(): void {
@@ -92,14 +97,18 @@ export class PsychologistApplyComponent {
                     psychologists: topic.psychologists,
                     disabled: false,
                     facultyName: topic.facultyName,
-                    requestName: topic.requestName
+                    requestName: topic.requestName,
+                    pdfUrl: '',
+                    showApplyButton: false, // Initialize for each topic
+                    showOpenFileButton: true // Initialize for each topic
                 }));
                 requestDetail.showDetails = true; // Show details after fetching
                 this.topics1 = requestDetail.topics;
 
                 this.topics1.forEach(topic => {
                   if (topic.id) {
-                      this.getClassroomDate(topic); // Setovanje datuma direktno u topic
+                      this.getClassroomDate(topic);
+                      // this.openFilePicker(topic); // Setovanje datuma direktno u topic
                   } else {
                       console.warn("Topic ID is undefined for topic:", topic);
                   }
@@ -110,6 +119,7 @@ export class PsychologistApplyComponent {
             }
         });
     }
+    
 }
 
 getClassroomDate(topic: TopicDetails): void {
@@ -168,5 +178,57 @@ confirmPsychologist(topicId: number, psychologistId: number, topicName: string, 
     }
   });
 }
+
+openFilePicker(task: TopicDetails) {
+  const inputElement: HTMLInputElement = document.createElement('input');
+  inputElement.type = 'file';
+  inputElement.accept = 'application/pdf'; 
+  inputElement.addEventListener('change', (event) => this.handleFileSelected(event, task));
+  inputElement.click();
+  task.showOpenFileButton = false; // Postavi za trenutni topic
+}
+
+uploadPdf(topic: TopicDetails): void {
+       window.alert('PDF successfully uploaded');
+       topic.pdfUrl = '';
+       topic.showApplyButton = true; // Postavi za trenutni topic
+}
+
+
+handleFileSelected(event: Event, task: any) {
+  const inputElement = event.target as HTMLInputElement;
+  const file = inputElement.files?.[0];
+  if (file) {
+    this.readPdf(file, task);
+  }
+}
+
+readPdf(file: File, task: any) {
+  const reader = new FileReader();
+  reader.onload = (e) => {
+    const fileUrl = e.target?.result as string;
+    task.pdfUrl = this.sanitizer.bypassSecurityTrustResourceUrl(fileUrl);
+  };
+  reader.readAsDataURL(file);
+}
+
+// uploadPdf(task: any): void {
+//        window.alert('PDF successfully uploaded');
+//        task.pdfUrl = null;
+//        this.showApplyButton = true;
+
+//  }
+
+dataURLtoBlob(dataURL: any): Blob {
+  const byteString = atob(dataURL.split(',')[1]);
+  const mimeString = dataURL.split(',')[0].split(':')[1].split(';')[0];
+  const ab = new ArrayBuffer(byteString.length);
+  const ia = new Uint8Array(ab);
+  for (let i = 0; i < byteString.length; i++) {
+    ia[i] = byteString.charCodeAt(i);
+  }
+  return new Blob([ab], { type: mimeString });
+}
+
 
 }

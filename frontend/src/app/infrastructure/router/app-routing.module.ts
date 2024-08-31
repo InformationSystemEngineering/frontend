@@ -33,6 +33,7 @@ import { NotificationsManagerComponent } from 'src/app/feature-moduls/request/no
 import { PublishComponent } from 'src/app/feature-moduls/request/publish/publish.component';
 import { StudentApplyComponent } from 'src/app/feature-moduls/request/student-apply/student-apply.component';
 import { NotificationsStudentComponent } from 'src/app/feature-moduls/request/notifications-student/notifications-student.component';
+import { RequestOnHoldComponent } from 'src/app/feature-moduls/request/request-on-hold/request-on-hold.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -109,6 +110,7 @@ const routes: Routes = [
   { path: 'publish', component: PublishComponent },
   { path: 'student_apply', component: StudentApplyComponent },
   { path: 'notifications-student', component: NotificationsStudentComponent },
+  { path: 'request_on_hold', component: RequestOnHoldComponent },
 
 ];
 

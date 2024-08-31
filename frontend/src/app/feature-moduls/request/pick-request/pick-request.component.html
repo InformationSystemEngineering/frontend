@@ -14,6 +14,15 @@
         (click)="!stepDisabled && goToStep(2)">
         2
     </div>
+
+    <div class="step-connector"></div>
+    <div 
+        class="step-circle" 
+        [class.active]="currentStep === 3" 
+        [class.disabled]="stepDisabled === 3" 
+        (click)="!stepDisabled && goToStep(3)">
+        3
+    </div>
 </div>
 
 <div class="container">
@@ -25,7 +34,7 @@
                 <p *ngIf="requestDetail.faculty?.name" class="faculty-name">{{ requestDetail.faculty.name }}</p>
 
                 <p class="fair-dates">{{ requestDetail.fair.approvedStartDate | date }} - {{ requestDetail.fair.approvedEndDate | date }}</p>
-                <p class="fair-published">Published: {{ requestDetail.fair.isPublish ? 'Yes' : 'No' }}</p>
+                <!-- <p class="fair-published">Published: {{ requestDetail.fair.isPublish ? 'Yes' : 'No' }}</p> -->
             </div>
 
             <div *ngIf="requestDetail.classrooms.length > 0" class="classrooms-container">
@@ -100,7 +109,7 @@
                 <p class="topic-title">
                     {{ topic.name }} - {{ topic.classroom.name }} ({{ topic.startTime }} - {{ topic.endTime }})
                 </p>
-                <h3>Select which psychologist you would like to see at the fair:</h3>
+                <!-- <h3>Select which psychologist you would like to see at the fair:</h3>
                 <div class="psychologists-container">
                     <div *ngFor="let psychologist of psychologists">
                         <button class="psychologist-button"
@@ -109,7 +118,51 @@
                             {{ psychologist.name }} {{ psychologist.lastName }}
                         </button>
                     </div>
+                </div> -->
+
+                <div class="container1">
+                    <h4>Select psychologist that you want to invite on this topic:</h4>
+                    <br>
+                    <!-- Radio buttons to select psychologist category -->
+                    <div class="radio-group">
+                        <label>
+                            <input type="radio" name="psychologistType" (change)="onCategoryChange('organization')"> Psychologists for Organization
+                        </label>
+                        <label>
+                            <input type="radio" name="psychologistType" (change)="onCategoryChange('presentation')"> Psychologists for Presentation
+                        </label>
+                    </div>
+
+                
+                    <!-- Container for the list boxes -->
+                    <div class="select-container">
+                        <!-- List box for psychologists who are part of the center -->
+                        <div *ngIf="organizationPsychologists.length > 0">
+                            <label for="orgPsychologistSelect">Psychologists in the Center:</label>
+                            <select id="orgPsychologistSelect" (change)="onPsychologistSelect(topic.id, 2, topic.name, 'Nikola')">
+                                <option value="">Select a psychologist</option>
+                                <option *ngFor="let psychologist of organizationPsychologists" [ngValue]="psychologist">
+                                    {{ psychologist.name }} {{ psychologist.lastName }}
+                                </option>
+                            </select>
+                        </div>
+                
+                        <!-- List box for psychologists who are not part of the center -->
+                        <div *ngIf="nonOrganizationPsychologists.length > 0">
+                            <label for="nonOrgPsychologistSelect">Psychologists outside the Center - send mail:</label>
+                            <select id="nonOrgPsychologistSelect" (change)="onPsychologistSelect(topic.id, 7, topic.name, 'Igor')">
+                                <option value="">Select a psychologist</option>
+                                <option *ngFor="let psychologist of nonOrganizationPsychologists" [ngValue]="psychologist">
+                                    {{ psychologist.name }} {{ psychologist.lastName }}
+                                </option>
+                            </select>
+                        </div>
+                    </div>
                 </div>
+                
+                
+                
+                
             </div>
         </div>
         
@@ -121,4 +174,17 @@
                   [selectedPsychologistId]="selectedPsychologistId">
         </app-chat>
     </div>
+
+
+    <div class="right-side" *ngIf="currentStep === 3">
+        <!-- Confirmation message for publishing the fair -->
+        <div class="confirmation-message">
+            <p class="confirmation-text">Do you want to publish this fair so that every psychologist and participants can prepare themselves for this fair?</p>
+            <div class="confirmation-buttons">
+                <button class="button yes-button" (click)="publishFair()">Yes</button>
+                <button class="button no-button" (click)="cancelPublish()">No</button>
+            </div>
+        </div>
+    </div>
+    
 </div>

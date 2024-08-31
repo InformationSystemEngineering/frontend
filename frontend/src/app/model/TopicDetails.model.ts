@@ -15,4 +15,7 @@ export interface TopicDetails {
     disabled: boolean;
     facultyName: string;
     requestName: string;
+    pdfUrl: string;
+    showApplyButton?: boolean;
+    showOpenFileButton? : boolean;
 }

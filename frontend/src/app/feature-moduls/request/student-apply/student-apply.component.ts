@@ -90,7 +90,8 @@ export class StudentApplyComponent implements OnInit{
             psychologists: topic.psychologists,
             disabled: false,
             facultyName: topic.facultyName,
-            requestName: topic.requestName
+            requestName: topic.requestName,
+            pdfUrl: ''
           }));
 
           requestDetail.showDetails = true;

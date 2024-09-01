@@ -1,29 +1,75 @@
 <div class="psychologist-container">
-    <h2 class="header-title">Requests from psychologists for topics</h2>
+    <h2 class="header-title">Requests for Topics By Psychologists</h2>
 
     <!-- Search and Sort Controls -->
     <div class="search-sort-container">
-        <input type="text" placeholder="Search by psychologist name" [(ngModel)]="searchQuery" (ngModelChange)="filterPsychologists()" class="search-input">
-        <button (click)="sortPsychologists('asc')" class="sort-button">Sort Ascending</button>
-        <button (click)="sortPsychologists('desc')" class="sort-button">Sort Descending</button>
+        <input type="text" placeholder="Search by fair name..." [(ngModel)]="searchTerm" (input)="filterRequests()" class="search-input">
+        <div class="sort-buttons">
+            <button (click)="sortRequests('asc')" class="sort-button">Sort A-Z</button>
+            <button (click)="sortRequests('desc')" class="sort-button">Sort Z-A</button>
+        </div>
     </div>
 
-    <div *ngFor="let psychologist of filteredPsychologists" class="psychologist-card">
-        <h1>{{ psychologist.psychologistName }} {{ psychologist.psychologistLastName }}</h1>
-        <div *ngFor="let topic of psychologist.topics; let i = index">
-            <h4 *ngIf="i === 0 || (topic.date | date:'yyyy-MM-dd') !== (psychologist.topics[i - 1].date | date:'yyyy-MM-dd')">
-                {{ topic.date | date }}
-            </h4>
-            <div class="topic-card" [class.disabled]="topic.disabled">
-                <p class="topic-faculty"><strong>Faculty:</strong> {{ topic.facultyName }}</p>
-                <p class="topic-request"><strong>Fair:</strong> {{ topic.requestName }}</p>
-                <p><strong>Topic:</strong> {{ topic.name }}</p>
-                <p><strong>Classroom:</strong> {{ topic.classroom.name }}</p>
-                <p><strong>Time:</strong> {{ topic.startTime }} - {{ topic.endTime }}</p>
-                <div class="action-buttons">
-                    <button (click)="acceptTopic(topic)" [disabled]="topic.disabled" class="accept-button">Accept</button>
-                    <button (click)="declineTopic(topic)" class="decline-button">Decline</button>
+    <div class="fairs-list">
+        <div class="psychologist-card" *ngFor="let requestDetail of filteredRequests">
+            <h2 class="request-title">{{ requestDetail.request.name }}</h2>
+            <div *ngIf="requestDetail.fair" class="fair-details">
+                <p *ngIf="requestDetail.faculty?.name" class="faculty-name">{{ requestDetail.faculty.name }}</p>
+                <p class="fair-dates">{{ requestDetail.fair.approvedStartDate | date }} - {{ requestDetail.fair.approvedEndDate | date }}</p>
+            </div>
+
+            <div class="topic-details">
+                <div *ngIf="requestDetail.topics && requestDetail.topics.length > 0; else noTopics">
+                    <div class="topic-card" *ngFor="let topic of requestDetail.topics; let i = index">
+                        
+                        <!-- Apply 'disabled' class conditionally -->
+                        <div [class.disabled]="topic.disabled" [class.deleted]="!showDeletedTopic && topic.name === 'Mindfulness and Stress Reduction Techniques'" class="topic-step">
+                            <h4 class="topic-date">
+                                {{ topic.date | date }}
+                            </h4>
+                            <p class="topic-title">
+                                {{ topic.name }} - {{ topic.classroom.name }} ({{ topic.startTime }} - {{ topic.endTime }})
+                            </p>
+                            
+                            <!-- Display message and delete button for specific topic -->
+                            <div *ngIf="showDeletedTopic && topic.name === 'Mindfulness and Stress Reduction Techniques'" class="no-psychologist-warning">
+                                <p>There is no psychologist for this topic, you can delete this topic.</p>
+                                <button class="icon-button" (click)="deleteTopic(requestDetail, topic)" title="Delete topic">
+                                    <img src="assets/delete.png" alt="Delete topic Icon" class="button-icon">
+                                </button>
+                            </div>
+
+                            <!-- Regular action buttons for other topics -->
+                            <div *ngIf="topic.name !== 'Mindfulness and Stress Reduction Techniques'">
+                                <div class="action-buttons">
+                                    <span *ngIf="getPsychologistFullName(topic.id)" class="psychologist-info">Psychologist: {{ getPsychologistFullName(topic.id) }}</span>
+                                    <button (click)="acceptTopic(topic)" class="accept-button" [disabled]="topic.disabled">Accept</button>
+                                    <button (click)="declineTopic(topic)" class="decline-button" [disabled]="topic.disabled">Decline</button>
+                                </div>
+                                
+                                <!-- Fake Psychologists -->
+                                <div class="fake-psychologist">
+                                    <span class="psychologist-info">Psychologist: John Doe</span>
+                                    <button (click)="acceptTopic(topic)" class="accept-button" [disabled]="topic.disabled">Accept</button>
+                                    <button (click)="declineTopic(topic)" class="decline-button" [disabled]="topic.disabled">Decline</button>
+                                </div>
+                                <div class="fake-psychologist">
+                                    <span class="psychologist-info">Psychologist: Jane Smith</span>
+                                    <button (click)="acceptTopic(topic)" class="accept-button" [disabled]="topic.disabled">Accept</button>
+                                    <button (click)="declineTopic(topic)" class="decline-button" [disabled]="topic.disabled">Decline</button>
+                                </div>
+                                <div class="fake-psychologist">
+                                    <span class="psychologist-info">Psychologist: Michael Johnson</span>
+                                    <button (click)="acceptTopic(topic)" class="accept-button" [disabled]="topic.disabled">Accept</button>
+                                    <button (click)="declineTopic(topic)" class="decline-button" [disabled]="topic.disabled">Decline</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
+                <ng-template #noTopics>
+                    <p class="no-topics-message">No topics available for this request.</p>
+                </ng-template>
             </div>
         </div>
     </div>
